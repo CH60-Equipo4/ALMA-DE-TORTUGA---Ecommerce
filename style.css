@@ -60,3 +60,11 @@ p {
     line-height: 1.6;
     font-weight: 400;
 }
+
+.mision span{
+   font-style: italic;
+}
+
+.vision span{
+    font-style: italic;
+}
