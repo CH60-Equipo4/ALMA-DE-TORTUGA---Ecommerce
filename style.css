@@ -60,6 +60,69 @@ p {
     line-height: 1.6;
     font-weight: 400;
 }
+.footer {
+  background-color: var(--color-primary);
+  color: var(--color-accent-lighter);
+  padding: 2rem 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+}
+.footer-links h4 {
+    color: #FEF7EA;
+    margin-bottom: 5px;
+    
+}
+.footer-links ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.footer-links ul li a {
+  font-size: 15px;
+  text-decoration: none;
+  color: var(--color-accent-light);
+  display: block;
+  transition: color 0.2s ease;
+}
+.footer-logo small {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-accent-light);
+  opacity: 0.9;
+}
+.social-link {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+.social-link a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--color-accent-light);
+  color: var(--color-primary);
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.footer-copyright p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-accent-light);
+  letter-spacing: 0.5px;
 
 /* Seccion CESAR*/
 .custom-card {
