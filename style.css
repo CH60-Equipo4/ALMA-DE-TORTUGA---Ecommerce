@@ -72,7 +72,6 @@ p {
 
 .custom-card:hover {
     border-color: #6bbf59;
-    /* Verde ecológico */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transform: translateY(-3px);
 }
@@ -81,18 +80,20 @@ p {
     width: 220px;
     height: 220px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    /* object-fit: contain; */
 }
 
 .logo {
-  transition: transform 0.5s ease, filter 0.3s ease;
+    transition: transform 0.5s ease, filter 0.3s ease;
 }
 
 .custom-card:hover .logo {
-  transform: scale(1.1) rotate(-2deg);
-  filter: brightness(1.05);
+    transform: scale(1.1) rotate(-2deg);
+    filter: brightness(1.05);
 }
 
+.section-title{
+    text-align: center;
+}
 
 .card-body {
     color: #333;
