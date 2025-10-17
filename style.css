@@ -201,4 +201,11 @@ p {
     top: 50%;
     transform: translateY(-50%);
     background-color: #D09559 !important;
+  
+.mision span{
+   font-style: italic;
+}
+
+.vision span{
+    font-style: italic;
 }
