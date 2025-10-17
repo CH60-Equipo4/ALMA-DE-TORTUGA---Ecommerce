@@ -61,33 +61,6 @@ p {
     font-weight: 400;
 }
 
-/* HEADER */
-header {
-  background-color: var(--color-nav);
-  font-family: 'Poltawski Nowy', serif;
-}
-
-.logo-img {
-  width: 60px;
-  height: auto;
-}
-
-.titulo {
-  font-size: 36px;
-  color: var(--color-texto);
-}
-
-.carrito i {
-  font-size: 1.8rem;
-  color: var(--color-texto);
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.carrito i:hover {
-  transform: scale(1.1);
-  color: var(--color-boton);
-}
 
 /* === MINI NAVBAR TRANSPARENTE === */
 .mini-navbar {
