@@ -61,6 +61,42 @@ p {
     font-weight: 400;
 }
 
+/* Seccion CESAR*/
+.custom-card {
+    border: 2px solid transparent;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    background-color: #fffdf6;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-card:hover {
+    border-color: #6bbf59;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+.logo {
+    width: 220px;
+    height: 220px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.custom-card:hover .logo {
+    transform: scale(1.1) rotate(-2deg);
+    filter: brightness(1.05);
+}
+
+.section-title{
+    text-align: center;
+}
+
+.card-body {
+    color: #333;
 /* Estilos para seccion Profile */
 /* Estilos para el Flip Card */
 .flip-card-front h5 {
