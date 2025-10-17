@@ -60,3 +60,64 @@ p {
     line-height: 1.6;
     font-weight: 400;
 }
+
+/* HEADER */
+header {
+  background-color: var(--color-nav);
+  font-family: 'Poltawski Nowy', serif;
+}
+
+.logo-img {
+  width: 60px;
+  height: auto;
+}
+
+.titulo {
+  font-size: 36px;
+  color: var(--color-texto);
+}
+
+.carrito i {
+  font-size: 1.8rem;
+  color: var(--color-texto);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.carrito i:hover {
+  transform: scale(1.1);
+  color: var(--color-boton);
+}
+
+/* === MINI NAVBAR TRANSPARENTE === */
+.mini-navbar {
+  background-color: rgba(250, 236, 207, 0.4); /* beige translúcido */
+  backdrop-filter: blur(6px); /* efecto vidrio suave */
+  border: none; /* sin línea verde */
+  padding: 8px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.mini-btn {
+  color: #2E3B24 !important; /* verde oscuro */
+  font-family: 'Georgia', serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border: 1px solid rgba(123, 139, 85, 0.4); /* borde verde oliva sutil */
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.3); /* fondo translúcido */
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.mini-btn:hover {
+  background-color: rgba(123, 139, 85, 0.7); /* verde oliva semitransparente */
+  color: #faeccf !important; /* beige claro */
+  transform: translateY(-1px);
+}
+
+.mini-btn:active {
+  background-color: rgba(123, 139, 85, 0.9);
+  transform: scale(0.97);
+}
