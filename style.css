@@ -64,6 +64,10 @@ p {
   background-color: var(--color-primary);
   color: var(--color-accent-lighter);
   padding: 2rem 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
 }
 .footer-links h4 {
     color: #FEF7EA;
