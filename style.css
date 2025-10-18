@@ -73,6 +73,38 @@ p {
     font-weight: 400;
 }
 
+
+/* === MINI NAVBAR TRANSPARENTE === */
+.mini-navbar {
+  background-color: rgba(250, 236, 207, 0.4); /* beige translúcido */
+  backdrop-filter: blur(6px); /* efecto vidrio suave */
+  border: none; /* sin línea verde */
+  padding: 8px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.mini-btn {
+  color: #2E3B24 !important; /* verde oscuro */
+  font-family: 'Georgia', serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border: 1px solid rgba(123, 139, 85, 0.4); /* borde verde oliva sutil */
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.3); /* fondo translúcido */
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.mini-btn:hover {
+  background-color: rgba(123, 139, 85, 0.7); /* verde oliva semitransparente */
+  color: #faeccf !important; /* beige claro */
+  transform: translateY(-1px);
+}
+
+.mini-btn:active {
+  background-color: rgba(123, 139, 85, 0.9);
+  transform: scale(0.97);
 .footer {
     background-color: var(--color-primary);
     color: var(--color-accent-lighter);
