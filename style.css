@@ -1,0 +1,83 @@
+/* main style */
+@import url('https://fonts.googleapis.com/css2?family=Poltawski+Nowy:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Color palette for Alma de Tortuga */
+    --color-primary: #818E59;
+    --color-secondary: #283429;
+    --color-accent-light: #FFEDCC;
+    --color-accent-lighter: #FEF7EA;
+    --color-accent-gold: #D09559;
+
+    --color-white: #ffffff;
+    --color-black: #000000;
+
+    /* Font families */
+    --font-heading: 'Poltawski Nowy', serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-secondary);
+    background-color: var(--color-accent-lighter);
+}
+
+.main-content-wrapper {
+    flex-grow: 1;
+    /* Esto empuja el footer hacia abajo */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+}
+
+h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.5rem;
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 2rem;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* CCS NAV VAR */
+
+/* CCS FOOTER */
+
+/* CCS Formulario */
+
+/* Extras añadir con comentario */
