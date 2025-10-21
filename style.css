@@ -76,6 +76,91 @@ p {
 
 /* CCS NAV VAR */
 
+/* ======== NAVBAR ======== */
+.custom-navbar {
+    background-color: var(--color-accent-light);
+    padding: 0.5rem 1rem;
+}
+
+.navbar-nav .nav-link {
+    color: #5a3e1b;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--color-primary);
+}
+
+
+
+/* Texto ToteBags en negro */
+.navbar .nav-link[href="#totebags"],
+.dropdown-toggle.titulo {
+  color: #000000 !important; /* negro */
+}
+
+
+
+/* ======== LOGO ======== */
+.logo-circle {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    border: 3px solid var(--color-primary);
+    background-color: var(--color-accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 4px;
+}
+
+.logo-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+/* ======== CARRITO ======== */
+.cart-icon-container {
+    margin-right: 1rem;
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #c0392b;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    display: none;
+}
+
+/* Mostrar contador en el carrito */
+.cart-count.active {
+    display: inline-block;
+}
+
+/* ======== RESPONSIVIDAD ======== */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: var(--color-accent-light);
+        padding: 1rem;
+    }
+
+    .navbar-nav {
+        width: 100%;
+    }
+
+    .navbar-nav .nav-link {
+        text-align: center;
+        padding: 0.5rem 0;
+    }
+
+
 /* CCS FOOTER */
 
 /* CCS Formulario */
