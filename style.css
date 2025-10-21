@@ -30,6 +30,8 @@ body {
     background-color: var(--color-accent-lighter);
 }
 
+
+
 .main-content-wrapper {
     flex-grow: 1;
     /* Esto empuja el footer hacia abajo */
@@ -79,5 +81,26 @@ p {
 /* CCS FOOTER */
 
 /* CCS Formulario */
+.formulario-contacto {
+  background-color: var(--color-nav);
+  max-width: 600px;
+}
+
+.formulario-contacto h2 {
+  font-family: 'Poltawski Nowy', serif;
+  color: var(--color-texto);
+}
+
+.btn-enviar {
+  background-color: var(--color-boton);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-enviar:hover {
+  background-color: var(--color-acento);
+}
 
 /* Extras añadir con comentario */

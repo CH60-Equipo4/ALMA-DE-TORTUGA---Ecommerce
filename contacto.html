@@ -7,12 +7,49 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="CSS-about/style.css">
 </head>
 
 <body>
     <!-- nav var -->
 
     <!-- Formulario de contacto  -->
+      <!-- FORMULARIO DE CONTACTO -->
+  <main class="container my-5">
+    <section class="formulario-contacto mx-auto p-4 shadow-sm rounded">
+      <h2 class="text-center mb-4">Contacto</h2>
+      <p class="text-center mb-4">¿Tienes un mensaje o te interesa una cotozacion especial? ¡Contactanos!</p>
+      <form>
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" id="nombre" class="form-control" placeholder="Tu nombre">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo electrónico</label>
+          <input type="email" id="email" class="form-control" placeholder="correo@ejemplo.com">
+        </div>
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Teléfono</label>
+          <input type="tel" id="telefono" class="form-control" placeholder="(000) 000 0000">
+        </div>
+        <div class="mb-3">
+          <label for="mensaje" class="form-label">Mensaje</label>
+          <textarea id="mensaje" class="form-control" rows="4" placeholder="Escribe tu mensaje aquí"></textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-enviar px-5 py-2">Enviar</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+ 
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
 
     <button id="enviarContacto" type="button" class="btn btn-primary">Base class</button>
 
