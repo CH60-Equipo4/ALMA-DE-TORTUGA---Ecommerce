@@ -1,6 +1,6 @@
 /* EmailJS y funcionalidad del Toast*/
 
-const btn = document.getElementById('button');
+const btn = document.getElementById('enviarContacto');
 const form = document.querySelector("form");
 const toast = document.getElementById("toast");
 const toastMsg = document.getElementById("toast-message");
