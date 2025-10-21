@@ -403,6 +403,16 @@ p {
     color: var(--color-primary);
 }
 
+
+
+/* Texto ToteBags en negro */
+.navbar .nav-link[href="#totebags"],
+.dropdown-toggle.titulo {
+  color: #000000 !important; /* negro */
+}
+
+
+
 /* ======== LOGO ======== */
 .logo-circle {
     width: 85px;
@@ -488,3 +498,4 @@ p {
     padding-top: 160px !important;
     /* ¡Ajusta esta altura según sea necesario! */
 }
+
