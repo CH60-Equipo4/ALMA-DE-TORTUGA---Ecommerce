@@ -1,14 +1,4 @@
 // 🐢 Efecto de tortugas aleatorias al enviar el formulario
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector("form");
-    if (!form) return;
-
-    form.addEventListener("submit", (e) => {
-        e.preventDefault(); // evita envío real
-        lanzarTortugas();
-    });
-});
-
 function lanzarTortugas() {
     const cantidad = 20; // número total de tortugas
     for (let i = 0; i < cantidad; i++) {
@@ -78,6 +68,8 @@ form.addEventListener('submit', function(event){
     message.textContent = "Formulario válido, enviado con éxito.";
     console.log('Formulario enviado con éxito:', { nombre, email, telefono, mensaje  });
     message.style.color = 'green';
+    lanzarTortugas();
+
 
     form.reset();
 });
