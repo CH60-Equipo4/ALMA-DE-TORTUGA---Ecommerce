@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poltawski+Nowy:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Poltawski+Nowy:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
 :root {
     /* Color palette for Alma de Tortuga */
     --color-primary: #818E59;
@@ -9,9 +11,13 @@
     --color-accent-light: #FFEDCC;
     --color-accent-lighter: #FEF7EA;
     --color-accent-gold: #D09559;
-
     --color-white: #ffffff;
     --color-black: #000000;
+    --color-boton: #D09559;
+    --color-acento: #818E59;
+    --color-texto: #283429;
+    --color-fondo: #FEF7EA;
+    --color-nav: #FFEDCC;
 
     /* Font families */
     --font-heading: 'Poltawski Nowy', serif;
@@ -23,6 +29,10 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: var(--color-fondo);
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-texto);
+    margin: 0;
 }
 
 body {
@@ -30,6 +40,8 @@ body {
     color: var(--color-secondary);
     background-color: var(--color-accent-lighter);
 }
+
+
 
 .main-content-wrapper {
     flex-grow: 1;
