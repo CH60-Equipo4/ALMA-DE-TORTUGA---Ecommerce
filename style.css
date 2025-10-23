@@ -1,0 +1,232 @@
+/* main style */
+@import url('https://fonts.googleapis.com/css2?family=Poltawski+Nowy:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Color palette for Alma de Tortuga */
+    --color-primary: #818E59;
+    --color-secondary: #283429;
+    --color-accent-light: #FFEDCC;
+    --color-accent-lighter: #FEF7EA;
+    --color-accent-gold: #D09559;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-boton: #D09559;
+    --color-acento: #818E59;
+    --color-texto: #283429;
+    --color-fondo: #FEF7EA;
+    --color-nav: #FFEDCC;
+
+    /* Font families */
+    --font-heading: 'Poltawski Nowy', serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-fondo);
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-texto);
+    margin: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-secondary);
+    background-color: var(--color-accent-lighter);
+}
+
+
+
+.main-content-wrapper {
+    flex-grow: 1;
+    /* Esto empuja el footer hacia abajo */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+}
+
+h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.5rem;
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 2rem;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* CCS NAV VAR */
+
+/* CCS FOOTER */
+
+/* CCS Formulario */
+.formulario-contacto {
+    background-color: var(--color-nav);
+    max-width: 600px;
+}
+
+.formulario-contacto h2 {
+    font-family: 'Poltawski Nowy', serif;
+    color: var(--color-texto);
+}
+
+.btn-enviar {
+    background-color: var(--color-boton);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-enviar:hover {
+    background-color: var(--color-acento);
+}
+
+/* 🐢 Animación de tortugas flotando */
+.tortuga {
+    position: fixed;
+    pointer-events: none;
+    animation: flotar 4s ease-in-out forwards;
+    opacity: 0;
+    transform: translateY(0);
+    z-index: 9999;
+}
+
+@keyframes flotar {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.5);
+    }
+
+    25% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1);
+    }
+
+    75% {
+        opacity: 1;
+        transform: translateY(-40px) scale(1.2);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-60px) scale(0.5);
+    }
+}
+
+/* ===== TOAST GENERAL ===== */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #f4e1b5;
+    /* beige cálido */
+    color: #4d4b30;
+    /* marrón suave */
+    padding: 15px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    font-weight: 500;
+    z-index: 9999;
+    font-family: 'Poppins', sans-serif;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ANIMACION DE LA TOTEBAG */
+.totebag {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    animation: bounce 1s infinite ease-in-out;
+}
+
+/* ASA */
+.totebag .handle {
+    position: absolute;
+    top: 0;
+    left: 7px;
+    width: 26px;
+    height: 8px;
+    border: 3px solid #7a714d;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+}
+
+/* BOLSA */
+.totebag .bag {
+    position: absolute;
+    top: 7px;
+    left: 4px;
+    width: 32px;
+    height: 28px;
+    background-color: #d9c48e;
+    border: 2px solid #7a714d;
+    border-radius: 4px 4px 6px 6px;
+}
+
+/* REBOTE */
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* Colores al éxito */
+.toast.success {
+    background-color: #d7f2b0;
+    /* verde claro */
+    color: #3f5733;
+}
+
+.toast.error {
+    background-color: #f6b3a2;
+    /* rojo suave */
+    color: #5e2a1f;
+}
+
+/* Extras añadir con comentario */
