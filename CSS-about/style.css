@@ -157,11 +157,10 @@ p {
     transition: color 0.2s ease;
 }
 
-.footer-logo small {
-    display: block;
-    font-size: 0.75rem;
-    color: var(--color-accent-light);
-    opacity: 0.9;
+.footer-logo img {
+    border: 4px solid #ffedcc; /* Beige estándar #FFEDCC */
+    border-radius: 8px;        /* Esquinas suaves (opcional) */
+    padding: 2px;              /* Espacio interno (opcional) */
 }
 
 .social-link {
@@ -404,6 +403,16 @@ p {
     color: var(--color-primary);
 }
 
+
+
+/* Texto ToteBags en negro */
+.navbar .nav-link[href="#totebags"],
+.dropdown-toggle.titulo {
+  color: #000000 !important; /* negro */
+}
+
+
+
 /* ======== LOGO ======== */
 .logo-circle {
     width: 85px;
@@ -489,3 +498,4 @@ p {
     padding-top: 160px !important;
     /* ¡Ajusta esta altura según sea necesario! */
 }
+

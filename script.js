@@ -59,7 +59,7 @@ function showToast(message, type = null) {
     }, 4000);
 }
 
-// === Lógica de Envío del Formulario === //
+// === Lógica de Envío del Formulario y REGEX === //
 form.addEventListener('submit', function (event) {
     event.preventDefault();
 
