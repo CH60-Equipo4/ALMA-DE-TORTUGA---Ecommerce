@@ -8,9 +8,13 @@
     --color-accent-light: #FFEDCC;
     --color-accent-lighter: #FEF7EA;
     --color-accent-gold: #D09559;
-
     --color-white: #ffffff;
     --color-black: #000000;
+    --color-boton: #D09559;
+    --color-acento: #818E59;
+    --color-texto: #283429;
+    --color-fondo: #FEF7EA;
+    --color-nav: #FFEDCC;
 
     /* Font families */
     --font-heading: 'Poltawski Nowy', serif;
@@ -22,6 +26,10 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: var(--color-fondo);
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-texto);
+    margin: 0;
 }
 
 body {
@@ -82,25 +90,25 @@ p {
 
 /* CCS Formulario */
 .formulario-contacto {
-  background-color: var(--color-nav);
-  max-width: 600px;
+    background-color: var(--color-nav);
+    max-width: 600px;
 }
 
 .formulario-contacto h2 {
-  font-family: 'Poltawski Nowy', serif;
-  color: var(--color-texto);
+    font-family: 'Poltawski Nowy', serif;
+    color: var(--color-texto);
 }
 
 .btn-enviar {
-  background-color: var(--color-boton);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
+    background-color: var(--color-boton);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
 }
 
 .btn-enviar:hover {
-  background-color: var(--color-acento);
+    background-color: var(--color-acento);
 }
 
 /* 🐢 Animación de tortugas flotando */
@@ -118,18 +126,107 @@ p {
         opacity: 0;
         transform: translateY(20px) scale(0.5);
     }
+
     25% {
         opacity: 1;
         transform: translateY(-10px) scale(1);
     }
+
     75% {
         opacity: 1;
         transform: translateY(-40px) scale(1.2);
     }
+
     100% {
         opacity: 0;
         transform: translateY(-60px) scale(0.5);
     }
+}
+
+/* ===== TOAST GENERAL ===== */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #f4e1b5;
+    /* beige cálido */
+    color: #4d4b30;
+    /* marrón suave */
+    padding: 15px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    font-weight: 500;
+    z-index: 9999;
+    font-family: 'Poppins', sans-serif;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ANIMACION DE LA TOTEBAG */
+.totebag {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    animation: bounce 1s infinite ease-in-out;
+}
+
+/* ASA */
+.totebag .handle {
+    position: absolute;
+    top: 0;
+    left: 7px;
+    width: 26px;
+    height: 8px;
+    border: 3px solid #7a714d;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+}
+
+/* BOLSA */
+.totebag .bag {
+    position: absolute;
+    top: 7px;
+    left: 4px;
+    width: 32px;
+    height: 28px;
+    background-color: #d9c48e;
+    border: 2px solid #7a714d;
+    border-radius: 4px 4px 6px 6px;
+}
+
+/* REBOTE */
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* Colores al éxito */
+.toast.success {
+    background-color: #d7f2b0;
+    /* verde claro */
+    color: #3f5733;
+}
+
+.toast.error {
+    background-color: #f6b3a2;
+    /* rojo suave */
+    color: #5e2a1f;
 }
 
 /* Extras añadir con comentario */
