@@ -47,7 +47,8 @@ body {
 
 main,
 section {
-  flex: 1; /* Empuja el footer hacia abajo */
+    flex: 1;
+    /* Empuja el footer hacia abajo */
 }
 
 .main-content-wrapper {
@@ -153,7 +154,7 @@ p {
     display: inline-block;
 }
 
-.titulo{
+.titulo {
     color: #5a3e1b;
 }
 
@@ -230,9 +231,9 @@ p {
 }
 
 .footer-logo img {
-    width: 150px; 
-    border: 3px solid var(--color-accent-light); 
-    border-radius: 10%; 
+    width: 150px;
+    border: 3px solid var(--color-accent-light);
+    border-radius: 10%;
     padding: 5px;
     transition: transform 0.3s ease;
-  }
+}

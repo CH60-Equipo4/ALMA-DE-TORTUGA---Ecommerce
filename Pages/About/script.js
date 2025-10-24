@@ -1,4 +1,4 @@
-/* Logica para flip cards*/ 
+/* Logica para flip cards*/
 document.addEventListener('DOMContentLoaded', () => {
     //seleccionamos todas las clases que sean flip-card
     const flipCards = document.querySelectorAll('.flip-card');
