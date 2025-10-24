@@ -1,0 +1,51 @@
+:root {
+    /* Color palette for Alma de Tortuga */
+    --color-primary: #818E59;
+    --color-secondary: #283429;
+    --color-accent-light: #FFEDCC;
+    --color-accent-lighter: #FEF7EA;
+    --color-accent-gold: #D09559;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-boton: #818E59;
+    --color-acento: #818E59;
+    --color-texto: #283429;
+    --color-fondo: #FEF7EA;
+    --color-nav: #FFEDCC;
+
+    /* Font families */
+    --font-heading: 'Poltawski Nowy', serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--color-primary);
+    overflow-x: hidden;
+}
+
+html {
+    overflow: hidden;
+}
+
+.register-container {
+    background-color: var(--color-nav);
+
+    width: 90%;
+    max-width: 850px;
+    padding: 40px;
+    border-radius: 10px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.register-container .form-control {
+    background-color: var(--color-accent-lighter);
+    border: 1px solid var(--color-primary);
+    padding: 10px 15px;
+}
+
+.btn-login {
+    background-color: var(--color-primary, #818E59);
+    color: var(--color-accent-lighter, #FEF7EA);
+    /* ... otros estilos de botón ... */
+}
