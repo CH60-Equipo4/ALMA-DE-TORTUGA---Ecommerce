@@ -1,480 +1,639 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nosotros</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../../CCS-Styles/main.css">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-</head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../CCS-Styles/main.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+  </head>
 
-<body>
+  <body>
     <div class="main-content-wrapper">
-        <header>
-            <!-- NAVBAR -->
-            <nav class="navbar navbar-expand-lg navbar-light custom-navbar fixed-top">
-                <div class="container-fluid d-flex align-items-center justify-content-between">
+       <!-- NAVBAR -->
+       <nav class="navbar navbar-expand-lg navbar-light custom-navbar fixed-top">
+        <div
+          class="container-fluid d-flex align-items-center justify-content-between"
+        >
+          <!-- LOGO -->
+          <a
+            class="navbar-brand d-flex align-items-center"
+            href="../Index/index.html"
+          >
+            <div class="logo-circle">
+              <img
+                src="../../Pictures/Logo/Logo1.png"
+                alt="Alma Tortuga Logo"
+                class="logo-img"
+              />
+            </div>
+          </a>
 
+          <!-- Nombre con dropdown -->
+          <div class="dropdown me-4">
+            <a
+              class="titulo dropdown-toggle text-decoration-none fw-bold"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              ToteBags
+            </a>
+            <ul class="dropdown-menu shadow">
+              <li><a class="dropdown-item" href="#">ToteBag Clásica</a></li>
+              <li><a class="dropdown-item" href="#">ToteBag con Diseño</a></li>
+              <li><a class="dropdown-item" href="#">ToteBag Ecológica</a></li>
+              <li>
+                <a class="dropdown-item" href="#">ToteBag Personalizada</a>
+              </li>
+            </ul>
+          </div>
 
-                    <!-- LOGO -->
-                    <a class="navbar-brand d-flex align-items-center" href="#">
-                        <div class="logo-circle">
-                            <img src="../../Pictures/Logo/Logo1.png" alt="Alma Tortuga Logo" class="logo-img">
+          <!-- BOTÓN RESPONSIVO -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- ENLACES -->
+          <div
+            class="collapse navbar-collapse justify-content-start"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav ms-3" style="width: 60%">
+              <li class="nav-item">
+                <a class="nav-link" href="../Contact/contact.html">Contacto</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../About/about.html">Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Carrito</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Blog</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- ICONO CARRITO -->
+          <div class="cart-icon-container position-relative">
+            <a href="#carrito" class="nav-link">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                class="bi bi-cart-check-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708"
+                />
+              </svg>
+              <span id="cart-count" class="cart-count">0</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+      <!-- MINI NAVBAR -->
+      <nav id="miniNavbar" class="mini-navbar navbar navbar-expand-md">
+        <div class="container justify-content-center">
+          <ul class="navbar-nav gap-3">
+            <li class="nav-item">
+              <a href="#misionid" class="nav-link mini-btn">Misión</a>
+            </li>
+            <li class="nav-item">
+              <a href="#visionid" class="nav-link mini-btn">Visión</a>
+            </li>
+            <li class="nav-item">
+              <a href="#valoresid" class="nav-link mini-btn">Valores</a>
+            </li>
+            <li class="nav-item">
+              <a href="#Squirtle-team" class="nav-link mini-btn"
+                >Acerca de Nosotros</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#profile" class="nav-link mini-btn">Conoce al equipo</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <main>
+      <section id="misionid" class="nosotros-info container py-5">
+        <div class="mision row align-items-center mb-5">
+          <div class="col-md-6">
+            <img
+              src="../../Pictures/About-pics/mision.jpg"
+              alt="Imagen de caparazon de Tortuga"
+              class="img-fluid"
+            />
+          </div>
+
+          <div class="col-md-6">
+            <h1 class="text-center p-4">Misión</h1>
+            <p>
+              Crear tote bags duraderas y ecológicas que combinen estilo,
+              funcionalidad y conciencia ambiental. En
+              <span>Alma de Tortuga</span> buscamos inspirar a las personas a
+              elegir productos responsables con el planeta, ofreciendo diseños
+              resistentes y con propósito, que acompañen cada paso de su vida
+              cotidiana.
+            </p>
+          </div>
+        </div>
+
+        <div
+          id="visionid"
+          class="row align-items-center flex-md-row-reverse mb-5 vision"
+        >
+          <div class="col-md-6 justify-content-center d-flex">
+            <img
+              src="../../pictures/About-pics/vision.png"
+              alt="Totebag"
+              class="img-fluid"
+            />
+          </div>
+
+          <div class="col-md-6">
+            <h1 class="text-center p-4">Visión</h1>
+            <p>
+              Ser una marca reconocida por su compromiso con la sostenibilidad y
+              la calidad, liderando el cambio hacia un consumo más consciente.
+              Aspiramos a que cada tote bag de <span> Alma de Tortuga</span> sea
+              símbolo de protección, resistencia y respeto por la vida y la
+              naturaleza.
+            </p>
+          </div>
+        </div>
+        <div id="valoresid" class="valores row text-center g-4">
+          <div class="text-center">
+            <h1>Valores</h1>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 shadow-lg h-100 p-4">
+              <i class="fa-solid fa-seedling fa-2x text-success mb-3"></i>
+              <h3>Sustentabilidad, nuestra prioridad</h3>
+              <p>
+                Cada producto está diseñado con materiales eco-friendly y
+                procesos que minimizan nuestro impacto ambiental.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 shadow-lg h-100 p-4">
+              <i class="fa-solid fa-splotch fa-2x text-success mb-3"></i>
+              <h3>La creatividad es nuestra forma de decir quiénes somos</h3>
+              <p>
+                Diseños únicos que reflejan personalidad y estilo, permitiéndote
+                expresar tu identidad de manera auténtica.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 shadow-lg h-100 p-4">
+              <i class="fas fa-users fa-2x text-success mb-3"></i>
+              <h3>Solidaridad la empatía es nuestra esencia.</h3>
+              <p>
+                Trabajamos con comunidades locales y apoyamos causas de
+                conservación marina, creando impacto positivo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="Squirtle-team" class="py-5">
+        <!-- cesar agregar about de el equipo general -->
+        <div class="container">
+          <h2 class="section-title">Acerca de nosotros</h2>
+
+          <div
+            class="card custom-card p-3 d-flex flex-column flex-md-row align-items-center text-center text-md-start"
+          >
+            <img
+              src="../../Pictures/Logo/squirtle2.png"
+              alt="Logo Alma de Tortuga"
+              class="logo mb-3 mb-md-0 me-md-3"
+            />
+            <div class="card-body">
+              <p class="mb-0">
+                Somos un equipo apasionado por la creatividad y la conciencia
+                ecológica. Nuestro proyecto,
+                <strong>Alma de Tortuga </strong>, nació con la idea de
+                transformar la manera en que usamos y valoramos los accesorios
+                cotidianos, ofreciendo totebags ecológicas con diseños únicos
+                que reflejan arte, estilo y responsabilidad ambiental.
+                <br /><br />
+                A pesar de que el equipo ha pasado por algunos cambios, seguimos
+                siendo un grupo unido y comprometido con nuestra visión:
+                combinar diseño y sostenibilidad para inspirar a nuestra
+                comunidad a tomar decisiones más conscientes. Cada totebag que
+                creamos es el resultado de nuestra colaboración, creatividad y
+                deseo de hacer un impacto positivo en el planeta.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Seccion para perfiles del equipo -->
+      <section id="profile" class="py-5">
+        <div class="container">
+          <h2 class="text-center mb-5">Conoce a Nuestro Equipo</h2>
+
+          <div id="teamCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#teamCarousel"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#teamCarousel"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+              ></button>
+            </div>
+
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row g-4 justify-content-center align-items-stretch">
+                  <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="flip-card">
+                      <div class="flip-card-inner">
+                        <div
+                          class="flip-card-front card p-4 h-100 d-flex flex-column text-center"
+                        >
+                          <img
+                            src="../../Pictures/About-pics/woman_5556554.png"
+                            class="card-img-top mx-auto mb-3"
+                            alt="Foto de Rosa Sainz"
+                            style="max-width: 300px; object-fit: cover"
+                          />
+                          <h5 class="mt-2">Rosa Sainz</h5>
+                          <p class="text-muted">Ingresa Rol</p>
+                          <small class="mt-auto">Clic para ver biografía</small>
                         </div>
-                    </a>
-
-                     <!-- Nombre con dropdown -->
-                    <div class="dropdown me-4">
-                        <a class="titulo dropdown-toggle text-decoration-none fw-bold" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            ToteBags
-                        </a>
-                        <ul class="dropdown-menu shadow">
-                            <li><a class="dropdown-item" href="#">ToteBag Clásica</a></li>
-                            <li><a class="dropdown-item" href="#">ToteBag con Diseño</a></li>
-                            <li><a class="dropdown-item" href="#">ToteBag Ecológica</a></li>
-                            <li><a class="dropdown-item" href="#">ToteBag Personalizada</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- BOTÓN RESPONSIVO -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <!-- ENLACES -->
-                    <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
-                        <ul class="navbar-nav ms-3" style="width: 60%;">
-                            <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#Squirtle-team">Nosotros</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#carrito.html">Carrito</a></li>
-                            <li class="nav-item"><a class="nav-link" href="Blog.html">Blog</a></li>
-
-                        </ul>
-                    </div>
-
-                    
-
-                    <!-- ICONO CARRITO -->
-                    <div class="cart-icon-container position-relative">
-                        <a href="#carrito" class="nav-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                class="bi bi-cart-check-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708" />
-                            </svg>
-                            <span id="cart-count" class="cart-count">0</span>
-                        </a>
-                    </div>
-
-                </div>
-            </nav>
-        </header>
-
-        <!-- MINI NAVBAR -->
-        <nav id="miniNavbar" class="mini-navbar navbar navbar-expand-md">
-            <div class="container justify-content-center">
-                <ul class="navbar-nav gap-3">
-                    <li class="nav-item"><a href="#misionid" class="nav-link mini-btn">Misión</a></li>
-                    <li class="nav-item"><a href="#visionid" class="nav-link mini-btn">Visión</a></li>
-                    <li class="nav-item"><a href="#valoresid" class="nav-link mini-btn">Valores</a></li>
-                    <li class="nav-item"><a href="#Squirtle-team" class="nav-link mini-btn">Acerca de Nosotros</a></li>
-                    <li class="nav-item"><a href="#profile" class="nav-link mini-btn">Conoce al equipo</a></li>
-                </ul>
-            </div>
-        </nav>
-
-        <section id="misionid" class="nosotros-info container py-5">
-
-            <div class="mision row align-items-center mb-5">
-                <div class="col-md-6">
-                    <img src="../../Pictures/About-pics/mision.jpg" alt="Imagen de caparazon de Tortuga"
-                        class="img-fluid" />
-                </div>
-
-                <div class="col-md-6">
-                    <h1 class="text-center p-4">Misión</h1>
-                    <p>Crear tote bags duraderas y ecológicas que combinen estilo, funcionalidad y conciencia ambiental.
-                        En
-                        <span>Alma de Tortuga</span> buscamos inspirar a las personas a elegir productos responsables
-                        con el
-                        planeta, ofreciendo diseños resistentes y con propósito, que acompañen cada paso de su vida
-                        cotidiana.
-                    </p>
-                </div>
-
-            </div>
-
-            <div id="visionid" class="row align-items-center flex-md-row-reverse mb-5 vision">
-                <div class="col-md-6 justify-content-center d-flex">
-                    <img src="../../pictures/About-pics/vision.png" alt="Totebag" class="img-fluid" />
-                </div>
-
-                <div class="col-md-6">
-                    <h1 class="text-center p-4">Visión</h1>
-                    <p>Ser una marca reconocida por su compromiso con la sostenibilidad y la calidad, liderando el
-                        cambio
-                        hacia un consumo más consciente. Aspiramos a que cada tote bag de <span> Alma de Tortuga</span>
-                        sea
-                        símbolo de protección, resistencia y respeto por la vida y la naturaleza.</p>
-                </div>
-
-
-            </div>
-            <div id="valoresid" class="valores row text-center g-4">
-                <div class="text-center">
-                    <h1>Valores</h1>
-                </div>
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-lg h-100 p-4">
-                        <i class="fa-solid fa-seedling fa-2x text-success mb-3"></i>
-                        <h3>Sustentabilidad, nuestra prioridad</h3>
-                        <p>Cada producto está diseñado con materiales eco-friendly y procesos que minimizan nuestro
-                            impacto
-                            ambiental.</p>
-                    </div>
-
-                </div>
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-lg h-100 p-4">
-                        <i class='fa-solid fa-splotch fa-2x text-success mb-3'></i>
-                        <h3>La creatividad es nuestra forma de decir quiénes somos</h3>
-                        <p>Diseños únicos que reflejan personalidad y estilo, permitiéndote expresar tu identidad de
-                            manera
-                            auténtica.</p>
-
-                    </div>
-
-                </div>
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-lg h-100 p-4">
-                        <i class='fas fa-users fa-2x text-success mb-3'></i>
-                        <h3>Solidaridad la empatía es nuestra esencia.</h3>
-                        <p>Trabajamos con comunidades locales y apoyamos causas de conservación marina, creando impacto
-                            positivo.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-        <section id="Squirtle-team" class="py-5">
-            <!-- cesar agregar about de el equipo general -->
-            <div class="container">
-                <h2 class="section-title">Acerca de nosotros</h2>
-
-                <div
-                    class="card custom-card p-3 d-flex flex-column flex-md-row align-items-center text-center text-md-start">
-                    <img src="../../Pictures/Logo/squirtle2.png" alt="Logo Alma de Tortuga"
-                        class="logo mb-3 mb-md-0 me-md-3">
-                    <div class="card-body">
-                        <p class="mb-0">
-                            Somos un equipo apasionado por la creatividad y la conciencia ecológica. Nuestro proyecto,
-                            <strong>Alma
-                                de Tortuga </strong>, nació con la idea de transformar la manera en que usamos y
-                            valoramos
-                            los accesorios
-                            cotidianos, ofreciendo totebags ecológicas con diseños únicos que reflejan arte, estilo y
-                            responsabilidad ambiental.
-                            <br><br>
-                            A pesar de que el equipo ha pasado por algunos cambios, seguimos
-                            siendo un grupo unido y comprometido con nuestra visión: combinar diseño y sostenibilidad
-                            para
-                            inspirar a nuestra comunidad a tomar decisiones más conscientes. Cada totebag que creamos es
-                            el
-                            resultado de nuestra colaboración, creatividad y deseo de hacer un impacto positivo en el
-                            planeta.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Seccion para perfiles del equipo -->
-        <section id="profile" class="py-5">
-            <div class="container">
-                <h2 class="text-center mb-5">Conoce a Nuestro Equipo</h2>
-
-                <div id="teamCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#teamCarousel" data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#teamCarousel" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                    </div>
-
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row g-4 justify-content-center align-items-stretch">
-
-                                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                                    <div class="flip-card">
-                                        <div class="flip-card-inner">
-                                            <div class="flip-card-front card p-4 h-100 d-flex flex-column text-center">
-                                                <img src="../../Pictures/About-pics/woman_5556554.png"
-                                                    class="card-img-top mx-auto mb-3" alt="Foto de Rosa Sainz"
-                                                    style="max-width: 300px; object-fit:cover;">
-                                                <h5 class="mt-2">Rosa Sainz</h5>
-                                                <p class="text-muted">Ingresa Rol</p>
-                                                <small class="mt-auto">Clic para ver biografía</small>
-                                            </div>
-                                            <div
-                                                class="flip-card-back card p-4 h-100 d-flex flex-column justify-content-center">
-                                                <h5 class="card-title text-center">Biografía de Rosa Sainz</h5>
-                                                <p class="card-text small">Una biografía es la narración de la vida de
-                                                    una
-                                                    persona escrita por otra persona, que relata los acontecimientos
-                                                    importantes, logros y aspectos de su vida. A diferencia de una
-                                                    autobiografía, que es escrita por el propio protagonista, la
-                                                    biografía
-                                                    suele ser un trabajo de investigación que se centra en la vida de
-                                                    una
-                                                    figura histórica, artística o de cualquier otra índole.
-                                                    Características principales
-                                                    Escrita por otra persona: La biografía es un relato de la vida de
-                                                    alguien más, en contraste con la autobiografía escrita por la
-                                                    persona
-                                                    misma.
-                                                </p>
-                                                <small class="mt-auto text-center text-muted">Clic para volver</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                                    <div class="flip-card">
-                                        <div class="flip-card-inner">
-                                            <div class="flip-card-front card p-4 h-100 d-flex flex-column text-center">
-                                                <img src="../../Pictures/About-pics/man-avatar_5556468.png"
-                                                    class="card-img-top mx-auto mb-3" alt="Foto de Alonso Castellanos"
-                                                    style="max-width: 300px; object-fit:cover;">
-                                                <h5 class="mt-2">Alonso Castellanos</h5>
-                                                <p class="text-muted">Agregar Rol</p>
-                                                <small class="mt-auto">Clic para ver biografía</small>
-                                            </div>
-                                            <div
-                                                class="flip-card-back card p-4 h-100 d-flex flex-column justify-content-center">
-                                                <h5 class="card-title text-center">Biografía de Alonso Castellanos</h5>
-                                                <p class="card-text small">Una biografía es la narración de la vida de
-                                                    una
-                                                    persona escrita por otra persona, que relata los acontecimientos
-                                                    importantes, logros y aspectos de su vida. A diferencia de una
-                                                    autobiografía, que es escrita por el propio protagonista, la
-                                                    biografía
-                                                    suele ser un trabajo de investigación que se centra en la vida de
-                                                    una
-                                                    figura histórica, artística o de cualquier otra índole.
-                                                    Características principales
-                                                    Escrita por otra persona: La biografía es un relato de la vida de
-                                                    alguien más, en contraste con la autobiografía escrita por la
-                                                    persona
-                                                    misma.</p>
-                                                <small class="mt-auto text-center text-muted">Clic para volver</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                                    <div class="flip-card">
-                                        <div class="flip-card-inner">
-                                            <div class="flip-card-front card p-4 h-100 d-flex flex-column text-center">
-                                                <img src="../../Pictures/About-pics/man-avatar_5556468.png"
-                                                    class="card-img-top mx-auto mb-3" alt="Foto de Cesar Corchado"
-                                                    style="max-width: 300px; object-fit:cover;">
-                                                <h5 class="mt-2">Cesar Corchado</h5>
-                                                <p class="text-muted">Ingresa Rol</p>
-                                                <small class="mt-auto">Clic para ver biografía</small>
-                                            </div>
-                                            <div
-                                                class="flip-card-back card p-4 h-100 d-flex flex-column justify-content-center">
-                                                <h5 class="card-title text-center">Biografía de Cesar Corchado</h5>
-                                                <p class="card-text small">Una biografía es la narración de la vida de
-                                                    una
-                                                    persona escrita por otra persona, que relata los acontecimientos
-                                                    importantes, logros y aspectos de su vida. A diferencia de una
-                                                    autobiografía, que es escrita por el propio protagonista, la
-                                                    biografía
-                                                    suele ser un trabajo de investigación que se centra en la vida de
-                                                    una
-                                                    figura histórica, artística o de cualquier otra índole.
-                                                    Características principales
-                                                    Escrita por otra persona: La biografía es un relato de la vida de
-                                                    alguien más, en contraste con la autobiografía escrita por la
-                                                    persona
-                                                    misma.</p>
-                                                <small class="mt-auto text-center text-muted">Clic para volver</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div
+                          class="flip-card-back card p-4 h-100 d-flex flex-column justify-content-center"
+                        >
+                          <h5 class="card-title text-center">
+                            Biografía de Rosa Sainz
+                          </h5>
+                          <p class="card-text small">
+                            Una biografía es la narración de la vida de una
+                            persona escrita por otra persona, que relata los
+                            acontecimientos importantes, logros y aspectos de su
+                            vida. A diferencia de una autobiografía, que es
+                            escrita por el propio protagonista, la biografía
+                            suele ser un trabajo de investigación que se centra
+                            en la vida de una figura histórica, artística o de
+                            cualquier otra índole. Características principales
+                            Escrita por otra persona: La biografía es un relato
+                            de la vida de alguien más, en contraste con la
+                            autobiografía escrita por la persona misma.
+                          </p>
+                          <small class="mt-auto text-center text-muted"
+                            >Clic para volver</small
+                          >
                         </div>
+                      </div>
+                    </div>
+                  </div>
 
-                        <div class="carousel-item">
-                            <div class="row g-4 justify-content-center align-items-stretch">
-
-                                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                                    <div class="flip-card">
-                                        <div class="flip-card-inner">
-                                            <div class="flip-card-front card p-4 h-100 d-flex flex-column text-center">
-                                                <img src="../../Pictures/About-pics/man-avatar_5556468.png"
-                                                    class="card-img-top mx-auto mb-3" alt="Foto de Hugo Horus"
-                                                    style="max-width: 300px; object-fit:cover;">
-                                                <h5 class="mt-2">Hugo Horus</h5>
-                                                <p class="text-muted">Ingresa Rol</p>
-                                                <small class="mt-auto">Clic para ver biografía</small>
-                                            </div>
-                                            <div
-                                                class="flip-card-back card p-4 h-100 d-flex flex-column justify-content-center">
-                                                <h5 class="card-title text-center">Biografía de Carlos Ruiz</h5>
-                                                <p class="card-text small">Una biografía es la narración de la vida de
-                                                    una
-                                                    persona escrita por otra persona, que relata los acontecimientos
-                                                    importantes, logros y aspectos de su vida. A diferencia de una
-                                                    autobiografía, que es escrita por el propio protagonista, la
-                                                    biografía
-                                                    suele ser un trabajo de investigación que se centra en la vida de
-                                                    una
-                                                    figura histórica, artística o de cualquier otra índole.
-                                                    Características principales
-                                                    Escrita por otra persona: La biografía es un relato de la vida de
-                                                    alguien más, en contraste con la autobiografía escrita por la
-                                                    persona
-                                                    misma.</p>
-                                                <small class="mt-auto text-center text-muted">Clic para volver</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                                    <div class="flip-card">
-                                        <div class="flip-card-inner">
-                                            <div class="flip-card-front card p-4 h-100 d-flex flex-column text-center">
-                                                <img src="../../Pictures/About-pics/man-avatar_5556468.png"
-                                                    class="card-img-top mx-auto mb-3" alt="Foto de Daniel Toledo"
-                                                    style="max-width: 300px; object-fit:cover;">
-                                                <h5 class="mt-2">Daniel Toledo</h5>
-                                                <p class="text-muted">Ingrese Rol</p>
-                                                <small class="mt-auto">Clic para ver biografía</small>
-                                            </div>
-                                            <div
-                                                class="flip-card-back card p-4 h-100 d-flex flex-column justify-content-center">
-                                                <h5 class="card-title text-center">Biografía de Daniel Toledo</h5>
-                                                <p class="card-text small">Una biografía es la narración de la vida de
-                                                    una
-                                                    persona escrita por otra persona, que relata los acontecimientos
-                                                    importantes, logros y aspectos de su vida. A diferencia de una
-                                                    autobiografía, que es escrita por el propio protagonista, la
-                                                    biografía
-                                                    suele ser un trabajo de investigación que se centra en la vida de
-                                                    una
-                                                    figura histórica, artística o de cualquier otra índole.
-                                                    Características principales
-                                                    Escrita por otra persona: La biografía es un relato de la vida de
-                                                    alguien más, en contraste con la autobiografía escrita por la
-                                                    persona
-                                                    misma.</p>
-                                                <small class="mt-auto text-center text-muted">Clic para volver</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                                    <div class="flip-card">
-                                        <div class="flip-card-inner">
-                                            <div class="flip-card-front card p-4 h-100 d-flex flex-column text-center">
-                                                <img src="../../Pictures/About-pics/woman_5556554.png"
-                                                    class="card-img-top mx-auto mb-3" alt="Foto de Kimberly Uriarte"
-                                                    style="max-width: 300px; object-fit:cover;">
-                                                <h5 class="mt-2">Kimberly Uriarte</h5>
-                                                <p class="text-muted">Ingrese Rol</p>
-                                                <small class="mt-auto">Clic para ver biografía</small>
-                                            </div>
-                                            <div
-                                                class="flip-card-back card p-4 h-100 d-flex flex-column justify-content-center">
-                                                <h5 class="card-title text-center">Biografía de Kimberly Uriarte</h5>
-                                                <p class="card-text small">Una biografía es la narración de la vida de
-                                                    una
-                                                    persona escrita por otra persona, que relata los acontecimientos
-                                                    importantes, logros y aspectos de su vida. A diferencia de una
-                                                    autobiografía, que es escrita por el propio protagonista, la
-                                                    biografía
-                                                    suele ser un trabajo de investigación que se centra en la vida de
-                                                    una
-                                                    figura histórica, artística o de cualquier otra índole.
-                                                    Características principales
-                                                    Escrita por otra persona: La biografía es un relato de la vida de
-                                                    alguien más, en contraste con la autobiografía escrita por la
-                                                    persona
-                                                    misma.
-                                                </p>
-                                                <small class="mt-auto text-center text-muted">Clic para volver</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
+                  <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="flip-card">
+                      <div class="flip-card-inner">
+                        <div
+                          class="flip-card-front card p-4 h-100 d-flex flex-column text-center"
+                        >
+                          <img
+                            src="../../Pictures/About-pics/man-avatar_5556468.png"
+                            class="card-img-top mx-auto mb-3"
+                            alt="Foto de Alonso Castellanos"
+                            style="max-width: 300px; object-fit: cover"
+                          />
+                          <h5 class="mt-2">Alonso Castellanos</h5>
+                          <p class="text-muted">Agregar Rol</p>
+                          <small class="mt-auto">Clic para ver biografía</small>
                         </div>
-                    </div>
-
-                    <button class="carousel-control-prev" type="button" data-bs-target="#teamCarousel"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#teamCarousel"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row align-items-start">
-                    <div class="col-12 col-md-4 footer-links text-center text-md-start ">
-                        <h4>Alma de Tortuga</h4>
-                        <ul class="list-unstyled">
-                            <li><a href="#contacto">Contacto</a></li>
-                            <li><a href="#Squirtle-team">Nosotros</a></li>
-                            <li><a href="#">Carrito</a></li>
-                            <li><a href="#">Blog</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-12 col-md-4 footer-logo text-center my-3 my-md-0">
-                        <img src="../../Pictures/Logo/Logo1.png" alt="Logo de Alma de Tortuga" width="60">
-                    </div>
-                    <div class="col-12 col-md-4 footer-col-right social-column text-center text-md-end">
-                        <h4>Siguenos</h4>
-                        <div class="social-icons d-flex justify-content-center justify-content-md-end gap-3">
-                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <div
+                          class="flip-card-back card p-4 h-100 d-flex flex-column justify-content-center"
+                        >
+                          <h5 class="card-title text-center">
+                            Biografía de Alonso Castellanos
+                          </h5>
+                          <p class="card-text small">
+                            Una biografía es la narración de la vida de una
+                            persona escrita por otra persona, que relata los
+                            acontecimientos importantes, logros y aspectos de su
+                            vida. A diferencia de una autobiografía, que es
+                            escrita por el propio protagonista, la biografía
+                            suele ser un trabajo de investigación que se centra
+                            en la vida de una figura histórica, artística o de
+                            cualquier otra índole. Características principales
+                            Escrita por otra persona: La biografía es un relato
+                            de la vida de alguien más, en contraste con la
+                            autobiografía escrita por la persona misma.
+                          </p>
+                          <small class="mt-auto text-center text-muted"
+                            >Clic para volver</small
+                          >
                         </div>
+                      </div>
                     </div>
-                </div>
-                <div class="footer-copyright text-center mt-4">
-                    <p>&copy; 2025 Alma de Tortuga. Todos los derechos reservados.</p>
-                </div>
-            </div>
-        </footer>
+                  </div>
 
-        <script src="./Script-about/script.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous"></script>
+                  <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="flip-card">
+                      <div class="flip-card-inner">
+                        <div
+                          class="flip-card-front card p-4 h-100 d-flex flex-column text-center"
+                        >
+                          <img
+                            src="../../Pictures/About-pics/man-avatar_5556468.png"
+                            class="card-img-top mx-auto mb-3"
+                            alt="Foto de Cesar Corchado"
+                            style="max-width: 300px; object-fit: cover"
+                          />
+                          <h5 class="mt-2">Cesar Corchado</h5>
+                          <p class="text-muted">Ingresa Rol</p>
+                          <small class="mt-auto">Clic para ver biografía</small>
+                        </div>
+                        <div
+                          class="flip-card-back card p-4 h-100 d-flex flex-column justify-content-center"
+                        >
+                          <h5 class="card-title text-center">
+                            Biografía de Cesar Corchado
+                          </h5>
+                          <p class="card-text small">
+                            Una biografía es la narración de la vida de una
+                            persona escrita por otra persona, que relata los
+                            acontecimientos importantes, logros y aspectos de su
+                            vida. A diferencia de una autobiografía, que es
+                            escrita por el propio protagonista, la biografía
+                            suele ser un trabajo de investigación que se centra
+                            en la vida de una figura histórica, artística o de
+                            cualquier otra índole. Características principales
+                            Escrita por otra persona: La biografía es un relato
+                            de la vida de alguien más, en contraste con la
+                            autobiografía escrita por la persona misma.
+                          </p>
+                          <small class="mt-auto text-center text-muted"
+                            >Clic para volver</small
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="row g-4 justify-content-center align-items-stretch">
+                  <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="flip-card">
+                      <div class="flip-card-inner">
+                        <div
+                          class="flip-card-front card p-4 h-100 d-flex flex-column text-center"
+                        >
+                          <img
+                            src="../../Pictures/About-pics/man-avatar_5556468.png"
+                            class="card-img-top mx-auto mb-3"
+                            alt="Foto de Hugo Horus"
+                            style="max-width: 300px; object-fit: cover"
+                          />
+                          <h5 class="mt-2">Hugo Horus</h5>
+                          <p class="text-muted">Ingresa Rol</p>
+                          <small class="mt-auto">Clic para ver biografía</small>
+                        </div>
+                        <div
+                          class="flip-card-back card p-4 h-100 d-flex flex-column justify-content-center"
+                        >
+                          <h5 class="card-title text-center">
+                            Biografía de Carlos Ruiz
+                          </h5>
+                          <p class="card-text small">
+                            Una biografía es la narración de la vida de una
+                            persona escrita por otra persona, que relata los
+                            acontecimientos importantes, logros y aspectos de su
+                            vida. A diferencia de una autobiografía, que es
+                            escrita por el propio protagonista, la biografía
+                            suele ser un trabajo de investigación que se centra
+                            en la vida de una figura histórica, artística o de
+                            cualquier otra índole. Características principales
+                            Escrita por otra persona: La biografía es un relato
+                            de la vida de alguien más, en contraste con la
+                            autobiografía escrita por la persona misma.
+                          </p>
+                          <small class="mt-auto text-center text-muted"
+                            >Clic para volver</small
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="flip-card">
+                      <div class="flip-card-inner">
+                        <div
+                          class="flip-card-front card p-4 h-100 d-flex flex-column text-center"
+                        >
+                          <img
+                            src="../../Pictures/About-pics/man-avatar_5556468.png"
+                            class="card-img-top mx-auto mb-3"
+                            alt="Foto de Daniel Toledo"
+                            style="max-width: 300px; object-fit: cover"
+                          />
+                          <h5 class="mt-2">Daniel Toledo</h5>
+                          <p class="text-muted">Ingrese Rol</p>
+                          <small class="mt-auto">Clic para ver biografía</small>
+                        </div>
+                        <div
+                          class="flip-card-back card p-4 h-100 d-flex flex-column justify-content-center"
+                        >
+                          <h5 class="card-title text-center">
+                            Biografía de Daniel Toledo
+                          </h5>
+                          <p class="card-text small">
+                            Una biografía es la narración de la vida de una
+                            persona escrita por otra persona, que relata los
+                            acontecimientos importantes, logros y aspectos de su
+                            vida. A diferencia de una autobiografía, que es
+                            escrita por el propio protagonista, la biografía
+                            suele ser un trabajo de investigación que se centra
+                            en la vida de una figura histórica, artística o de
+                            cualquier otra índole. Características principales
+                            Escrita por otra persona: La biografía es un relato
+                            de la vida de alguien más, en contraste con la
+                            autobiografía escrita por la persona misma.
+                          </p>
+                          <small class="mt-auto text-center text-muted"
+                            >Clic para volver</small
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="flip-card">
+                      <div class="flip-card-inner">
+                        <div
+                          class="flip-card-front card p-4 h-100 d-flex flex-column text-center"
+                        >
+                          <img
+                            src="../../Pictures/About-pics/woman_5556554.png"
+                            class="card-img-top mx-auto mb-3"
+                            alt="Foto de Kimberly Uriarte"
+                            style="max-width: 300px; object-fit: cover"
+                          />
+                          <h5 class="mt-2">Kimberly Uriarte</h5>
+                          <p class="text-muted">Ingrese Rol</p>
+                          <small class="mt-auto">Clic para ver biografía</small>
+                        </div>
+                        <div
+                          class="flip-card-back card p-4 h-100 d-flex flex-column justify-content-center"
+                        >
+                          <h5 class="card-title text-center">
+                            Biografía de Kimberly Uriarte
+                          </h5>
+                          <p class="card-text small">
+                            Una biografía es la narración de la vida de una
+                            persona escrita por otra persona, que relata los
+                            acontecimientos importantes, logros y aspectos de su
+                            vida. A diferencia de una autobiografía, que es
+                            escrita por el propio protagonista, la biografía
+                            suele ser un trabajo de investigación que se centra
+                            en la vida de una figura histórica, artística o de
+                            cualquier otra índole. Características principales
+                            Escrita por otra persona: La biografía es un relato
+                            de la vida de alguien más, en contraste con la
+                            autobiografía escrita por la persona misma.
+                          </p>
+                          <small class="mt-auto text-center text-muted"
+                            >Clic para volver</small
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#teamCarousel"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#teamCarousel"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div class="container">
+          <div class="row align-items-start">
+            <div class="col-12 col-md-4 footer-links text-center text-md-start">
+              <h4>Alma de Tortuga</h4>
+              <ul class="list-unstyled">
+                <li><a href="../Contact/contact.html">Contacto</a></li>
+                <li><a href="../About/about.html">Nosotros</a></li>
+                <li><a href="#">Carrito</a></li>
+                <li><a href="#">Blog</a></li>
+              </ul>
+            </div>
+
+            <div class="col-12 col-md-4 footer-logo text-center my-3 my-md-0">
+              <a href="../../Pages/Index/index.html">
+                <img
+                  src="../../Pictures/Logo/Logo1.png"
+                  alt="Logo de Alma de Tortuga"
+                />
+              </a>
+            </div>
+            <div
+              class="col-12 col-md-4 footer-col-right social-column text-center text-md-end"
+            >
+              <h4>Síguenos</h4>
+              <div
+                class="social-icons d-flex justify-content-center justify-content-md-end gap-3"
+              >
+                <a href="#" aria-label="Facebook"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="#" aria-label="Instagram"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="#" aria-label="WhatsApp"
+                  ><i class="fab fa-whatsapp"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright text-center mt-4">
+            <p>&copy; 2025 Alma de Tortuga. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </footer>
+
+      <script src="./Script-about/script.js"></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"
+      ></script>
     </div>
-</body>
-
+  </body>
 </html>
