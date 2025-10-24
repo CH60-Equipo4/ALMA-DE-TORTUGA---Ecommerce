@@ -1,0 +1,300 @@
+/* ==== MINI NAV VAR SECTION ==== */
+#miniNavbar {
+    /* Hazla fija */
+    position: fixed;
+
+    /* Extiende a todo el ancho */
+    width: 100%;
+
+    /* Z-Index para que esté sobre el contenido */
+    z-index: 1020;
+    /* Un poco menos que el navbar principal (1030 en Bootstrap) */
+
+    /* Ajusta este valor (90px) para que coincida con la altura de tu .custom-navbar */
+    top: 90px;
+}
+
+.titulo.dropdown-toggle {
+  color: #2E3B24 !important;
+}
+
+.titulo.dropdown-toggle:hover {
+  color: #2E3B24 !important;
+  text-decoration: none;
+}
+
+/* === MINI NAVBAR TRANSPARENTE === */
+.mini-navbar {
+    background-color: rgba(250, 236, 207, 0.4);
+    /* beige translúcido */
+    backdrop-filter: blur(6px);
+    /* efecto vidrio suave */
+    border: none;
+    /* sin línea verde */
+    padding-top: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.mini-btn {
+    color: #2E3B24 !important;
+    /* verde oscuro */
+    font-family: 'Georgia', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border: 1px solid rgba(123, 139, 85, 0.4);
+    /* borde verde oliva sutil */
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    /* fondo translúcido */
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+.mini-btn:hover {
+    background-color: rgba(123, 139, 85, 0.7);
+    /* verde oliva semitransparente */
+    color: #faeccf !important;
+    /* beige claro */
+    transform: translateY(-1px);
+}
+
+.mini-btn:active {
+    background-color: rgba(123, 139, 85, 0.9);
+    transform: scale(0.97);
+}
+
+/* ==== ABOUT TEAM SECTION ==== */
+.custom-card {
+    border: 2px solid transparent;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    background-color: #fffdf6;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+.logo {
+    width: 220px;
+    height: 220px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.custom-card:hover .logo {
+    transform: scale(1.1) rotate(-2deg);
+    filter: brightness(1.05);
+}
+
+.section-title {
+    text-align: center;
+}
+
+/* ==== TEAM CARDS SECTION ==== */
+.card-body {
+    color: #333;
+    /* Estilos para seccion Profile */
+    /* Estilos para el Flip Card */
+}
+
+.flip-card-front h5 {
+    color: #D09559;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 450px;
+    /* Altura fija para el efecto de volteo */
+    perspective: 1000px;
+    /* Para el efecto 3D */
+    cursor: pointer;
+    /* Indica que es clickeable */
+}
+
+/* Contenedor que rota */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    /* Sombra sutil, se ve bien con el fondo claro */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+}
+
+/* Lógica de giro: al tener la clase 'flipped', rota 180 grados */
+.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Posición de las caras (frente y reverso) */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    /* Oculta la parte trasera de la tarjeta durante el giro */
+    backface-visibility: hidden;
+    border-radius: 0.5rem;
+}
+
+/* === ESTILO DEL FRENTE === */
+.flip-card-front {
+    background-color: var(--color-accent-light);
+    /* Fondo blanco para limpiar la presentación */
+    color: var(--color-secondary);
+    /* Texto verde oscuro */
+}
+
+/* === ESTILO DEL REVERSO (BIOGRAFÍA) === */
+.flip-card-back {
+    background-color: var(--color-primary);
+    /* Fondo verde oliva elegante */
+    color: var(--color-accent-light);
+    /* Texto más claro para buen contraste */
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+/* Estilo para el título de la biografía en el reverso */
+.flip-card-back .card-title {
+    color: var(--color-accent-gold);
+    /* Título dorado para destacar */
+    font-family: var(--font-heading);
+}
+
+/* Contenido de la biografía */
+.flip-card-back .card-text {
+    padding: 0 1rem;
+    font-size: 0.95rem;
+}
+
+/* Para asegurar que la tarjeta se vea como una tarjeta limpia de Bootstrap */
+.flip-card-front.card,
+.flip-card-back.card {
+    border: 1px solid var(--color-accent)
+}
+
+/* ==== CARRUSEL SECTION CARDS ==== */
+.carousel-control-prev {
+    /* Mueve la flecha de la izquierda hacia afuera del contenedor */
+    left: -90px;
+    /* Ajusta este valor (-50px) para moverlo más o menos a la izquierda */
+    /* Asegura el centrado vertical */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-next {
+    /* Mueve la flecha de la derecha hacia afuera del contenedor */
+    right: -90px;
+    /* Ajusta este valor (-50px) para moverlo más o menos a la derecha */
+    /* Asegura el centrado vertical */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-indicators {
+    /* Mueve los indicadores 40px hacia abajo desde su posición original (bottom: 0) */
+    /* Ajusta este valor (40px) para subirlo o bajarlo más */
+    bottom: -50px;
+
+    /* Opcional: Esto ayuda a que el fondo oscuro no interfiera */
+    padding-bottom: 20px;
+}
+
+.carousel-indicators button {
+    /* Color de fondo para los puntos inactivos */
+    background-color: var(--color-accent-gold) !important;
+}
+
+.carousel-indicators button.active {
+    background-color: var(--color-primary) !important;
+}
+
+.carousel-control-prev-icon {
+    /* Mueve la flecha de la izquierda hacia afuera del contenedor */
+    left: -90px;
+    /* Ajusta este valor (-50px) para moverlo más o menos a la izquierda */
+    /* Asegura el centrado vertical */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #D09559 !important;
+}
+
+.carousel-control-next-icon {
+    /* Mueve la flecha de la izquierda hacia afuera del contenedor */
+    left: -90px;
+    /* Ajusta este valor (-50px) para moverlo más o menos a la izquierda */
+    /* Asegura el centrado vertical */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #D09559 !important;
+}
+
+.mision span {
+    font-style: italic;
+}
+
+.vision span {
+    font-style: italic;
+}
+
+/* ======== RESPONSIVIDAD ======== */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: var(--color-accent-light);
+        padding: 1rem;
+    }
+
+    .navbar-nav {
+        width: 100%;
+    }
+
+    .navbar-nav .nav-link {
+        text-align: center;
+        padding: 0.5rem 0;
+    }
+
+    .nosotros-info {
+        /* Altura total combinada en móvil, ej: 445px */
+        padding-top: 445px !important;
+    }
+
+    .mini-navbar {
+        /* Altura de la Navbar principal COLAPSADA (solo logo y botón), estimada en 60px */
+        top: 60px;
+    }
+}
+
+@media (min-width: 992px) {
+
+    /* Si el navbar principal cambia de altura en móvil, ajusta aquí */
+    #miniNavbar {
+        /* Asume una altura diferente para la navbar principal colapsada, ej: 400px */
+        top: 90px;
+    }
+
+
+}
+
+.nosotros-info {
+    /* Agrega un padding superior igual a la altura combinada de ambas navbars */
+    padding-top: 160px !important;
+    /* ¡Ajusta esta altura según sea necesario! */
+}
+
