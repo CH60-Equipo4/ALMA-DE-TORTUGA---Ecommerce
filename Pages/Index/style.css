@@ -13,7 +13,7 @@
     --color-accent-gold: #D09559;
     --color-white: #ffffff;
     --color-black: #000000;
-    --color-boton: #818E59;
+    --color-boton: #D09559;
     --color-acento: #818E59;
     --color-texto: #283429;
     --color-fondo: #FEF7EA;
@@ -36,25 +36,17 @@ body {
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
     font-family: var(--font-body);
     color: var(--color-secondary);
     background-color: var(--color-accent-lighter);
-    padding-top: var(--navbar-height, 80px);
 }
 
-main,
-section {
-  flex: 1; /* Empuja el footer hacia abajo */
-}
+
 
 .main-content-wrapper {
     flex-grow: 1;
     /* Esto empuja el footer hacia abajo */
 }
-
 
 h1,
 h2,
@@ -153,10 +145,6 @@ p {
     display: inline-block;
 }
 
-.titulo{
-    color: #5a3e1b;
-}
-
 /* ==== FOOTER SECTION ==== */
 .footer {
     background-color: var(--color-primary);
@@ -228,11 +216,3 @@ p {
     color: var(--color-accent-light);
     letter-spacing: 0.5px;
 }
-
-.footer-logo img {
-    width: 150px; 
-    border: 3px solid var(--color-accent-light); 
-    border-radius: 10%; 
-    padding: 5px;
-    transition: transform 0.3s ease;
-  }
