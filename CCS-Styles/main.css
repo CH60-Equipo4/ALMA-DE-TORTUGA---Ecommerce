@@ -30,18 +30,12 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--color-fondo);
-    font-family: 'Poppins', sans-serif;
     color: var(--color-texto);
     margin: 0;
-}
-
-body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     font-family: var(--font-body);
-    color: var(--color-secondary);
-    background-color: var(--color-accent-lighter);
     padding-top: var(--navbar-height, 80px);
 }
 
