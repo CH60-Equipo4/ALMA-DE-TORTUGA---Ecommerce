@@ -157,31 +157,42 @@ body {
 
 .product-button:active {
     transform: scale(0.98);
+}
+
+.pagination .page-link {
+    color: var(--color-accent-gold);
+    background-color: var(--color-accent-lighter);
+    border: none;
+    margin: 0 4px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
   }
 
-.pagination {
-    text-align: center;
-    margin-top: 30px;
-}
+  .pagination .page-link:hover {
+    background-color: var(--color-accent-gold);
+    color: #fff;
+  }
 
-.pagination span {
-    margin: 0 5px;
-    font-size: 14px;
-}
+  .pagination .page-item.active .page-link {
+    background-color: var(--color-accent-gold);
+    color: #fff;
+    border: none;
+  }
+
+  .pagination .page-item.disabled .page-link {
+    color: #bbb;
+    background-color: var(--color-accent-lighter);
+    pointer-events: none;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center
+  }
 
 
 /* ======== RESPONSIVIDAD ======== */
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-}
 
-.pagination span {
-    margin: 0 5px;
-    font-size: 14px;
-}
 
 @media (max-width: 768px) {
     .product-image {
