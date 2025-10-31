@@ -1,7 +1,7 @@
 
 function addItemCard(item) {
     //añadimos el signo dfe $ a price, si no esta disponible mostramos no diponible
-    const priceDisplay = item.price ? '$' + item.price + 'MXN' : 'Precio no disponible';
+    const priceDisplay = item.price ? '$' + item.price + ' MXN' : 'Precio no disponible';
     
     //template para añadir nuestras cards de productos
     const itemHTML = 
