@@ -147,6 +147,15 @@
     /* Oculta la parte trasera de la tarjeta durante el giro */
     backface-visibility: hidden;
     border-radius: 0.5rem;
+    text-align: justify;
+  text-align-last: left;
+  width: 100%;
+}
+/* === ESTILO DEL  TEXTO CARTAS=== */
+.bio-text {
+  text-align: justify;
+  text-align-last: left; /* evita que la última línea se justifique a la derecha */
+  hyphens: auto; /* opcional: mejora el ajuste en palabras largas */
 }
 
 /* === ESTILO DEL FRENTE === */
