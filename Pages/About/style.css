@@ -296,3 +296,10 @@
     padding-top: 160px !important;
     /* ¡Ajusta esta altura según sea necesario! */
 }
+
+#miniNavbar .navbar-nav {
+    flex-direction: row !important;
+    /*flex-wrap: wrap;*/
+    justify-content: center;
+    width: 100%;
+}
