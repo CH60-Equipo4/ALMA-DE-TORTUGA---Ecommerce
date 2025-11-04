@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contacto - Alma de Tortuga</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alma De Tortuga - Colección</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../../main.css" />
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 </head>
 
@@ -24,6 +24,22 @@
         </div>
       </a>
 
+      <!-- Nombre con dropdown -->
+      <div class="dropdown me-4">
+        <a class="titulo dropdown-toggle text-decoration-none fw-bold" href="#" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          ToteBags
+        </a>
+        <ul class="dropdown-menu shadow">
+          <li><a class="dropdown-item" href="../Product/ToteClasicas.html">ToteBag Clásica</a></li>
+          <li><a class="dropdown-item" href="#">ToteBag con Diseño</a></li>
+          <li><a class="dropdown-item" href="#">ToteBag Ecológica</a></li>
+          <li>
+            <a class="dropdown-item" href="#">ToteBag Personalizada</a>
+          </li>
+        </ul>
+      </div>
+
       <!-- BOTÓN RESPONSIVO -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,23 +50,10 @@
       <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
         <ul class="navbar-nav ms-3" style="width: 60%">
           <li class="nav-item">
-           <!-- Nombre con dropdown -->
-            <div class="dropdown">
-              <a class="titulo dropdown-toggle text-decoration-none fw-bold" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                ToteBags
-              </a>
-              <ul class="dropdown-menu shadow">
-                <li><a class="dropdown-item" href="../Totebags/Coleccion/coleccion.html">Colección de Temporada</a></li>
-                <li><a class="dropdown-item" href="../Totebags/Clasicas/clasicas.html">ToteBag Clásica</a></li>
-                <li>
-                  <a class="dropdown-item" href="../Totebags/Personalizada/personalizada.html">ToteBag Personalizada</a>
-                </li>
-              </ul>
-            </div>
+            <a class="nav-link" href="../Product/products.html">Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./contact.html">Contacto</a>
+            <a class="nav-link" href="../Contact/contact.html">Contacto</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../About/about.html">Nosotros</a>
@@ -87,46 +90,14 @@
   </nav>
   </header>
 
-  <!-- FORMULARIO DE CONTACTO -->
-  <main class="container my-5 pt-5">
-    <section class="formulario-contacto mx-auto p-4 shadow-sm rounded">
-      <h2 class="text-center mb-4">Contacto</h2>
-      <p class="text-center mb-4">¿Tienes un mensaje o te interesa una cotozacion especial? ¡Contáctanos!</p>
-      <form id="formulario-contacto">
-        <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" id="nombre" class="form-control" placeholder="Tu nombre" name="nombre" />
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Correo electrónico</label>
-          <input type="email" id="email" class="form-control" placeholder="correo@ejemplo.com" name="correo" />
-        </div>
-        <div class="mb-3">
-          <label for="telefono" class="form-label">Teléfono</label>
-          <input type="tel" id="telefono" class="form-control" placeholder="(000) 000 0000" name="telefono" />
-        </div>
-        <div class="mb-3">
-          <label for="mensaje" class="form-label">Mensaje</label>
-          <textarea id="mensaje" class="form-control" rows="4" placeholder="Escribe tu mensaje aquí"
-            name="mensaje"></textarea>
-        </div>
-        <div class="text-center">
-          <button id="enviarContacto" type="submit" class="btn btn-enviar px-5 py-2 btn-primary">
-            Enviar
-          </button>
-        </div>
-      </form>
-    </section>
-  </main>
-
-  <!-- Toast animado tipo ToteBag -->
-  <div id="toast" class="toast">
-    <div class="totebag">
-      <div class="handle"></div>
-      <div class="bag"></div>
+  <main>
+    <!-- Renderizado de Productos -->
+    <div class="container">
+      <h1 class="text-center mb-4">Colección Navideña</h1>
+      <div id="list-items">
+      </div>
     </div>
-    <span id="toast-message">Enviando mensaje...</span>
-  </div>
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -143,8 +114,8 @@
         </div>
 
         <div class="col-12 col-md-4 footer-logo text-center my-3 my-md-0">
-          <a href="../../index.html">
-            <img src="../../Pictures/Logo/Logo2.jpg" alt="Logo de Alma de Tortuga" />
+          <a href="../../Pages/Index/index.html">
+            <img src="../../Pictures/Logo/Logo1.png" alt="Logo de Alma de Tortuga" />
           </a>
         </div>
         <div class="col-12 col-md-4 footer-col-right social-column text-center text-md-end">
@@ -161,14 +132,12 @@
       </div>
     </div>
   </footer>
+
+  <script src="./itemsController.js"></script>
+  <script src="./items.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>
-  <script src="script.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script type="text/javascript">
-    emailjs.init("nFZF716zkDW5mPKyB");
-  </script>
 </body>
 
 </html>
