@@ -33,24 +33,21 @@
       <!-- ENLACES -->
       <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
         <ul class="navbar-nav ms-3" style="width: 60%">
-          <li class="nav-item">
-            <li class="nav-item">
-              <!-- Nombre con dropdown -->
-               <div class="dropdown">
-                 <a class="titulo dropdown-toggle text-decoration-none fw-bold" href="#" role="button" data-bs-toggle="dropdown"
-                   aria-expanded="false">
-                   ToteBags
-                 </a>
-                 <ul class="dropdown-menu shadow">
-                    <li><a class="dropdown-item" href="./Pages/Totebags/Coleccion/coleccion.html">Colección de Temporada</a></li>
-                    <li><a class="dropdown-item" href="./Pages/Totebags/Clasicas/clasicas.html">ToteBag Clásica</a></li>
-                    <li>
-                      <a class="dropdown-item" href="./Pages/Totebags/Personalizada/personalizada.html">ToteBag Personalizada</a>
-                    </li>
-                 </ul>
-               </div>
-             </li>
+          <!-- Dropdown ToteBags -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            ToteBags
+            </a>
+            <ul class="dropdown-menu shadow" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="./Pages/Totebags/Coleccion/coleccion.html">Colección de Temporada</a></li>
+              <li><a class="dropdown-item" href="./Pages/Totebags/Clasicas/clasicas.html">ToteBag Clásica</a></li>
+              <li>
+                <a class="dropdown-item" href="./Pages/Totebags/Personalizada/personalizada.html">ToteBag Personalizada</a>
+              </li>
+            </ul>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="./Pages/Contact/contact.html">Contacto</a>
           </li>
@@ -72,7 +69,6 @@
           <li><a class="dropdown-item" href="./Pages/Users/logIn.html">Iniciar Sesión</a></li>
         </ul>
       </div>
-      <p></p>
 
       <!-- ICONO CARRITO -->
       <div class="cart-icon-container position-relative">
