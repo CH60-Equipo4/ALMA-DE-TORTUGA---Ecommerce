@@ -1,231 +1,375 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register - Alma de Tortuga</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../../main.css" />
     <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-</head>
-<main>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+  </head>
+  <main></main>
 
-</main>
-
-<body>
+  <body>
     <header>
-        <!-- NAVBAR -->
-        <nav class="navbar navbar-expand-lg navbar-light custom-navbar fixed-top">
-            <div class="container-fluid d-flex align-items-center justify-content-between">
-                <!-- LOGO -->
-                <a class="navbar-brand d-flex align-items-center" href="../../index.html">
-                    <div class="logo-circle">
-                        <img src="../../Pictures/Logo/Logo1.png" alt="Alma Tortuga Logo" class="logo-img" />
-                    </div>
-                </a>
-
-                <!-- BOTÓN RESPONSIVO -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- ENLACES -->
-                <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
-                    <ul class="navbar-nav ms-3" style="width: 60%">
-                        <li class="nav-item">
-                            <li class="nav-item">
-                                <!-- Nombre con dropdown -->
-                                 <div class="dropdown">
-                                   <a class="titulo dropdown-toggle text-decoration-none fw-bold" href="#" role="button" data-bs-toggle="dropdown"
-                                     aria-expanded="false">
-                                     ToteBags
-                                   </a>
-                                   <ul class="dropdown-menu shadow">
-                                        <li><a class="dropdown-item" href="../Totebags/Coleccion/coleccion.html">Colección de Temporada</a></li>
-                                        <li><a class="dropdown-item" href="../Product/ToteClasicas.html">ToteBag Clásica</a></li>
-                                        <li>
-                                        <a class="dropdown-item" href="../Totebags/Personalizada/personalizada.html">ToteBag Personalizada</a>
-                                        </li>
-                                  </ul>
-                                 </div>
-                               </li>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../Contact/contact.html">Contacto</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../About/about.html">Nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../Blog/blog.html">Blog</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="nav-item dropdown ms-auto me-5 custom-navbar">
-                    <a class="titulo nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Usuario
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Cuenta</a></li>
-                        <li><a class="dropdown-item" href="../Users/logIn.html">Iniciar Sesión</a></li>
-                    </ul>
-                </div>
-                <p></p>
-
-                <!-- ICONO CARRITO -->
-                <div class="cart-icon-container position-relative">
-                    <a href="#carrito" class="nav-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                            class="bi bi-cart-check-fill" viewBox="0 0 16 16">
-                            <path
-                                d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708" />
-                        </svg>
-                        <span id="cart-count" class="cart-count">0</span>
-                    </a>
-                </div>
+      <!-- NAVBAR -->
+      <nav class="navbar navbar-expand-lg navbar-light custom-navbar fixed-top">
+        <div
+          class="container-fluid d-flex align-items-center justify-content-between"
+        >
+          <!-- LOGO -->
+          <a
+            class="navbar-brand d-flex align-items-center"
+            href="../../index.html"
+          >
+            <div class="logo-circle">
+              <img
+                src="../../Pictures/Logo/Logo1.png"
+                alt="Alma Tortuga Logo"
+                class="logo-img"
+              />
             </div>
-        </nav>
+          </a>
+
+          <!-- BOTÓN RESPONSIVO -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- ENLACES -->
+          <div
+            class="collapse navbar-collapse justify-content-start"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav ms-3" style="width: 60%">
+              <!-- Dropdown ToteBags -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle fw-bold"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  ToteBags
+                </a>
+                <ul
+                  class="dropdown-menu shadow"
+                  aria-labelledby="navbarDropdown"
+                >
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="../Totebags/Coleccion/coleccion.html"
+                      >Colección de Temporada</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="../Totebags/Clasicas/clasicas.html"
+                      >ToteBag Clásica</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="../Totebags/Personalizada/personalizada.html"
+                      >ToteBag Personalizada</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="../Contact/contact.html">Contacto</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../About/about.html">Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../Blog/blog.html">Blog</a>
+              </li>
+            </ul>
+          </div>
+          <div class="nav-item dropdown ms-auto me-5 custom-navbar">
+            <a
+              class="titulo nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Usuario
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Cuenta</a></li>
+              <li>
+                <a class="dropdown-item" href="./logIn.html">Iniciar Sesión</a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="../Totebags/Fomulario/formulario.html"
+                  >Agregar producto</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- ICONO CARRITO -->
+          <div class="cart-icon-container position-relative">
+            <a href="#carrito" class="nav-link">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                class="bi bi-cart-check-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708"
+                />
+              </svg>
+              <span id="cart-count" class="cart-count">0</span>
+            </a>
+          </div>
+        </div>
+      </nav>
     </header>
 
-    <main class="d-flex justify-content-center align-items-center vh-100 rounded">
-        <div class="register-container mx-auto p-4 shadow-sm rounded mt-3 mb-5">
-            <p id="liveAlertPlaceholder"></p>
-            <h2 class="text-center mb-4">CREAR CUENTA</h2>
-            <p class="text-center">🐢 Se parte de la familia Alma de Tortuga 🐢</p>
+    <main
+      class="d-flex justify-content-center align-items-center vh-100 rounded"
+    >
+      <div class="register-container mx-auto p-4 shadow-sm rounded mt-3 mb-5">
+        <p id="liveAlertPlaceholder"></p>
+        <h2 class="text-center mb-4">CREAR CUENTA</h2>
+        <p class="text-center">🐢 Se parte de la familia Alma de Tortuga 🐢</p>
 
-            <form id="registrationForm">
+        <form id="registrationForm">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="nombre" class="form-label">Nombre(s)</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                name="nombre"
+                required
+                placeholder=""
+              />
+              <div class="invalid-feedback" id="feedbackNombre">
+                Por favor, ingresa tu nombre.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="apellido" class="form-label">Apellido</label>
+              <input
+                type="text"
+                class="form-control"
+                id="apellido"
+                name="apellido"
+                required
+                placeholder=""
+              />
+              <div class="invalid-feedback" id="feedbackApellido">
+                Por favor, ingresa tu apellido.
+              </div>
+            </div>
+          </div>
 
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="nombre" class="form-label">Nombre(s)</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required placeholder="">
-                        <div class="invalid-feedback" id="feedbackNombre">
-                            Por favor, ingresa tu nombre.
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="apellido" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" id="apellido" name="apellido" required placeholder="">
-                        <div class="invalid-feedback" id="feedbackApellido">
-                            Por favor, ingresa tu apellido.
-                        </div>
-                    </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="telefono" class="form-label">Teléfono</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="telefono"
+                name="telefono"
+                required
+                placeholder="Ej. 55 1234 5678"
+                pattern="[0-9]{10,}"
+                title="Ingresa al menos 10 dígitos numéricos."
+              />
+              <div class="invalid-feedback" id="feedbackTelefono">
+                Por favor, ingresa un número de teléfono válido.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label">Correo Electrónico</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                required
+                placeholder="correo@ejemplo.com"
+              />
+              <div class="invalid-feedback" id="feedbackEmail">
+                Por favor, ingresa un correo electrónico válido.
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="password" class="form-label">Contraseña</label>
+              <div class="input-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  required
+                  minlength="8"
+                  placeholder="Mínimo 8 caracteres"
+                />
+                <button
+                  class="btn btn-outline-secondary toggle-password"
+                  type="button"
+                  data-target="password"
+                  aria-label="Mostrar contraseña"
+                >
+                  <i class="fa-solid fa-eye-slash"></i>
+                </button>
+                <div class="invalid-feedback" id="feedbackPassword">
+                  La contraseña debe tener al menos 8 caracteres.
                 </div>
+              </div>
+            </div>
 
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="telefono" class="form-label">Teléfono</label>
-                        <input type="tel" class="form-control" id="telefono" name="telefono" required
-                            placeholder="Ej. 55 1234 5678" pattern="[0-9]{10,}"
-                            title="Ingresa al menos 10 dígitos numéricos.">
-                        <div class="invalid-feedback" id="feedbackTelefono">
-                            Por favor, ingresa un número de teléfono válido.
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="email" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="email" name="email" required
-                            placeholder="correo@ejemplo.com">
-                        <div class="invalid-feedback" id="feedbackEmail">
-                            Por favor, ingresa un correo electrónico válido.
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-6">
+              <label for="confirm-password" class="form-label"
+                >Confirmar Contraseña</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="confirm-password"
+                name="confirm-password"
+                required
+                placeholder="Repite tu contraseña"
+              />
+              <div class="invalid-feedback" id="feedbackConfirmPassword">
+                Las contraseñas no coinciden.
+              </div>
+            </div>
+          </div>
 
-                <div class="row mb-3">
+          <div class="form-check mb-4">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="terminos"
+              required
+            />
+            <label class="form-check-label" for="terminos">
+              Acepto los
+              <a href="#" target="_blank">Términos y Condiciones</a> y la
+              Política de Privacidad.
+            </label>
+            <div class="invalid-feedback" id="feedbackTerminos">
+              Debes aceptar los términos y condiciones para continuar.
+            </div>
+          </div>
 
-                    <div class="col-md-6">
-                        <label for="password" class="form-label">Contraseña</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" id="password" name="password" required
-                                minlength="8" placeholder="Mínimo 8 caracteres">
-                            <button class="btn btn-outline-secondary toggle-password" type="button"
-                                data-target="password" aria-label="Mostrar contraseña">
-                                <i class="fa-solid fa-eye-slash"></i>
-                            </button>
-                            <div class="invalid-feedback" id="feedbackPassword">
-                                La contraseña debe tener al menos 8 caracteres.
-                            </div>
-                        </div>
-                    </div>
+          <button
+            id="submitRegistro"
+            type="submit"
+            class="btn btn-login w-100 mb-3"
+          >
+            REGISTRARSE
+          </button>
 
-                    <div class="col-md-6">
-                        <label for="confirm-password" class="form-label">Confirmar Contraseña</label>
-                        <input type="password" class="form-control" id="confirm-password" name="confirm-password"
-                            required placeholder="Repite tu contraseña">
-                        <div class="invalid-feedback" id="feedbackConfirmPassword">
-                            Las contraseñas no coinciden.
-                        </div>
-                    </div>
-                </div>
+          <hr />
 
-                <div class="form-check mb-4">
-                    <input class="form-check-input" type="checkbox" value="" id="terminos" required>
-                    <label class="form-check-label" for="terminos">
-                        Acepto los <a href="#" target="_blank">Términos y Condiciones</a> y la Política de Privacidad.
-                    </label>
-                    <div class="invalid-feedback" id="feedbackTerminos">
-                        Debes aceptar los términos y condiciones para continuar.
-                    </div>
-                </div>
-
-                <button id="submitRegistro" type="submit" class="btn btn-login w-100 mb-3">REGISTRARSE</button>
-
-                <hr>
-
-                <p class="text-center mt-3">
-                    ¿Ya tienes una cuenta? <a href="../Users/logIn.html" class="text-decoration-none">Iniciar Sesión</a>
-                </p>
-            </form>
-            <div id="result"></div>
-
-        </div>
+          <p class="text-center mt-3">
+            ¿Ya tienes una cuenta?
+            <a href="../Users/logIn.html" class="text-decoration-none"
+              >Iniciar Sesión</a
+            >
+          </p>
+        </form>
+        <div id="result"></div>
+      </div>
     </main>
-    <hr>
+    <hr />
 
     <footer class="footer">
-        <div class="container">
-            <div class="row align-items-start">
-                <div class="col-12 col-md-4 footer-links text-center text-md-start">
-                    <h4>Alma de Tortuga</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="../Contact/contact.html">Contacto</a></li>
-                        <li><a href="../About/about.html">Nosotros</a></li>
-                        <li><a href="#">Carrito</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
+      <div class="container">
+        <div class="row align-items-start">
+          <div class="col-12 col-md-4 footer-links text-center text-md-start">
+            <h4>Alma de Tortuga</h4>
+            <ul class="list-unstyled">
+              <li><a href="../Contact/contact.html">Contacto</a></li>
+              <li><a href="../About/about.html">Nosotros</a></li>
+              <li><a href="#">Carrito</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
 
-                <div class="col-12 col-md-4 footer-logo text-center my-3 my-md-0">
-                    <a href="../../Pages/Index/index.html">
-                        <img src="../../Pictures/Logo/Logo1.png" alt="Logo de Alma de Tortuga" />
-                    </a>
-                </div>
-                <div class="col-12 col-md-4 footer-col-right social-column text-center text-md-end">
-                    <h4>Sístatuguenos</h4>
-                    <div class="social-icons d-flex justify-content-center justify-content-md-end gap-3">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
+          <div class="col-12 col-md-4 footer-logo text-center my-3 my-md-0">
+            <a href="../../Pages/Index/index.html">
+              <img
+                src="../../Pictures/Logo/Logo1.png"
+                alt="Logo de Alma de Tortuga"
+              />
+            </a>
+          </div>
+          <div
+            class="col-12 col-md-4 footer-col-right social-column text-center text-md-end"
+          >
+            <h4>Sístatuguenos</h4>
+            <div
+              class="social-icons d-flex justify-content-center justify-content-md-end gap-3"
+            >
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
             </div>
-            <div class="footer-copyright text-center mt-4">
-                <p>&copy; 2025 Alma de Tortuga. Todos los derechos reservados.</p>
-            </div>
+          </div>
         </div>
+        <div class="footer-copyright text-center mt-4">
+          <p>&copy; 2025 Alma de Tortuga. Todos los derechos reservados.</p>
+        </div>
+      </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>

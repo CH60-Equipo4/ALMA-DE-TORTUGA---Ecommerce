@@ -41,22 +41,22 @@
             ToteBags
             </a>
             <ul class="dropdown-menu shadow" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="./Pages/Totebags/Coleccion/coleccion.html">Colección de Temporada</a></li>
-              <li><a class="dropdown-item" href="./Pages/Totebags/Clasicas/clasicas.html">ToteBag Clásica</a></li>
+              <li><a class="dropdown-item" href="../Coleccion/coleccion.html">Colección de Temporada</a></li>
+              <li><a class="dropdown-item" href="../Clasicas/clasicas.html">ToteBag Clásica</a></li>
               <li>
-                <a class="dropdown-item" href="./Pages/Totebags/Personalizada/personalizada.html">ToteBag Personalizada</a>
+                <a class="dropdown-item" href="../Personalizada/personalizada.html">ToteBag Personalizada</a>
               </li>
             </ul>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="./Pages/Contact/contact.html">Contacto</a>
+            <a class="nav-link" href="../../Contact/contact.html">Contacto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./Pages/About/about.html">Nosotros</a>
+            <a class="nav-link" href="../../Pages/About/about.html">Nosotros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./Pages/Blog/blog.html">Blog</a>
+            <a class="nav-link" href="../../Pages/Blog/blog.html">Blog</a>
           </li>
         </ul>
       </div>
@@ -67,8 +67,8 @@
         </a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Cuenta</a></li>
-          <li><a class="dropdown-item" href="./Pages/Users/logIn.html">Iniciar Sesión</a></li>
-          <li><a class="dropdown-item" href="./Pages/Totebags/Fomulario/formulario.html">Agregar producto</a></li>
+          <li><a class="dropdown-item" href="../../Users/logIn.html">Iniciar Sesión</a></li>
+          <li><a class="dropdown-item" href="./formulario.html">Agregar producto</a></li>
         </ul>
       </div>
 
@@ -95,39 +95,41 @@
         <div id="alertContainer"></div>
 
         <!-- Formulario -->
-        <form id="formToteBag" class="needs-validation" novalidate>
-            <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre del producto</label>
-                <input type="text" class="form-control" id="nombre" placeholder="Ej: Tote Bag Clásica">
-            </div>
+         <div class="formulario">
+            <form id="formToteBag" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre del producto</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Ej: Tote Bag Clásica">
+                </div>
 
-            <div class="mb-3">
-                <label for="descripcion" class="form-label">Descripción</label>
-                <textarea class="form-control" id="descripcion" rows="3"
-                    placeholder="Breve descripción del producto"></textarea>
-            </div>
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="descripcion" rows="3"
+                        placeholder="Breve descripción del producto"></textarea>
+                </div>
 
-            <div class="mb-3">
-                <label for="precio" class="form-label">Precio ($)</label>
-                <input type="number" class="form-control" id="precio" placeholder="Ej: 299">
-            </div>
+                <div class="mb-3">
+                    <label for="precio" class="form-label">Precio ($)</label>
+                    <input type="number" class="form-control" id="precio" placeholder="Ej: 299">
+                </div>
 
-            <div class="mb-3">
-                <label for="categoria" class="form-label">Categoria</label>
-                <select class="form-select" id="categoria">
-                    <option value="">Selecciona una categoria</option>
-                    <option value="coleccion">Totebag Coleccion de Temporada</option>
-                    <option value="clasicas">Totebag Clásica</option>
-                </select>
-            </div>
+                <div class="mb-3">
+                    <label for="categoria" class="form-label">Categoria</label>
+                    <select class="form-select" id="categoria">
+                        <option value="">Selecciona una categoria</option>
+                        <option value="coleccion">Totebag Coleccion de Temporada</option>
+                        <option value="clasicas">Totebag Clásica</option>
+                    </select>
+                </div>
 
 
-            <div class="mb-3">
-                <label for="imagenURL" class="form-label">Imagen (URL)</label>
-                <input type="url" class="form-control" id="imagenURL" placeholder="https://example.com/imagen.jpg">
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Crear producto</button>
-        </form>
+                <div class="mb-3">
+                    <label for="imagenURL" class="form-label">Imagen (URL)</label>
+                    <input type="url" class="form-control" id="imagenURL" placeholder="https://example.com/imagen.jpg">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Crear producto</button>
+            </form>
+        </div>
 
         <!-- Tarjeta con el JSON -->
         <div class="mt-4" id="jsonCardContainer" style="display: none;">
