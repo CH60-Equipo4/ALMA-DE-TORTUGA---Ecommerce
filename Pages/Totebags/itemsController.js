@@ -6,7 +6,7 @@ class ItemsController {
     }
 
     //metodo para agregar nombre, descripcion, precio, la URL de la imagen , y cuando se creo el item
-    addItem(name, description, price, imageURL, createdAt) {
+    addItem(name, description, price, imageURL, category,  createdAt) {
         const item = {
             //Añadimos ID genericos empezando en 0
             id: this.currentId++,
@@ -14,6 +14,7 @@ class ItemsController {
             description: description,
             price: price,
             imageURL: imageURL,
+            category: category,
             createdAt: createdAt || new Date().toLocaleDateString()
         }
         this.items.push(item);

@@ -77,6 +77,24 @@ form.addEventListener("submit", (e) => {
     // Limpiar formulario
     form.reset();
     mensajeContainer.style.display = "none";
+
+
+    // Método para agregar nombre, descripción, precio, la URL de la imagen, y cuando se creó el item
+    function addItem(name, description, price, imageURL, category, createdAt) {
+        const item = {
+            // Añadimos ID genéricos empezando en 0
+            id: this.currentId++,
+            name: name,
+            description: description,
+            price: price,
+            imageURL: imageURL,
+            category: category,
+            createdAt: createdAt || new Date().toLocaleDateString()
+        };
+        this.items.push(item);
+    }
+
+
 });
 
 // Ocultar tarjeta JSON
