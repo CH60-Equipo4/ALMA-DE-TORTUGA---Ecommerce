@@ -7,10 +7,6 @@ const jsonCardContainer = document.getElementById("jsonCardContainer");
 const resultadoJSON = document.getElementById("resultadoJSON");
 const btnOcultar = document.getElementById("btnOcultar");
 
-// Mostrar/ocultar campo personalizado
-personalizadaCheck.addEventListener("change", () => {
-    mensajeContainer.style.display = personalizadaCheck.checked ? "block" : "none";
-});
 
 // Mostrar alertas Bootstrap
 function mostrarAlerta(mensaje, tipo = "danger") {
@@ -42,17 +38,10 @@ form.addEventListener("submit", (e) => {
     const descripcion = document.getElementById("descripcion").value.trim();
     const precio = document.getElementById("precio").value;
     const categoria = document.getElementById("categoria").value;
-    const personalizada = personalizadaCheck.checked;
-    const mensajePersonalizado = document.getElementById("mensajePersonalizado").value.trim();
     const imagenURL = document.getElementById("imagenURL").value.trim();
 
     if (!nombre || !descripcion || !precio || !categoria || !imagenURL) {
         mostrarAlerta("Por favor, completa todos los campos obligatorios.");
-        return;
-    }
-
-    if (personalizada && !mensajePersonalizado) {
-        mostrarAlerta("Por favor, ingresa el mensaje o diseño personalizado.");
         return;
     }
 
@@ -62,39 +51,36 @@ form.addEventListener("submit", (e) => {
         descripcion,
         precio: parseFloat(precio),
         categoria,
-        personalizada,
-        mensajePersonalizado: personalizada ? mensajePersonalizado : null,
         imagenURL
     };
-
-     // Crear LocalStorage
 
     // Mostrar JSON en tarjeta
     resultadoJSON.textContent = JSON.stringify(toteBag, null, 2);
     jsonCardContainer.style.display = "block";
     mostrarAlerta("¡Producto creado correctamente!", "success");
 
+    // Guardar en localStorage
+    let productos = JSON.parse(localStorage.getItem("productos")) || [];
+    productos.push(toteBag);
+    localStorage.setItem("productos", JSON.stringify(productos));
+
+    // 🔹 Redirigir según categoría (opcional)
+setTimeout(() => {
+    if (categoria === "clasicas") {
+        window.location.href = "../Clasicas/clasicas.html";
+    } else if (categoria === "coleccion") {
+        window.location.href = "../Coleccion/coleccion.html";
+    } else {
+        window.location.href = "../Clasicas/clasicas.html"; // valor por defecto
+    }
+}, 2000);
+
+
     // Limpiar formulario
     form.reset();
-    mensajeContainer.style.display = "none";
-
-
-    // Método para agregar nombre, descripción, precio, la URL de la imagen, y cuando se creó el item
-    function addItem(name, description, price, imageURL, category, createdAt) {
-        const item = {
-            // Añadimos ID genéricos empezando en 0
-            id: this.currentId++,
-            name: name,
-            description: description,
-            price: price,
-            imageURL: imageURL,
-            category: category,
-            createdAt: createdAt || new Date().toLocaleDateString()
-        };
-        this.items.push(item);
+    if (typeof mensajeContainer !== "undefined") {
+        mensajeContainer.style.display = "none";
     }
-
-
 });
 
 // Ocultar tarjeta JSON
