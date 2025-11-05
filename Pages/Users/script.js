@@ -77,6 +77,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function saveToLocalStorage(userData) {
+
+        const userDataJSON = JSON.stringify(userData);
+        const existingUsersJSON = localStorage.getItem('users');
+        const existingUsers = existingUsersJSON ? JSON.parse(existingUsersJSON) : [];
+
+        // Añadimos el nuevo usuario
+        existingUsers.push(userData);
+
+        // Guardamos la lista completa de vuelta en Local Storage
+        localStorage.setItem('users', JSON.stringify(existingUsers));
+
+        console.log("Usuario guardado en Local Storage:", userData);
+    }
+
 
     const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
     const appendAlert = (message, type) => {
@@ -122,12 +137,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (allValid) {
 
+            // 1. Recolectar datos y crear el objeto
+            const newUserData = {
+                nombre: document.getElementById('nombre').value.trim(),
+                apellido: document.getElementById('apellido').value.trim(),
+                telefono: telefono.value.trim(),
+                email: email.value.trim(),
+                password: password.value
+            };
+
+            // 2. Guardar los datos en Local Storage (Usando la función saveToLocalStorage que definiste aparte)
+            saveToLocalStorage(newUserData);
+
+            // 3. Mostrar alerta y resetear
             appendAlert('Registro Exitoso! Revisa tu bandeja de entrada!', 'success');
             form.reset();
             form.classList.remove('was-validated');
+
+            // Limpiar clases de validación (is-valid, is-invalid) en campos específicos
             password.classList.remove('is-valid', 'is-invalid');
             confirmPassword.classList.remove('is-valid', 'is-invalid');
             telefono.classList.remove('is-valid', 'is-invalid');
+            email.classList.remove('is-valid', 'is-invalid'); // Agregado para limpiar el email
 
         }
     }, false);
