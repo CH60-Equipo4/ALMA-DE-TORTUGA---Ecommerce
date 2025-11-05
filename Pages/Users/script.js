@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 password: password.value
             };
 
-            // 2. Guardar los datos en Local Storage (Usando la función saveToLocalStorage que definiste aparte)
+            // 2. Guardar los datos en Local Storage
             saveToLocalStorage(newUserData);
 
             // 3. Mostrar alerta y resetear
