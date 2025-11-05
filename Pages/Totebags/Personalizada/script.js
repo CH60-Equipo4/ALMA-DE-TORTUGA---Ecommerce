@@ -1,0 +1,294 @@
+/**
+ * Script final para manejar la personalización dinámica de la ToteBag:
+ * - Soluciona el problema de carga del resumen después de eliminar la frase predeterminada.
+ */
+
+// 1. Definición de Precios Base y Constantes (Misma)
+const preciosBases = {
+    'clasica': 450,
+    'caparazon': 550,
+    'mini': 350
+};
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+const ALLOWED_MIMES = ['image/png', 'image/jpeg', 'image/jpg'];
+
+
+// 2. Obtención de Elementos del DOM
+const precioTotalStrong = document.getElementById('precio-total');
+const precioBaseSpan = document.getElementById('precio-base-seleccionado');
+
+const radiosBolsa = document.querySelectorAll('input[name="bolsaBase"]');
+const radiosAcabado = document.querySelectorAll('input[name="tipoAcabado"]');
+const radiosDetalle = document.querySelectorAll('input[name="tipoDetalle"]');
+const selectTipografia = document.getElementById('tipografia');
+const radiosColorTexto = document.querySelectorAll('input[name="colorTexto"]');
+const colorSelectorContainer = document.getElementById('color-selector-container');
+
+// Campos de Detalle
+const inputEscribirFrase = document.getElementById('escribirFrase');
+const selectPosicionTexto = document.getElementById('posicionTexto');
+const selectPosicionDiseno = document.getElementById('posicionDiseno');
+const inputSubirArchivo = document.getElementById('subirArchivo');
+
+// Elementos de UI y Offcanvas
+const previewContenedor = document.getElementById('preview-contenedor');
+const imagenPrevia = document.getElementById('imagen-previa');
+const btnSiguiente = document.getElementById('btn-siguiente');
+const offcanvasResumen = document.getElementById('offcanvasResumen');
+const contenidoResumen = document.getElementById('resumen-contenido');
+
+
+// --------------------------------------------------------------------------------
+// FUNCIONES DE LÓGICA Y UI
+// --------------------------------------------------------------------------------
+
+function verificarSeleccionesMinimas() {
+    const baseSeleccionada = Array.from(radiosBolsa).some(radio => radio.checked);
+    const acabadoSeleccionado = Array.from(radiosAcabado).some(radio => radio.checked);
+    const detalleSeleccionado = Array.from(radiosDetalle).some(radio => radio.checked);
+
+    const archivoSubidoValido = inputSubirArchivo.files.length > 0 && !inputSubirArchivo.classList.contains('is-invalid');
+
+    const ready = baseSeleccionada && acabadoSeleccionado && detalleSeleccionado && archivoSubidoValido;
+
+    if (btnSiguiente) {
+        btnSiguiente.disabled = !ready;
+    }
+    return ready;
+}
+
+function calcularPrecioTotal() {
+    let precioTotal = 0;
+    let precioBaseSeleccionado = 0;
+
+    const baseSeleccionada = Array.from(radiosBolsa).find(radio => radio.checked)?.value;
+    if (baseSeleccionada) {
+        precioBaseSeleccionado = preciosBases[baseSeleccionada];
+        precioTotal += precioBaseSeleccionado;
+    }
+
+    const acabadoSeleccionado = Array.from(radiosAcabado).find(radio => radio.checked);
+    if (acabadoSeleccionado) {
+        precioTotal += parseInt(acabadoSeleccionado.dataset.precio || 0);
+    }
+
+    let esFraseConDiseno = false;
+    const detalleSeleccionado = Array.from(radiosDetalle).find(radio => radio.checked);
+
+    if (detalleSeleccionado) {
+        precioTotal += parseInt(detalleSeleccionado.dataset.precio || 0);
+        if (detalleSeleccionado.value === 'fraseDiseno') {
+            esFraseConDiseno = true;
+        }
+    }
+
+    if (esFraseConDiseno) {
+        const selectedOption = selectTipografia.options[selectTipografia.selectedIndex];
+        if (selectedOption && selectedOption.value !== 'default') {
+            const precioTipografia = parseInt(selectTipografia.dataset.precio || 0);
+            precioTotal += precioTipografia;
+        }
+    }
+
+    return { total: precioTotal, base: precioBaseSeleccionado };
+}
+
+/**
+ * Habilita/deshabilita los campos de la sección de la frase y el color.
+ * SE AJUSTÓ LA LÓGICA DE LIMPIEZA POST-ELIMINACIÓN DEL SELECT.
+ */
+function manejarInteraccionFrase() {
+    let esFraseConDiseno = Array.from(radiosDetalle).some(radio => radio.checked && radio.value === 'fraseDiseno');
+
+    // **AJUSTADO:** Solo los campos que quedan.
+    const camposFrase = [inputEscribirFrase, selectTipografia, selectPosicionTexto];
+
+    camposFrase.forEach(campo => { campo.disabled = !esFraseConDiseno; });
+
+    // Habilitar/Deshabilitar radios de color y contenedor
+    radiosColorTexto.forEach(radio => { radio.disabled = !esFraseConDiseno; });
+    if (colorSelectorContainer) {
+        if (!esFraseConDiseno) {
+            colorSelectorContainer.setAttribute('disabled', 'true');
+        } else {
+            colorSelectorContainer.removeAttribute('disabled');
+        }
+    }
+
+    // Limpieza si se deshabilita
+    if (!esFraseConDiseno) {
+        if (selectTipografia.value !== 'default') selectTipografia.value = 'default';
+        inputEscribirFrase.value = '';
+        radiosColorTexto.forEach(radio => { radio.checked = false; });
+    }
+}
+
+function manejarSubidaArchivo() {
+    const archivo = inputSubirArchivo.files[0];
+    const smallText = inputSubirArchivo.nextElementSibling;
+
+    previewContenedor.style.display = 'none';
+    imagenPrevia.style.display = 'none';
+    imagenPrevia.src = '';
+
+    if (archivo) {
+        let error = null;
+        if (archivo.size > MAX_FILE_SIZE) { error = 'El archivo es demasiado grande (Máx. 5MB).'; }
+        else if (!ALLOWED_MIMES.includes(archivo.type)) { error = 'Formato no permitido. Usa PNG o JPG.'; }
+
+        if (error) {
+            inputSubirArchivo.classList.add('is-invalid');
+            smallText.textContent = error;
+            smallText.style.color = 'red';
+            inputSubirArchivo.value = '';
+        } else {
+            inputSubirArchivo.classList.remove('is-invalid');
+            inputSubirArchivo.classList.add('is-valid');
+            smallText.textContent = `Archivo seleccionado: ${archivo.name}`;
+            smallText.style.color = 'green';
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                imagenPrevia.src = e.target.result;
+                imagenPrevia.style.display = 'block';
+                previewContenedor.style.display = 'block';
+            };
+            reader.readAsDataURL(archivo);
+        }
+    } else {
+        inputSubirArchivo.classList.remove('is-invalid', 'is-valid');
+        smallText.textContent = 'Max. 5MB. Formatos: PNG, JPG.';
+        smallText.style.color = 'gray';
+    }
+
+    actualizarInterfazCompleta();
+}
+
+
+/**
+ * Genera el HTML para el resumen VISUAL.
+ */
+function generarResumenHTML() {
+    const baseSeleccionada = Array.from(radiosBolsa).find(radio => radio.checked);
+    const acabadoSeleccionado = Array.from(radiosAcabado).find(radio => radio.checked);
+    const detalleSeleccionado = Array.from(radiosDetalle).find(radio => radio.checked);
+
+    // **NOTA:** La validación aquí solo sirve para el mensaje en el Offcanvas,
+    // el botón Siguiente ya está deshabilitado si esto es falso.
+    if (!baseSeleccionada || !acabadoSeleccionado || !detalleSeleccionado) {
+        return `<div class="alert alert-warning text-center">Debes seleccionar una **Base**, un **Acabado** y un **Detalle** para generar el resumen.</div>`;
+    }
+
+    // 1. OBTENCIÓN DE DATOS PARA EL LIENZO
+    const nombreBase = baseSeleccionada.value.charAt(0).toUpperCase() + baseSeleccionada.value.slice(1);
+    const imagenBaseURL = `../../../Pictures/Products/Personalizada/Main.png`;
+    const urlArchivoSubido = imagenPrevia.src.startsWith('data:image') ? imagenPrevia.src : '';
+
+    const esFraseConDiseno = detalleSeleccionado.value === 'fraseDiseno';
+
+    // **AJUSTADO:** Solo usamos el texto escrito.
+    const textoFrase = esFraseConDiseno ? inputEscribirFrase.value.trim() : '';
+    const fontClase = esFraseConDiseno ? selectTipografia.value : '';
+    const textoPosicion = esFraseConDiseno ? selectPosicionTexto.value : '';
+    const posicionDiseno = selectPosicionDiseno.value;
+
+    const colorSeleccionadoHex = Array.from(radiosColorTexto).find(radio => radio.checked)?.dataset.colorHex || 'var(--color-texto)';
+
+    // 2. GENERACIÓN DEL LIENZO VISUAL (Superposición de Capas)
+    const imagenPrincipalHTML = `
+        <div class="custom-tote-preview-container">
+            <img src="${imagenBaseURL}" alt="Tote Bag Base" class="tote-base-img">
+            
+            ${urlArchivoSubido ? `<img src="${urlArchivoSubido}" alt="Diseño" class="tote-diseno ${posicionDiseno}">` : ''}
+
+            ${(esFraseConDiseno && textoFrase) ?
+            `<div class="tote-texto ${textoPosicion} ${fontClase}" style="color: ${colorSeleccionadoHex};">${textoFrase}</div>` : ''}
+        </div>
+    `;
+
+    // 3. Generación del Resumen de Texto
+    const resumenFrase = esFraseConDiseno ? `
+        <h6 class="mt-3">Opciones de Frase:</h6>
+        <ul class="list-unstyled">
+            <li>Texto: <strong>"${textoFrase || 'No especificado'}"</strong></li>
+            <li>Tipografía: ${selectTipografia.options[selectTipografia.selectedIndex].text}</li>
+            <li>Color: <strong style="color: ${colorSeleccionadoHex};">${colorSeleccionadoHex}</strong></li>
+            <li>Posición del Texto: ${selectPosicionTexto.value}</li>
+        </ul>
+    ` : '';
+
+    const nombreArchivo = inputSubirArchivo.files[0] ? inputSubirArchivo.files[0].name : "No subido";
+
+    return `
+        <div class="card mb-3 border-0">
+            ${imagenPrincipalHTML}
+            <p class="text-center"> *Imagen de Referencia* </p>
+        </div>
+
+        <h6>Tu Selección:</h6>
+        <ul class="list-unstyled">
+            <li><strong>Base:</strong> ${nombreBase}</li>
+            <li><strong>Acabado:</strong> ${acabadoSeleccionado.id.charAt(0).toUpperCase() + acabadoSeleccionado.id.slice(1)}</li>
+            <li><strong>Detalle:</strong> ${detalleSeleccionado.id.charAt(0).toUpperCase() + detalleSeleccionado.id.slice(1)}</li>
+        </ul>
+
+        <h6 class="mt-3">Opciones de Diseño:</h6>
+        <ul class="list-unstyled">
+            <li>Archivo: <strong>${nombreArchivo}</strong></li>
+            <li>Posición: ${selectPosicionDiseno.value}</li>
+        </ul>
+        
+        ${resumenFrase}
+    `;
+}
+
+
+/**
+ * Función principal que se ejecuta al cambiar cualquier opción relevante.
+ */
+function actualizarInterfazCompleta() {
+    manejarInteraccionFrase();
+
+    const precios = calcularPrecioTotal();
+    precioTotalStrong.textContent = `$${precios.total}`;
+    precioBaseSpan.textContent = precios.base > 0 ? `$${precios.base}` : '--';
+
+    verificarSeleccionesMinimas();
+}
+
+
+// --------------------------------------------------------------------------------
+// 5. Asignación de Event Listeners e Inicialización
+// --------------------------------------------------------------------------------
+
+// Eventos para actualizar precio y lógica (mismos)
+document.querySelectorAll('input[name="bolsaBase"], input[name="tipoAcabado"], input[name="tipoDetalle"]').forEach(input => {
+    input.addEventListener('change', actualizarInterfazCompleta);
+});
+selectTipografia.addEventListener('change', actualizarInterfazCompleta);
+selectPosicionDiseno.addEventListener('change', actualizarInterfazCompleta);
+selectPosicionTexto.addEventListener('change', actualizarInterfazCompleta);
+inputEscribirFrase.addEventListener('input', actualizarInterfazCompleta);
+inputSubirArchivo.addEventListener('change', manejarSubidaArchivo);
+radiosColorTexto.forEach(radio => {
+    radio.addEventListener('change', actualizarInterfazCompleta);
+});
+
+
+// **REVERSIÓN DEL LISTENER:** Usamos el evento de Bootstrap show.bs.offcanvas
+if (offcanvasResumen) {
+    offcanvasResumen.addEventListener('show.bs.offcanvas', function () {
+        const precios = calcularPrecioTotal();
+
+        // Generamos el resumen justo antes de que se muestre el Offcanvas
+        contenidoResumen.innerHTML = generarResumenHTML();
+
+        // Actualizamos el precio final del botón
+        document.getElementById('resumen-precio-final').textContent = `$${precios.total}`;
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    actualizarInterfazCompleta();
+});
