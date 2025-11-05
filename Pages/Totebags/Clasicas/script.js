@@ -21,6 +21,7 @@ if (productos.length === 0) {
         </button>
         </div>
     `;
+    
 
         contenedor.appendChild(card);
     });
