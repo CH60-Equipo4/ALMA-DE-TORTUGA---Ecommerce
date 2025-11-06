@@ -1,3 +1,4 @@
+import { ItemsController } from '../itemsController.js';
 
 const form = document.getElementById("formToteBag");
 const personalizadaCheck = document.getElementById("personalizada");
@@ -45,35 +46,22 @@ form.addEventListener("submit", (e) => {
         return;
     }
 
-    // Crear objeto JSON
-    const toteBag = {
-        nombre,
-        descripcion,
-        precio: parseFloat(precio),
-        categoria,
-        imagenURL
-    };
+    const itemsController = new ItemsController();
+    itemsController.loadItemsFromLocalStorage();
+    itemsController.addItem(nombre, descripcion, precio, imagenURL, categoria);
 
-    // Mostrar JSON en tarjeta
-    resultadoJSON.textContent = JSON.stringify(toteBag, null, 2);
-    jsonCardContainer.style.display = "block";
     mostrarAlerta("¡Producto creado correctamente!", "success");
 
-    // Guardar en localStorage
-    let productos = JSON.parse(localStorage.getItem("productos")) || [];
-    productos.push(toteBag);
-    localStorage.setItem("productos", JSON.stringify(productos));
-
     // 🔹 Redirigir según categoría (opcional)
-setTimeout(() => {
-    if (categoria === "clasicas") {
-        window.location.href = "../Clasicas/clasicas.html";
-    } else if (categoria === "coleccion") {
-        window.location.href = "../Coleccion/coleccion.html";
-    } else {
-        window.location.href = "../Clasicas/clasicas.html"; // valor por defecto
-    }
-}, 2000);
+    setTimeout(() => {
+        if (categoria === "clasicas") {
+            window.location.href = "../Clasicas/clasicas.html";
+        } else if (categoria === "coleccion") {
+            window.location.href = "../Coleccion/coleccion.html";
+        } else {
+            window.location.href = "../Clasicas/clasicas.html"; // valor por defecto
+        }
+    }, 2000);
 
 
     // Limpiar formulario
