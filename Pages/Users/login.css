@@ -666,6 +666,7 @@ body {
 /* Responsive */
 @media (max-width: 991px) {
     .left-section {
+        display: none;
         min-height: 450px;
     }
     
