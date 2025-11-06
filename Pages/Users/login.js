@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
     loginForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        const email = emailInput.value;
+        const email = emailInput.value.trim().toLowerCase();
         const password = passwordInput.value;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         let hasError = false;
