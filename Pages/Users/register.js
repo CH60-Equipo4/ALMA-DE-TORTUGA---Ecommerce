@@ -142,20 +142,26 @@ document.addEventListener('DOMContentLoaded', function () {
                 nombre: document.getElementById('nombre').value.trim(),
                 apellido: document.getElementById('apellido').value.trim(),
                 telefono: telefono.value.trim(),
-                email: email.value.trim(),
+                email: email.value.trim().toLowerCase(),
                 password: password.value
             };
 
-            // Guardar los datos en Local Storage (Usando la función saveToLocalStorage que definiste aparte)
+            // Guardar los datos en Local Storage
             saveToLocalStorage(newUserData);
             
             appendAlert('Registro Exitoso! Revisa tu bandeja de entrada!', 'success');
+
             form.reset();
             form.classList.remove('was-validated');
             password.classList.remove('is-valid', 'is-invalid');
             confirmPassword.classList.remove('is-valid', 'is-invalid');
             telefono.classList.remove('is-valid', 'is-invalid');
             email.classList.remove('is-valid', 'is-invalid');
+
+            // SOLO dejamos el delay para la redirección si es necesario
+            setTimeout(() => {
+                window.location.href = '../Users/logIn.html';
+            }, 5000);
 
         }
     }, false);

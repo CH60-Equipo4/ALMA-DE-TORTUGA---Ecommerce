@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.getElementById('loginForm');
     if (!loginForm) {
         // Si no encontramos el formulario de login, no ejecutar nada.
-        return; 
+        return;
     }
 
     // Elementos del DOM (Login)
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function () {
             const targetId = this.getAttribute('data-target'); // p.ej. "password"
             const passwordInput = document.getElementById(targetId); // input de "password"
-            
+
             if (!passwordInput) return;
 
             const icon = this.querySelector('i');
@@ -155,10 +155,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     loginForm.addEventListener('submit', function (e) {
         e.preventDefault();
+
         const email = emailInput.value;
         const password = passwordInput.value;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         let hasError = false;
+
+        // Ocultar el error de autenticación al re-intentar
+        const loginAuthError = document.getElementById('loginAuthError');
+        if (loginAuthError) {
+            loginAuthError.style.display = 'none';
+        }
+
         if (!emailRegex.test(email)) {
             emailInput.classList.add('is-invalid');
             hasError = true;
@@ -166,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
             emailInput.classList.remove('is-invalid');
             emailInput.classList.add('is-valid');
         }
+
         if (password.length < 8) {
             passwordInput.classList.add('is-invalid');
             hasError = true;
@@ -173,35 +182,64 @@ document.addEventListener('DOMContentLoaded', function () {
             passwordInput.classList.remove('is-invalid');
             passwordInput.classList.add('is-valid');
         }
+
+        // Lógica de Autenticación ---
         if (hasError) {
             resetAllTurtles();
             turtles.main.head.classList.add('shake-no');
             turtles.main.eyes.forEach(eye => eye.classList.add('angry'));
             turtles.main.mouth.classList.add('angry');
-            turtles.turtle1.element.classList.add('scared');
-            turtles.turtle1.eyes.forEach(eye => {
-                eye.style.transform = 'scale(1.2)';
-            });
-            turtles.turtle1.mouth.classList.add('sad');
-            turtles.turtle2.eyes.forEach(eye => eye.classList.add('happy'));
-            turtles.turtle2.mouth.classList.add('laughing');
-            turtles.turtle3.eyes.forEach(eye => eye.classList.add('confused'));
-            turtles.turtle3.mouth.classList.add('sad');
-            turtles.turtle4.eyes.forEach(eye => eye.classList.add('happy'));
-            turtles.turtle4.mouth.classList.add('laughing');
-            setTimeout(resetAllTurtles, 2000);
+
         } else {
-            resetAllTurtles();
-            Object.values(turtles).forEach((turtle, index) => {
+
+            const usuariosRegistrados = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Buscamos al usuario por email Y contraseña
+            const usuarioEncontrado = usuariosRegistrados.find(
+                user => user.email === email && user.password === password
+            );
+
+            if (usuarioEncontrado) {
+                // --- Usuario encontrado ---
+                resetAllTurtles();
+                Object.values(turtles).forEach((turtle, index) => {
+                    setTimeout(() => {
+                        turtle.element.classList.add('jump');
+                        turtle.eyes.forEach(eye => eye.classList.add('happy'));
+                        turtle.mouth.classList.add('happy');
+                    }, index * 100);
+                });
+
+                // Guardar al usuario en sessionStorage para saber que está logueado
+                sessionStorage.setItem('usuarioLogueado', JSON.stringify(usuarioEncontrado));
+
+                // Mostrar bienvenida y redirigir
                 setTimeout(() => {
-                    turtle.element.classList.add('jump');
-                    turtle.eyes.forEach(eye => eye.classList.add('happy'));
-                    turtle.mouth.classList.add('happy');
-                }, index * 100);
-            });
-            setTimeout(() => {
-                alert('¡Bienvenido a Alma de Tortuga! 🐢💚');
-            }, 600);
+                    alert('¡Bienvenido a Alma de Tortuga! 🐢💚');
+                    // Redirigir al inicio o a la página de "Mi Cuenta"
+                    /* CREAR UNA PAGINA DE USUARIO! */
+                    window.location.href = '../../index.html';
+                }, 600);
+
+            } else {
+                // --- ¡FALLO! Correo o contraseña incorrectos ---
+
+                // Mostramos el error de autenticación que añadimos en el HTML
+                if (loginAuthError) {
+                    loginAuthError.style.display = 'block';
+                }
+
+                // Hacemos que las tortugas reaccionen al error
+                resetAllTurtles();
+                turtles.main.head.classList.add('shake-no');
+                turtles.main.eyes.forEach(eye => eye.classList.add('angry'));
+                turtles.main.mouth.classList.add('angry');
+
+                turtles.turtle2.eyes.forEach(eye => eye.classList.add('happy'));
+                turtles.turtle2.mouth.classList.add('laughing');
+                turtles.turtle4.eyes.forEach(eye => eye.classList.add('happy'));
+                turtles.turtle4.mouth.classList.add('laughing');
+            }
         }
     });
 });
