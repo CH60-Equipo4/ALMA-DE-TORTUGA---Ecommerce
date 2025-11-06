@@ -1,3 +1,4 @@
+import { ItemsController } from '../itemsController.js';
 
 const form = document.getElementById("formToteBag");
 const personalizadaCheck = document.getElementById("personalizada");
@@ -7,10 +8,6 @@ const jsonCardContainer = document.getElementById("jsonCardContainer");
 const resultadoJSON = document.getElementById("resultadoJSON");
 const btnOcultar = document.getElementById("btnOcultar");
 
-// Mostrar/ocultar campo personalizado
-personalizadaCheck.addEventListener("change", () => {
-    mensajeContainer.style.display = personalizadaCheck.checked ? "block" : "none";
-});
 
 // Mostrar alertas Bootstrap
 function mostrarAlerta(mensaje, tipo = "danger") {
@@ -42,8 +39,6 @@ form.addEventListener("submit", (e) => {
     const descripcion = document.getElementById("descripcion").value.trim();
     const precio = document.getElementById("precio").value;
     const categoria = document.getElementById("categoria").value;
-    const personalizada = personalizadaCheck.checked;
-    const mensajePersonalizado = document.getElementById("mensajePersonalizado").value.trim();
     const imagenURL = document.getElementById("imagenURL").value.trim();
 
     if (!nombre || !descripcion || !precio || !categoria || !imagenURL) {
@@ -51,32 +46,29 @@ form.addEventListener("submit", (e) => {
         return;
     }
 
-    if (personalizada && !mensajePersonalizado) {
-        mostrarAlerta("Por favor, ingresa el mensaje o diseño personalizado.");
-        return;
-    }
+    const itemsController = new ItemsController();
+    itemsController.loadItemsFromLocalStorage();
+    itemsController.addItem(nombre, descripcion, precio, imagenURL, categoria);
 
-    // Crear objeto JSON
-    const toteBag = {
-        nombre,
-        descripcion,
-        precio: parseFloat(precio),
-        categoria,
-        personalizada,
-        mensajePersonalizado: personalizada ? mensajePersonalizado : null,
-        imagenURL
-    };
-
-     // Crear LocalStorage
-
-    // Mostrar JSON en tarjeta
-    resultadoJSON.textContent = JSON.stringify(toteBag, null, 2);
-    jsonCardContainer.style.display = "block";
     mostrarAlerta("¡Producto creado correctamente!", "success");
+
+    // 🔹 Redirigir según categoría (opcional)
+    setTimeout(() => {
+        if (categoria === "clasicas") {
+            window.location.href = "../Clasicas/clasicas.html";
+        } else if (categoria === "coleccion") {
+            window.location.href = "../Coleccion/coleccion.html";
+        } else {
+            window.location.href = "../Clasicas/clasicas.html"; // valor por defecto
+        }
+    }, 2000);
+
 
     // Limpiar formulario
     form.reset();
-    mensajeContainer.style.display = "none";
+    if (typeof mensajeContainer !== "undefined") {
+        mensajeContainer.style.display = "none";
+    }
 });
 
 // Ocultar tarjeta JSON
