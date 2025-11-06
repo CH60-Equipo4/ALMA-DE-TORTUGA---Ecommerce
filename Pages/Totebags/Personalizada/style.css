@@ -304,3 +304,119 @@
     cursor: not-allowed;
     opacity: 0.5;
 }
+
+/* -------------------------------------- */
+/* ESTILOS DE INTEGRACIÓN DEL OFFCANVAS */
+/* -------------------------------------- */
+
+.offcanvas {
+    /* Fondo claro de la paleta */
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+.offcanvas-header {
+    /* Borde inferior para separar el encabezado del contenido */
+    border-bottom: 1px solid var(--color-accent-light);
+    padding: 1.5rem;
+}
+
+.offcanvas-title {
+    /* Fuente de encabezado de tu marca */
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+/* Estilo para el botón de cerrar (x) */
+.offcanvas .btn-close {
+    filter: invert(10%);
+    /* Oscurece el color de la 'X' si el fondo es muy claro */
+}
+
+/* Estilo para el Offcanvas Header de Contacto */
+.offcanvas-header h5 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-texto);
+}
+
+/* Estilo del botón Contactanos dentro del Offcanvas */
+.offcanvas .btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.offcanvas .btn-primary:hover {
+    background-color: #6C7A4A;
+    /* Un tono ligeramente más oscuro que --color-primary */
+    border-color: #6C7A4A;
+}
+
+/* -------------------------------------- */
+/* ESTILOS DEL CUERPO DEL RESUMEN */
+/* -------------------------------------- */
+.offcanvas-body .card {
+    /* Usamos el color de fondo de la marca para que se integre con el Offcanvas */
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-accent-light);
+    /* Borde sutil para definir la zona */
+    border-radius: 12px;
+    /* Mantenemos el suavizado de las esquinas */
+    box-shadow: none;
+    /* Eliminamos cualquier sombra si existiera */
+}
+
+#resumen-contenido h6 {
+    /* Títulos de sección (e.g., Tu Selección, Opciones de Diseño) */
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-primary);
+    /* Usar el color principal para resaltar */
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+#resumen-contenido ul {
+    padding-left: 1rem;
+    font-size: 0.95rem;
+    color: var(--color-texto);
+}
+
+/* -------------------------------------- */
+/* ESTILOS DEL FOOTER Y BOTONES FINALES */
+/* -------------------------------------- */
+
+/* Botón Añadir al Carrito */
+.offcanvas .btn-success#btn-anadir-carrito {
+    background-color: var(--color-boton);
+    /* Usamos el color de botón de tu ROOT */
+    border-color: var(--color-boton);
+    font-family: var(--font-body);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 0.75rem 1rem;
+}
+
+.offcanvas .btn-success#btn-anadir-carrito:hover {
+    background-color: var(--color-secondary);
+    /* Un color fuerte al hacer hover */
+    border-color: var(--color-secondary);
+}
+
+/* Botón Regresar y Modificar */
+.offcanvas .btn-outline-secondary {
+    color: var(--color-texto);
+    border-color: var(--color-accent-light);
+    font-weight: 500;
+}
+
+.offcanvas .btn-outline-secondary:hover {
+    background-color: var(--color-accent-light);
+    color: var(--color-texto);
+}
