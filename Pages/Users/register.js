@@ -77,6 +77,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function saveToLocalStorage(userData) {
+
+        const userDataJSON = JSON.stringify(userData);
+        const existingUsersJSON = localStorage.getItem('users');
+        const existingUsers = existingUsersJSON ? JSON.parse(existingUsersJSON) : [];
+
+        // Añadimos el nuevo usuario
+        existingUsers.push(userData);
+
+        // Guardamos la lista completa de vuelta en Local Storage
+        localStorage.setItem('users', JSON.stringify(existingUsers));
+
+        console.log("Usuario guardado en Local Storage:", userData);
+    }
+
 
     const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
     const appendAlert = (message, type) => {
@@ -84,8 +99,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const wrapper = document.createElement('div')
         wrapper.innerHTML = [
             `<div class="alert alert-${type} alert-dismissible py-1" role="alert">`,
-            `   <div>${message}</div>`,
-            '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+            `   <div>${message}</div>`,
+            '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
             '</div>'
         ].join('')
 
@@ -122,12 +137,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (allValid) {
 
+            // Recolectar datos y crear el objeto
+            const newUserData = {
+                nombre: document.getElementById('nombre').value.trim(),
+                apellido: document.getElementById('apellido').value.trim(),
+                telefono: telefono.value.trim(),
+                email: email.value.trim().toLowerCase(),
+                password: password.value
+            };
+
+            // Guardar los datos en Local Storage
+            saveToLocalStorage(newUserData);
+            
             appendAlert('Registro Exitoso! Revisa tu bandeja de entrada!', 'success');
+
             form.reset();
             form.classList.remove('was-validated');
             password.classList.remove('is-valid', 'is-invalid');
             confirmPassword.classList.remove('is-valid', 'is-invalid');
             telefono.classList.remove('is-valid', 'is-invalid');
+            email.classList.remove('is-valid', 'is-invalid');
+
+            // SOLO dejamos el delay para la redirección si es necesario
+            setTimeout(() => {
+                window.location.href = '../Users/logIn.html';
+            }, 5000);
 
         }
     }, false);

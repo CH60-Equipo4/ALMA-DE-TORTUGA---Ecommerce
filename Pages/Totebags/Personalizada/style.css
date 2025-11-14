@@ -1,0 +1,422 @@
+/* -------------------------------------- */
+/* ESTILOS DE SELECCIÓN DE BASE (CARDS) */
+/* -------------------------------------- */
+
+.selection-card-label {
+    display: block;
+    height: 100%;
+}
+
+.selection-card {
+    cursor: pointer;
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-accent-light);
+    transition: all 0.2s ease-in-out;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.selection-card:hover {
+    box-shadow: 0 0 12px rgba(129, 142, 89, 0.2);
+}
+
+.selection-card-label input[type="radio"]:checked+.selection-card {
+    border: 3px solid var(--color-primary);
+    box-shadow: 0 0 10px rgba(129, 142, 89, 0.5);
+    border-radius: 12px;
+}
+
+
+/* ESTILOS DE COMPACTACIÓN Y TIPOGRAFÍA */
+
+.selection-card .card-body {
+    padding: 0.5rem !important;
+}
+
+.selection-card .card-title {
+    font-family: var(--font-heading);
+    color: var(--color-texto);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem !important;
+}
+
+.description-text {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-texto);
+    opacity: 0.8;
+    line-height: 1.2;
+    min-height: 3.2em;
+    margin-bottom: 0.2rem !important;
+}
+
+.selection-card .card-body .text-muted.small {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--color-texto) !important;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem !important;
+}
+
+.price-text {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent-gold);
+    margin-top: 0.6rem !important;
+}
+
+
+/* ESTILOS PARA LA IMAGEN */
+
+.image-container {
+    background-color: var(--color-fondo) !important;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.bag-image {
+    object-fit: contain;
+    max-height: 200px;
+    border-radius: 0 !important;
+    width: 100%;
+    height: auto;
+}
+
+
+/* -------------------------------------- */
+/* ESTILO PARA DIVISOR VERTICAL */
+/* -------------------------------------- */
+
+.custom-separator-right {
+    border-right: none;
+    padding-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .custom-separator-right {
+        border-right: 1px solid var(--color-accent-light);
+        padding-right: 2rem !important;
+        padding-left: 0 !important;
+        padding-bottom: 0;
+    }
+
+    .row.mb-5>.col-md-6:last-child {
+        padding-left: 2rem !important;
+    }
+}
+
+/* -------------------------------------- */
+/* ESTILOS PARA LA PREVISUALIZACIÓN DINÁMICA (EL LIENZO) */
+/* -------------------------------------- */
+
+.custom-tote-preview-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    /* Ratio para mantener una forma consistente */
+    padding-top: 100%;
+    overflow: hidden;
+}
+
+.tote-base-img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: contain;
+    z-index: 10;
+}
+
+/* Estilos para el diseño del usuario (la imagen subida) */
+.tote-diseno {
+    position: absolute;
+    height: auto;
+    object-fit: contain;
+    z-index: 20;
+}
+
+/* --- Posiciones del Diseño --- */
+.tote-diseno.centro {
+    top: 30%;
+    left: 30%;
+    width: 45%;
+}
+
+.tote-diseno.esquinaSup {
+    top: 5%;
+    right: 5%;
+    width: 25%;
+}
+
+.tote-diseno.esquinaInf {
+    bottom: 5%;
+    left: 5%;
+    width: 30%;
+}
+
+/* Estilos para el texto personalizado */
+.tote-texto {
+    position: absolute;
+    z-index: 30;
+    width: 80%;
+    left: 10%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-texto);
+    line-height: 1.2;
+}
+
+/* --- Posiciones del Texto --- */
+.tote-texto.arriba {
+    top: 15%;
+}
+
+.tote-texto.abajo {
+    bottom: 15%;
+}
+
+/* --- CLASES DE FUENTES --- */
+.tote-texto.poppins {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.tote-texto.poltawski {
+    font-family: 'Poltawski Nowy', serif;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.tote-texto.arial {
+    font-family: Arial, sans-serif;
+    font-weight: 500;
+}
+
+.tote-texto.font-1 {
+    font-family: 'Times New Roman', serif;
+    font-weight: 700;
+}
+
+.tote-texto.font-2 {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 400;
+}
+
+.tote-texto.font-3 {
+    font-family: 'Monotype Corsiva', cursive;
+    font-weight: 600;
+}
+
+.tote-texto.font-4 {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.tote-texto.font-5 {
+    font-family: 'Arial', sans-serif;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.tote-texto.font-6 {
+    font-family: 'Impact', sans-serif;
+    font-weight: 900;
+}
+
+.tote-texto.font-7 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 700;
+}
+
+/* Simulando un estilo moderno */
+.tote-texto.font-8 {
+    font-family: 'Poltawski Nowy', serif;
+    font-weight: 400;
+}
+
+.tote-texto.font-9 {
+    font-family: 'Brush Script MT', cursive;
+    font-weight: 400;
+}
+
+.tote-texto.font-10 {
+    font-family: 'Cedarville Cursive', cursive;
+    font-weight: 300;
+}
+
+/* Simulando una fina cursiva */
+.tote-texto.font-11 {
+    font-family: 'Sacramento', cursive;
+    font-weight: 600;
+}
+
+/* Simulando script bold */
+.tote-texto.font-12 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-style: italic;
+}
+
+/* Estilos para los inputs deshabilitados (efecto visual) */
+#seccion-frase textarea:disabled,
+#seccion-frase select:disabled {
+    cursor: not-allowed;
+    background-color: var(--color-accent-lighter);
+    opacity: 0.7;
+}
+
+/* -------------------------------------- */
+/* ESTILOS PARA LA SELECCIÓN DE COLOR */
+/* -------------------------------------- */
+
+.color-radio-option {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: block;
+    border: 3px solid transparent;
+    transition: all 0.1s ease-in-out;
+}
+
+/* Efecto de selección: Anillo de color primario */
+.color-radio-input:checked+.color-radio-option {
+    border: 3px solid var(--color-primary);
+    box-shadow: 0 0 5px rgba(129, 142, 89, 0.5);
+}
+
+/* Efecto hover */
+.color-radio-option:hover {
+    opacity: 0.8;
+}
+
+/* Deshabilitado (para que el JS lo maneje) */
+#color-selector-container[disabled] .color-radio-option {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* -------------------------------------- */
+/* ESTILOS DE INTEGRACIÓN DEL OFFCANVAS */
+/* -------------------------------------- */
+
+.offcanvas {
+    /* Fondo claro de la paleta */
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+.offcanvas-header {
+    /* Borde inferior para separar el encabezado del contenido */
+    border-bottom: 1px solid var(--color-accent-light);
+    padding: 1.5rem;
+}
+
+.offcanvas-title {
+    /* Fuente de encabezado de tu marca */
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+/* Estilo para el botón de cerrar (x) */
+.offcanvas .btn-close {
+    filter: invert(10%);
+    /* Oscurece el color de la 'X' si el fondo es muy claro */
+}
+
+/* Estilo para el Offcanvas Header de Contacto */
+.offcanvas-header h5 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-texto);
+}
+
+/* Estilo del botón Contactanos dentro del Offcanvas */
+.offcanvas .btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.offcanvas .btn-primary:hover {
+    background-color: #6C7A4A;
+    /* Un tono ligeramente más oscuro que --color-primary */
+    border-color: #6C7A4A;
+}
+
+/* -------------------------------------- */
+/* ESTILOS DEL CUERPO DEL RESUMEN */
+/* -------------------------------------- */
+.offcanvas-body .card {
+    /* Usamos el color de fondo de la marca para que se integre con el Offcanvas */
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-accent-light);
+    /* Borde sutil para definir la zona */
+    border-radius: 12px;
+    /* Mantenemos el suavizado de las esquinas */
+    box-shadow: none;
+    /* Eliminamos cualquier sombra si existiera */
+}
+
+#resumen-contenido h6 {
+    /* Títulos de sección (e.g., Tu Selección, Opciones de Diseño) */
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-primary);
+    /* Usar el color principal para resaltar */
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+#resumen-contenido ul {
+    padding-left: 1rem;
+    font-size: 0.95rem;
+    color: var(--color-texto);
+}
+
+/* -------------------------------------- */
+/* ESTILOS DEL FOOTER Y BOTONES FINALES */
+/* -------------------------------------- */
+
+/* Botón Añadir al Carrito */
+.offcanvas .btn-success#btn-anadir-carrito {
+    background-color: var(--color-boton);
+    /* Usamos el color de botón de tu ROOT */
+    border-color: var(--color-boton);
+    font-family: var(--font-body);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 0.75rem 1rem;
+}
+
+.offcanvas .btn-success#btn-anadir-carrito:hover {
+    background-color: var(--color-secondary);
+    /* Un color fuerte al hacer hover */
+    border-color: var(--color-secondary);
+}
+
+/* Botón Regresar y Modificar */
+.offcanvas .btn-outline-secondary {
+    color: var(--color-texto);
+    border-color: var(--color-accent-light);
+    font-weight: 500;
+}
+
+.offcanvas .btn-outline-secondary:hover {
+    background-color: var(--color-accent-light);
+    color: var(--color-texto);
+}

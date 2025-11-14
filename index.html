@@ -8,8 +8,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../CCS-Styles/main.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./main.css" />
+  <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 </head>
 
@@ -18,27 +18,11 @@
   <nav class="navbar navbar-expand-lg navbar-light custom-navbar fixed-top">
     <div class="container-fluid d-flex align-items-center justify-content-between">
       <!-- LOGO -->
-      <a class="navbar-brand d-flex align-items-center" href="../Index/index.html">
+      <a class="navbar-brand d-flex align-items-center" href="./index.html">
         <div class="logo-circle">
-          <img src="../../Pictures/Logo/Logo1.png" alt="Alma Tortuga Logo" class="logo-img" />
+          <img src="./Pictures/Logo/Logo1.png" alt="Alma Tortuga Logo" class="logo-img" />
         </div>
       </a>
-
-      <!-- Nombre con dropdown -->
-      <div class="dropdown me-4">
-        <a class="titulo dropdown-toggle text-decoration-none fw-bold" href="#" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          ToteBags
-        </a>
-        <ul class="dropdown-menu shadow">
-          <li><a class="dropdown-item" href="#">ToteBag Clásica</a></li>
-          <li><a class="dropdown-item" href="#">ToteBag con Diseño</a></li>
-          <li><a class="dropdown-item" href="#">ToteBag Ecológica</a></li>
-          <li>
-            <a class="dropdown-item" href="#">ToteBag Personalizada</a>
-          </li>
-        </ul>
-      </div>
 
       <!-- BOTÓN RESPONSIVO -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -49,17 +33,29 @@
       <!-- ENLACES -->
       <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
         <ul class="navbar-nav ms-3" style="width: 60%">
+          <!-- Dropdown ToteBags -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            ToteBags
+            </a>
+            <ul class="dropdown-menu shadow" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="./Pages/Totebags/Coleccion/coleccion.html">Colección de Temporada</a></li>
+              <li><a class="dropdown-item" href="./Pages/Totebags/Clasicas/clasicas.html">ToteBag Clásica</a></li>
+              <li>
+                <a class="dropdown-item" href="./Pages/Totebags/Personalizada/personalizada.html">ToteBag Personalizada</a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="../Product/products.html">Productos</a>
+            <a class="nav-link" href="./Pages/Contact/contact.html">Contacto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../Contact/contact.html">Contacto</a>
+            <a class="nav-link" href="./Pages/About/about.html">Nosotros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../About/about.html">Nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../Blog/blog.html">Blog</a>
+            <a class="nav-link" href="./Pages/Blog/blog.html">Blog</a>
           </li>
         </ul>
       </div>
@@ -70,10 +66,10 @@
         </a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Cuenta</a></li>
-          <li><a class="dropdown-item" href="../Users/logIn.html">Iniciar Sesión</a></li>
+          <li><a class="dropdown-item" href="./Pages/Users/logIn.html">Iniciar Sesión</a></li>
+          <li><a class="dropdown-item" href="./Pages/Totebags/Fomulario/formulario.html">Agregar producto</a></li>
         </ul>
       </div>
-      <p></p>
 
       <!-- ICONO CARRITO -->
       <div class="cart-icon-container position-relative">
@@ -91,7 +87,7 @@
   </header>
 
   <main>
-    <p>Contenido</p>
+    <p>Inicio</p>
   </main>
 
   <!-- FOOTER -->
@@ -101,16 +97,16 @@
         <div class="col-12 col-md-4 footer-links text-center text-md-start">
           <h4>Alma de Tortuga</h4>
           <ul class="list-unstyled">
-            <li><a href="../Contact/contact.html">Contacto</a></li>
-            <li><a href="../About/about.html">Nosotros</a></li>
+            <li><a href="./Pages/Contact/contact.html">Contacto</a></li>
+            <li><a href="./Pages/About/about.html">Nosotros</a></li>
             <li><a href="#">Carrito</a></li>
-            <li><a href="#">Blog</a></li>
+            <li><a href="./Pages/Blog/blog.html">Blog</a></li>
           </ul>
         </div>
 
         <div class="col-12 col-md-4 footer-logo text-center my-3 my-md-0">
-          <a href="../../Pages/Index/index.html">
-            <img src="../../Pictures/Logo/Logo1.png" alt="Logo de Alma de Tortuga" />
+          <a href="./index.html">
+            <img src="./Pictures/Logo/Logo2.png" alt="Logo de Alma de Tortuga" />
           </a>
         </div>
         <div class="col-12 col-md-4 footer-col-right social-column text-center text-md-end">
@@ -128,7 +124,7 @@
     </div>
   </footer>
 
-  <script src="./Script-about/script.js"></script>
+  <script src="./script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>
