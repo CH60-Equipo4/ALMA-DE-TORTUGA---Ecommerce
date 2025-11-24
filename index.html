@@ -7,13 +7,15 @@
   <title>Alma De Tortuga</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
   <link rel="stylesheet" href="./main.css" />
-  <link rel="stylesheet" href="./style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+  <link rel="stylesheet" href="./Inicio/style.css">
 </head>
 
 <body>
+  <header>
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-light custom-navbar fixed-top">
     <div class="container-fluid d-flex align-items-center justify-content-between">
@@ -87,7 +89,138 @@
   </header>
 
   <main>
-    <p>Inicio</p>
+    <div id="sliderHome"></div>
+
+    <div>
+      <h2 class="title-comprado">Lo más comprado</h2>
+      <p class="line"></p>
+      <div class="cards-comprado row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card producto-card custom-shadow">
+            <img 
+              src="./Pictures/Products/PersonName/Minixmas.png" 
+              class="card-img-top img-fluid" 
+              alt="Premium suave Totebag con diseño de tortuga"
+            >
+            
+            <div class="card-body">
+              <h5 class="card-title product-name">Premium suave</h5>
+              
+              <p class="card-text product-price">$1,200.00 MXN</p>
+            </div>
+            
+            <a href="#" class="btn btn-block add-to-cart-btn">
+              Agregar al carrito
+            </a>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="card producto-card custom-shadow">
+            <img 
+              src="./Pictures/Products/Coleccion_Navidad/Squirtle_Xmas.png" 
+              class="card-img-top img-fluid" 
+              alt="Premium suave Totebag con diseño de tortuga"
+            >
+            
+            <div class="card-body">
+              <h5 class="card-title product-name">Premium suave</h5>
+              
+              <p class="card-text product-price">$1,200.00 MXN</p>
+            </div>
+            
+            <a href="#" class="btn btn-block add-to-cart-btn">
+              Agregar al carrito
+            </a>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="card producto-card custom-shadow">
+            <img 
+              src="./Pictures/Products/Coleccion_Navidad/Xmas_MX.png" 
+              class="card-img-top img-fluid" 
+              alt="Premium suave Totebag con diseño de tortuga"
+            >
+            
+            <div class="card-body">
+              <h5 class="card-title product-name">Premium suave</h5>
+              
+              <p class="card-text product-price">$1,200.00 MXN</p>
+            </div>
+            
+            <a href="#" class="btn btn-block add-to-cart-btn">
+              Agregar al carrito
+            </a>
+          </div>
+        </div>
+      
+      </div>
+
+      </div>
+    </div>
+
+    <div class="banner-info">
+      <div class="banner-top">
+        
+        <div class="banner-item">
+          <i class="fas fa-plane"></i> <span>ENVÍO GRATIS</span>
+        </div>
+    
+        <div class="banner-item-center">
+          <i class="fas fa-hands-helping"></i> 
+        </div> <div class="banner-item">
+          <i class="fa-solid fa-lock"></i>
+          <span>PAGO SEGURO</span> </div>
+    
+      </div> <div class="banner-bottom">
+        <p>PARTE DE TU COMPRA AYUDA A LAS TORTUGAS</p>
+      </div>
+    </div>
+
+    <div class="blog-section">
+      <h2 class="title-blog">Visita nuestro Blog</h2>
+      <p class="line"></p>
+      <div class="container mt-4">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row g-4 justify-content-center align-items-stretch">
+              <!-- Tarjeta 1: Guía de compra -->
+              <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <a href="./Pages/Blog/GuiaDeCompra.html" class="text-decoration-none">
+                  <div class="card p-4 h-100 d-flex flex-column text-center shadow-sm">
+                    <img src="../../Pages/Blog/Pictures-blog/GuiaDeCompra.png" class="card-img-top mx-auto mb-3"
+                      alt="Guía de Compra" style="max-width: 300px; object-fit: cover" />
+                    <h5 class="mt-2">¿Cómo hacer una compra en Alma de Tortuga?</h5>
+                  </div>
+                </a>
+              </div>
+              <!-- Tarjeta 2: Colección navideña -->
+              <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <a href="../../Pages/Totebags/Coleccion/coleccion.html" class="text-decoration-none">
+                  <div class="card p-4 h-100 d-flex flex-column text-center shadow-sm">
+                    <img src="../../Pages/Blog/Pictures-blog/ColecciónNavidad.png" class="card-img-top mx-auto mb-3"
+                      alt="Guía de Compra" style="max-width: 300px; object-fit: cover" />
+                    <h5 class="mt-2">Colección Navideña</h5>
+                  </div>
+                </a>
+              </div>
+              <!-- Tarjeta 3: Personaliza -->
+              <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <a href="../../Pages/Totebags/Personalizada/personalizada.html" class="text-decoration-none">
+                  <div class="card p-4 h-100 d-flex flex-column text-center shadow-sm">
+                    <img src="../../Pages/Blog/Pictures-blog/PersonalizaTuTotebag.png" class="card-img-top mx-auto mb-3"
+                      alt="Guía de Compra" style="max-width: 300px; object-fit: cover" />
+                    <h5 class="mt-2">Personaliza tu totebag</h5>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </main>
 
   <!-- FOOTER -->
@@ -124,7 +257,7 @@
     </div>
   </footer>
 
-  <script src="./script.js"></script>
+  <script src="./Inicio/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>
