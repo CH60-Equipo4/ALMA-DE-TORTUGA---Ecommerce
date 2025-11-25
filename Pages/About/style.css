@@ -30,7 +30,7 @@
     color: #2E3B24 !important;
     /* verde oscuro */
     font-family: 'Georgia', serif;
-    font-size: 0.95rem;
+    font-size: 20px;
     font-weight: 500;
     padding: 6px 14px;
     border: 1px solid rgba(123, 139, 85, 0.4);
@@ -188,7 +188,7 @@
 /* Contenido de la biografía */
 .flip-card-back .card-text {
     padding: 0 1rem;
-    font-size: 0.95rem;
+    font-size: 15px;
 }
 
 /* Para asegurar que la tarjeta se vea como una tarjeta limpia de Bootstrap */
