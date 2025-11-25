@@ -66,11 +66,29 @@ document.addEventListener('DOMContentLoaded', function () {
             // Reacción: todas las tortugas se voltean
             if (type === 'text') {
                 Object.values(turtles).forEach(turtle => {
-                    turtle.head.classList.add('turn-away');
+                    turtle.eyes.forEach(eye => {
+                        eye.style.background = '#9ca876';
+                        eye.style.borderRadius = '50%';
+
+                        const pupil = eye.querySelector('.turtle-pupil');
+                        if (pupil) {
+                            pupil.style.opacity = '0';
+                        }
+                    })
                 });
             } else {
                 Object.values(turtles).forEach(turtle => {
-                    turtle.head.classList.remove('turn-away');
+                    turtle.eyes.forEach(eye => {
+                        eye.style.background = '';
+                        eye.style.borderRadius = '';
+                        eye.style.boxShadow = ''; 
+                        eye.style.transform = '';
+
+                        const pupil = eye.querySelector('.turtle-pupil');
+                        if (pupil) {
+                            pupil.style.opacity = '';
+                        }
+                    })
                 });
             }
         });
@@ -83,25 +101,45 @@ document.addEventListener('DOMContentLoaded', function () {
             turtle.head.classList.remove('shake-no', 'nod-yes', 'turn-away');
             turtle.eyes.forEach(eye => {
                 eye.classList.remove('angry', 'happy', 'confused', 'x-eyes');
+                eye.style.height = '';
+                eye.style.borderTop = '';
+                eye.style.borderRadius = '';
+                eye.style.transform = '';
+                eye.style.background = '';
+                eye.style.border = '';
+                eye.style.boxShadow = '';
+
+                const pupil = eye.querySelector('.turtle-pupil');
+                if (pupil) {
+                    pupil.style.opacity = '';
+                }
             });
             turtle.mouth.classList.remove('happy', 'sad', 'laughing', 'angry');
         });
     }
 
     document.addEventListener('mousemove', function (e) {
-        if (passwordInput === document.activeElement || passwordInput.type === 'text') {
+        if (passwordInput === document.activeElement) {
             return;
         }
-        allPupils.forEach(function (pupil) {
-            const eye = pupil.parentElement;
-            const eyeRect = eye.getBoundingClientRect();
+        Object.values(turtles).forEach(turtle => {
+            const firstPupil = turtle.eyes[0].querySelector('.turtle-pupil');
+            if (!firstPupil) return;
+
+            const eyeRect = turtle.eyes[0].getBoundingClientRect();
             const eyeCenterX = eyeRect.left + eyeRect.width / 2;
             const eyeCenterY = eyeRect.top + eyeRect.height / 2;
             const angle = Math.atan2(e.clientY - eyeCenterY, e.clientX - eyeCenterX);
             const distance = Math.min(2.5, Math.hypot(e.clientX - eyeCenterX, e.clientY - eyeCenterY) / 100);
             const pupilX = Math.cos(angle) * distance;
             const pupilY = Math.sin(angle) * distance;
-            pupil.style.transform = 'translate(' + pupilX + 'px, ' + pupilY + 'px)';
+
+            turtle.eyes.forEach(eye => {
+                const pupil = eye.querySelector('.turtle-pupil');
+                if (pupil) {
+                    pupil.style.transform = 'translate(' + pupilX + 'px, ' + pupilY + 'px)';
+                }
+            });
         });
     });
 
@@ -113,43 +151,74 @@ document.addEventListener('DOMContentLoaded', function () {
             const mainPupilRight = document.getElementById('mainPupilRight');
             mainPupilLeft.style.transform = 'translate(0, 0)';
             mainPupilRight.style.transform = 'translate(0, 0)';
-        }
-    });
+
+            turtles.main.eyes.forEach(eye => {
+                eye.style.background = '#9ca876';
+                eye.style.borderRadius = '50%';
+
+                const pupil = eye.querySelector('.turtle-pupil');
+                if (pupil) {
+                    mainPupilRight.style.opacity = '0';
+                }
+            });
+            const directions = [
+                'translate(-2px, -2px)','translate(2px, -2px)',
+                'translate(-2px, 2px)', 'translate(2px, 2px)',
+                'translate(-3px, 0)', 'translate(3px, 0)',
+                'translate(0, -3px)', 'translate(0, 3px)'
+            ];
+            let directionsIndex = 0;
+            Object.keys(turtles).forEach(key => {
+                if (key !== 'main') {
+                    const turtle = turtles[key];
+                    turtle.eyes.forEach(eye => {
+                        const pupil = eye.querySelector('.turtle-pupil');
+                        if (pupil) {
+                            pupil.style.transform = directions[directionsIndex % directions.length]; 
+                        }
+                    });
+                    directionsIndex++;
+                }
+            });
+        }});
 
     passwordInput.addEventListener('blur', function () {
         mainTurtleHands.classList.remove('visible');
         mainTurtleHead.classList.remove('covering');
+        if (this.getAttribute('type') === 'password') {
+            turtles.main.eyes.forEach(eye => {
+                eye.style.background = '';
+                eye.style.borderRadius = '';
+                eye.style.boxShadow = '';
+                eye.style.transform = '';
+
+                const pupil = eye.querySelector('.turtle-pupil');
+                if (pupil) {
+                    pupil.style.opacity = '';
+                }
+            });
+        }
     });
 
+    // agrego que la sonrisa de las tortugas solo dure 3 segundas porque mas tiempo se ven raras
+    let emailValidationTimeout;
     emailInput.addEventListener('input', function () {
         const email = this.value;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (email.length > 0) {
-            if (emailRegex.test(email)) {
-                this.classList.remove('is-invalid');
-                this.classList.add('is-valid');
-                resetAllTurtles();
-                turtles.main.element.classList.add('jump');
-                turtles.main.eyes.forEach(eye => eye.classList.add('happy'));
-                turtles.main.mouth.classList.add('happy');
-                turtles.turtle1.element.classList.add('jump');
-                turtles.turtle1.eyes.forEach(eye => eye.classList.add('happy'));
-                turtles.turtle1.mouth.classList.add('happy');
-                turtles.turtle2.eyes.forEach(eye => eye.classList.add('happy'));
-                turtles.turtle2.mouth.classList.add('happy');
-                turtles.turtle3.head.classList.add('nod-yes');
-                turtles.turtle3.eyes.forEach(eye => eye.classList.add('happy'));
-                turtles.turtle3.mouth.classList.add('happy');
-                turtles.turtle4.element.classList.add('jump');
-                turtles.turtle4.eyes.forEach(eye => eye.classList.add('happy'));
-                turtles.turtle4.mouth.classList.add('happy');
-            } else {
-                this.classList.remove('is-valid');
-                this.classList.add('is-invalid');
-            }
-        } else {
-            this.classList.remove('is-valid', 'is-invalid');
+
+        clearTimeout(emailValidationTimeout);
+
+        if (emailRegex.test(email)) {
             resetAllTurtles();
+            Object.values(turtles).forEach(turtle => {
+                turtle.element.classList.add('jump');
+                turtle.eyes.forEach(eye => eye.classList.add('happy'));
+                turtle.mouth.classList.add('happy');
+    });
+
+    emailValidationTimeout = setTimeout(() => {
+                resetAllTurtles();
+            }, 3000);
         }
     });
 
@@ -207,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         turtle.element.classList.add('jump');
                         turtle.eyes.forEach(eye => eye.classList.add('happy'));
                         turtle.mouth.classList.add('happy');
-                    }, index * 100);
+                    }, index * 150);
                 });
 
                 // Guardar al usuario en sessionStorage para saber que está logueado
@@ -229,16 +298,21 @@ document.addEventListener('DOMContentLoaded', function () {
                     loginAuthError.style.display = 'block';
                 }
 
+                emailInput.classList.remove('is-valid');
+                passwordInput.classList.remove('is-valid');
+
                 // Hacemos que las tortugas reaccionen al error
                 resetAllTurtles();
-                turtles.main.head.classList.add('shake-no');
-                turtles.main.eyes.forEach(eye => eye.classList.add('angry'));
-                turtles.main.mouth.classList.add('angry');
-
-                turtles.turtle2.eyes.forEach(eye => eye.classList.add('happy'));
-                turtles.turtle2.mouth.classList.add('laughing');
-                turtles.turtle4.eyes.forEach(eye => eye.classList.add('happy'));
-                turtles.turtle4.mouth.classList.add('laughing');
+                Object.values(turtles).forEach(turtle => {
+                    turtle.head.classList.add('shake-no');
+                    turtle.mouth.classList.add('sad');
+                    turtle.eyes.forEach(eye => {
+                        eye.style.height = '10px';
+                        eye.style.borderTop = '2px solid #283429';
+                        eye.style.borderRadius = '50% 50% 0 0';
+                        eye.style.transform = 'scaleY(0.6)';
+                    });
+                });
             }
         }
     });
