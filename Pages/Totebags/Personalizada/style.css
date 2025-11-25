@@ -36,14 +36,14 @@
 .selection-card .card-title {
     font-family: var(--font-heading);
     color: var(--color-texto);
-    font-size: 1.2rem;
+    font-size: 30px;
     font-weight: 700;
     margin-bottom: 0.3rem !important;
 }
 
 .description-text {
     font-family: var(--font-body);
-    font-size: 0.85rem;
+    font-size: 20px;
     color: var(--color-texto);
     opacity: 0.8;
     line-height: 1.2;
@@ -53,7 +53,7 @@
 
 .selection-card .card-body .text-muted.small {
     font-family: var(--font-body);
-    font-size: 0.9rem;
+    font-size: 20px;
     color: var(--color-texto) !important;
     font-weight: 500;
     margin-top: 0.5rem;
@@ -62,7 +62,7 @@
 
 .price-text {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 20px;
     font-weight: 700;
     color: var(--color-accent-gold);
     margin-top: 0.6rem !important;
@@ -168,7 +168,7 @@
     width: 80%;
     left: 10%;
     text-align: center;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     color: var(--color-texto);
     line-height: 1.2;
@@ -337,7 +337,7 @@
 /* Estilo para el Offcanvas Header de Contacto */
 .offcanvas-header h5 {
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 20px;
     font-weight: 500;
     color: var(--color-texto);
 }
@@ -379,12 +379,12 @@
     /* Usar el color principal para resaltar */
     margin-top: 1rem;
     margin-bottom: 0.5rem;
-    font-size: 1.1rem;
+    font-size: 30px;
 }
 
 #resumen-contenido ul {
     padding-left: 1rem;
-    font-size: 0.95rem;
+    font-size: 20px;
     color: var(--color-texto);
 }
 
