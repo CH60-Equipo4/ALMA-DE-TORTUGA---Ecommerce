@@ -319,45 +319,139 @@
   });
 
   /* ----------------------------------------------------- */
-  /* VALIDACIÓN DEL FORMULARIO DE PAGO (offcanvas) */
+  /* VALIDACIÓN DEL FORMULARIO DE PAGO (offcanvas) — MEJORADA */
   /* ----------------------------------------------------- */
 
-  document.getElementById('paymentForm')?.addEventListener('submit', function(e) {
-    e.preventDefault();
+  document.addEventListener('DOMContentLoaded', function () {
+    const paymentForm = document.getElementById('paymentForm');
+    if (!paymentForm) return;
 
-    // Validaciones
-    const cp = document.getElementById('cp').value.trim();
-    const telefono = document.getElementById('telefono').value.trim();
-    const tarjeta = document.getElementById('numeroTarjeta').value.replace(/\s/g, '');
-    const cvv = document.getElementById('cvv').value.trim();
-    const fecha = document.getElementById('fechaVencimiento').value.trim();
+    // Campos
+    const nombreTarjeta = document.getElementById('nombreTarjeta');
+    const numeroTarjeta = document.getElementById('numeroTarjeta');
+    const fechaVencimiento = document.getElementById('fechaVencimiento');
+    const cvv = document.getElementById('cvv');
+    const telefono = document.getElementById('telefono');
+    const cp = document.getElementById('cp');
 
-    const cpValido = /^\d{5}$/.test(cp);
-    const telValido = /^\d{10}$/.test(telefono);
-    const tarjetaValida = /^\d{16}$/.test(tarjeta);
-    const cvvValido = /^\d{3,4}$/.test(cvv);
-    const fechaValida = /^\d{2}\/\d{2}$/.test(fecha);
+    // Expresiones regulares
+    const regex = {
+      nombreTitular: /^[a-zA-Z\s]{2,50}$/,
+      numeroTarjeta: /^\d{16}$/,
+      fechaVencimiento: /^\d{2}\/\d{2}$/,
+      cvv: /^\d{3,4}$/,
+      telefono: /^[1-9]\d{9}$/,
+      cp: /^\d{5}$/
+    };
 
-    if (cpValido && telValido && tarjetaValida && cvvValido && fechaValida) {
-      alert("Gracias por su compra en Alma de tortuga");
-      const offcanvas = bootstrap.Offcanvas.getInstance(document.getElementById('offcanvasPago'));
-      offcanvas.hide();
-    } else {
-      alert("Por favor, completa correctamente todos los campos.");
+    // === FUNCIONES DE VALIDACIÓN ===
+    function validateNombreTarjeta() {
+      const value = nombreTarjeta.value.trim();
+      const isValid = value !== '' && regex.nombreTitular.test(value);
+      toggleValidation(nombreTarjeta, isValid, 'El nombre debe contener solo letras y espacios (2–50 caracteres).');
+      return isValid;
     }
-  });
 
-  // Formatear número de tarjeta
-  document.getElementById('numeroTarjeta')?.addEventListener('input', function(e) {
-    let v = e.target.value.replace(/\D/g, '').slice(0, 16);
-    e.target.value = v.replace(/(.{4})/g, '$1 ').trim();
-  });
+    function validateNumeroTarjeta() {
+      const raw = numeroTarjeta.value.replace(/\D/g, '');
+      const isValid = raw.length === 16 && regex.numeroTarjeta.test(raw);
+      toggleValidation(numeroTarjeta, isValid, 'El número de tarjeta debe tener 16 dígitos.');
+      return isValid;
+    }
 
-  // Formatear fecha
-  document.getElementById('fechaVencimiento')?.addEventListener('input', function(e) {
-    let v = e.target.value.replace(/\D/g, '').slice(0, 4);
-    if (v.length >= 2) v = v.slice(0, 2) + '/' + v.slice(2);
-    e.target.value = v;
+    function validateFechaVencimiento() {
+      const value = fechaVencimiento.value;
+      const isValid = regex.fechaVencimiento.test(value);
+      toggleValidation(fechaVencimiento, isValid, 'Formato inválido. Usa MM/AA (ej. 12/28).');
+      return isValid;
+    }
+
+    function validateCvv() {
+      const isValid = cvv.value !== '' && regex.cvv.test(cvv.value);
+      toggleValidation(cvv, isValid, 'El CVV debe tener 3 o 4 dígitos.');
+      return isValid;
+    }
+
+    function validateTelefono() {
+      const clean = telefono.value.replace(/\D/g, '');
+      const isValid = clean !== '' && regex.telefono.test(clean);
+      toggleValidation(telefono, isValid, 'Ingresa un número de teléfono válido de 10 dígitos.');
+      return isValid;
+    }
+
+    function validateCp() {
+      const isValid = cp.value !== '' && regex.cp.test(cp.value);
+      toggleValidation(cp, isValid, 'El código postal debe tener 5 dígitos.');
+      return isValid;
+    }
+
+    // === FUNCION AUXILIAR PARA ERRORES ===
+    function toggleValidation(input, isValid, message) {
+      const feedback = input.parentNode.querySelector('.invalid-feedback');
+      input.classList.remove('is-valid', 'is-invalid');
+
+      if (isValid) {
+        input.classList.add('is-valid');
+        if (feedback) feedback.remove();
+      } else {
+        input.classList.add('is-invalid');
+        if (!feedback) {
+          const div = document.createElement('div');
+          div.className = 'invalid-feedback';
+          div.textContent = message;
+          input.parentNode.appendChild(div);
+        }
+      }
+    }
+
+    // === FORMATEO AUTOMÁTICO ===
+    numeroTarjeta.addEventListener('input', function (e) {
+      let v = e.target.value.replace(/\D/g, '').slice(0, 16);
+      e.target.value = v.replace(/(.{4})/g, '$1 ').trim();
+      validateNumeroTarjeta(); // validar mientras escribe
+    });
+
+    fechaVencimiento.addEventListener('input', function (e) {
+      let v = e.target.value.replace(/\D/g, '').slice(0, 4);
+      if (v.length >= 2) v = v.slice(0, 2) + '/' + v.slice(2);
+      e.target.value = v;
+      validateFechaVencimiento();
+    });
+
+    // === VALIDACIÓN EN TIEMPO REAL ===
+    nombreTarjeta.addEventListener('input', validateNombreTarjeta);
+    cvv.addEventListener('input', validateCvv);
+    telefono.addEventListener('input', validateTelefono);
+    cp.addEventListener('input', validateCp);
+
+    // === ENVÍO DEL FORMULARIO ===
+    paymentForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const validaciones = [
+        validateNombreTarjeta(),
+        validateNumeroTarjeta(),
+        validateFechaVencimiento(),
+        validateCvv(),
+        validateTelefono(),
+        validateCp()
+      ];
+
+      // Validar campos de dirección obligatorios
+      const camposDir = ['calle', 'numero', 'colonia', 'ciudad', 'estado'];
+      const validDir = camposDir.map(id => {
+        const campo = document.getElementById(id);
+        const valido = campo.value.trim() !== '';
+        campo.classList.toggle('is-invalid', !valido);
+        return valido;
+      });
+
+      if (validaciones.every(v => v) && validDir.every(v => v)) {
+        alert('¡Gracias por tu compra en Alma de Tortuga! 🐢');
+        const offcanvas = bootstrap.Offcanvas.getInstance(document.getElementById('offcanvasPago'));
+        offcanvas?.hide();
+      }
+    });
   });
 
 })();
