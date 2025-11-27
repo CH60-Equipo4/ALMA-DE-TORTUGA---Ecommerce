@@ -23,7 +23,6 @@
       const details = item.customDetails;
 
       // 1. Mostrar la IMAGEN del DISEÑO SUBIDO si existe (item.customDetails.archivoURL)
-      // Esto sobrescribe la imagen base de la tote con el diseño
       if (details.archivoURL) {
         itemImageURL = details.archivoURL;
       }
@@ -47,7 +46,6 @@
       detailsHTML = customDetailsText;
     }
 
-    // Usamos el ID del producto para las acciones de eliminar y cambiar cantidad
     return `
             <div class="d-flex align-items-center border rounded p-3 cart-item-container" data-product-id="${item.id}">
                 <img src="${itemImageURL}" alt="${item.name}" class="img-thumbnail me-3" style="width: 100px; height: 100px; object-fit: cover;">
@@ -65,7 +63,7 @@
   }
 
   /**
-   * Calcula y actualiza el resumen del carrito y el contador del navbar.
+   * Calcula y actualiza el resumen del carrito.
    */
   function updateCartSummary(cart) {
     const shippingCost = 50.00;
@@ -78,18 +76,13 @@
       }
     }
 
-    const total = subtotal + (subtotal > 0 ? shippingCost : 0); // Añadir envío solo si hay productos
+    const total = subtotal + (subtotal > 0 ? shippingCost : 0);
 
-    // Actualizar los elementos del DOM en el Resumen
     document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)} MXN`;
     document.getElementById('envio').textContent = subtotal > 0 ? `$${shippingCost.toFixed(2)} MXN` : 'N/A';
     document.getElementById('total').textContent = `$${total.toFixed(2)} MXN`;
 
-    // Actualizar el contador del carrito en el navbar (cart-count)
-    const cartCountElement = document.getElementById('cart-count');
-    if (cartCountElement) {
-      cartCountElement.textContent = cart.length;
-    }
+    // *** SE ELIMINÓ LA PARTE QUE ACTUALIZABA cart-count ***
   }
 
   /**
@@ -101,7 +94,7 @@
 
     if (!cartContainer) return;
 
-    cartContainer.innerHTML = ''; // Limpiar el contenedor
+    cartContainer.innerHTML = '';
 
     if (cart.length === 0) {
       cartContainer.innerHTML = '<p class="text-center text-muted">Tu carrito está vacío. ¡Añade algunos productos!</p>';
@@ -124,7 +117,7 @@
 
     localStorage.setItem('cart', JSON.stringify(newCart));
     console.log(`Producto ID ${productId} eliminado del carrito.`);
-    renderCart(); // Vuelve a renderizar la lista y el resumen
+    renderCart();
   }
 
   /**
@@ -139,10 +132,12 @@
       cart[itemIndex].quantity = quantity;
 
       localStorage.setItem('cart', JSON.stringify(cart));
-      // Solo actualizamos el resumen de totales
       updateCartSummary(cart);
     }
   }
+
+})();
+
 
 
   /* ----------------------------------------------------- */

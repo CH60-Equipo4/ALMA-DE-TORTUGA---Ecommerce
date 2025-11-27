@@ -233,3 +233,15 @@ p {
     padding: 5px;
     transition: transform 0.3s ease;
 }
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color:  #D09559; 
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.7rem; 
+  font-weight: bold;
+}

@@ -1,17 +1,5 @@
 import { ItemsController } from "./itemsController.js"; // Asegúrate que la ruta sea correcta
 
- // Actualiza el contador del carrito en la burbuja del icono (#cart-count).
-
-function updateCartCount() {
-    // Obtiene el carrito del localStorage o un array vacío si no existe
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartCountElement = document.getElementById('cart-count');
-    if (cartCountElement) {
-        // Muestra la cantidad de productos únicos en el carrito
-        cartCountElement.textContent = cart.length;
-    }
-}
-
 /**
  * Función para manejar la adición de un producto al carrito en localStorage.
  */
@@ -39,7 +27,6 @@ function handleAddToCart(productId, itemsController) {
         localStorage.setItem('cart', JSON.stringify(cart));
         console.log(`Producto ID ${parsedProductId} añadido al carrito.`);
 
-        updateCartCount(); // Actualiza el contador del navbar
         alert(`"${productToAdd.name}" se ha añadido al carrito.`);
     } else {
         console.error(`Producto con ID ${parsedProductId} no encontrado.`);
@@ -91,11 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
         pageCategory = "clasicas";
         targetContainer = clasicasContainer;
     } else {
-        // MODIFICACIÓN: Actualizar contador si no estamos en una página de productos
-        updateCartCount();
+        // Ya no se llama updateCartCount
         return;
     }
-    //limpiamos container 
+    
+    // limpiamos container 
     targetContainer.innerHTML = '';
     targetContainer.classList.add('row');
 
@@ -108,8 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (filteredProducts.length === 0) {
         targetContainer.innerHTML = '<p class="col-12 text-center">No hay productos en esta categoría.</p>';
-        // MODIFICACIÓN: Actualizar contador si no hay productos
-        updateCartCount();
+        // Ya no se llama updateCartCount
         return;
     }
 
@@ -117,18 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
         addItemCard(item, targetContainer);
     }
 
-    // --- INICIO DE MODIFICACIONES AÑADIDAS (EVENT LISTENER) ---
-
-    // Añadir el listener al contenedor principal (Delegación de Eventos)
+    // Delegación de eventos
     targetContainer.addEventListener('click', (event) => {
-        // Solo si el elemento clicado tiene la clase 'add-to-cart-btn'
         if (event.target.classList.contains('add-to-cart-btn')) {
             const productId = event.target.dataset.productId;
             handleAddToCart(productId, itemsController);
         }
     });
 
-    // Cargar el contador inicial del carrito al cargar la página
-    updateCartCount();
-
+    // Ya no se llama updateCartCount
 });
