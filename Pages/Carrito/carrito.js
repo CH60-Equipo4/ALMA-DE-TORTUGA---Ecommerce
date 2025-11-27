@@ -144,7 +144,6 @@
     }
   }
 
-
   /* ----------------------------------------------------- */
   /* CÓDIGO DE ANIMACIÓN ORIGINAL */
   /* ----------------------------------------------------- */
@@ -154,8 +153,6 @@
   const paqueteEl = document.querySelector('.paquete');
   const cartIconAnchor = document.querySelector('.cart-icon-container a.nav-link');
   const checkoutButton = document.querySelector('.btn-primary.btn-add-to-cart'); // Referencia al botón de checkout
-
-  /* Referencia al contenedor del mar */
   const seccionMar = document.getElementById('seccion-mar');
 
   if (!tortugaCont || !paqueteEl || !cartIconAnchor || !seccionMar) {
@@ -185,8 +182,6 @@
 
     /* Subir tortuga */
     tortugaCont.classList.add('rise');
-
-
     await esperar(4000);
 
     /* Esperar un ciclo de renderizado completo. */
@@ -205,13 +200,8 @@
 
     /* Lanzar paquete */
     console.log("Lanzando paquete...");
-
-    /* Calcular el vector desde la posición ESTABLE del paquete */
     const { dx, dy } = calcPackageTranslateToCart();
-
     paqueteEl.classList.add('package-throw');
-
-    /* Aplicamos la transformación (ya que el cálculo del vector es correcto) */
     paqueteEl.style.transform = `translate3d(calc(-50% + ${dx}px), ${-8 + dy}px, 0) rotate(-18deg) scale(.95)`;
     paqueteEl.style.opacity = '1';
 
@@ -240,7 +230,6 @@
     console.log("Tortuga bajando...");
     tortugaCont.classList.remove('rise');
     tortugaCont.classList.remove('idle');
-
     tortugaCont.classList.add('descend');
 
     /* Esperamos a que termine la bajada (2.9s en tu CSS) */
@@ -264,7 +253,7 @@
     /* Mostrar el mar */
     console.log("Mostrando el mar...");
     seccionMar.classList.add('mar-visible');
-    await esperar(600); // Esperar la transición de 0.6s del CSS
+    await esperar(600);
 
     /* Ejecutar la animación de tortuga */
     console.log("Lanzando tortuga...");
@@ -273,14 +262,15 @@
     /* Ocultar el mar */
     console.log("Ocultando el mar...");
     seccionMar.classList.remove('mar-visible');
-    await esperar(600); // Esperar a que se oculte
+    await esperar(600);
 
-    /* Reactivar el botón (solo si no se redirigió) */
+    /* Reactivar el botón */
     buttonElement.disabled = false;
 
-    // **AQUÍ IRÍA LA REDIRECCIÓN A LA PÁGINA DE PAGO SI ES NECESARIO**
+    /* ✅ Abrir offcanvas de pago después de la animación */
+    const offcanvasPago = new bootstrap.Offcanvas(document.getElementById('offcanvasPago'));
+    offcanvasPago.show();
   }
-
 
   /* ----------------------------------------------------- */
   /* EVENT LISTENERS DE CARRITO Y ANIMACIÓN */
@@ -297,7 +287,6 @@
       // Delegación de eventos para el botón 'Eliminar'
       cartContainer.addEventListener('click', (event) => {
         if (event.target.classList.contains('remove-item-btn')) {
-          // Convertir el data-product-id a número para asegurar la comparación
           const productId = parseInt(event.target.dataset.productId);
           removeItemFromCart(productId);
         }
@@ -327,6 +316,48 @@
         }
       });
     }
+  });
+
+  /* ----------------------------------------------------- */
+  /* VALIDACIÓN DEL FORMULARIO DE PAGO (offcanvas) */
+  /* ----------------------------------------------------- */
+
+  document.getElementById('paymentForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Validaciones
+    const cp = document.getElementById('cp').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const tarjeta = document.getElementById('numeroTarjeta').value.replace(/\s/g, '');
+    const cvv = document.getElementById('cvv').value.trim();
+    const fecha = document.getElementById('fechaVencimiento').value.trim();
+
+    const cpValido = /^\d{5}$/.test(cp);
+    const telValido = /^\d{10}$/.test(telefono);
+    const tarjetaValida = /^\d{16}$/.test(tarjeta);
+    const cvvValido = /^\d{3,4}$/.test(cvv);
+    const fechaValida = /^\d{2}\/\d{2}$/.test(fecha);
+
+    if (cpValido && telValido && tarjetaValida && cvvValido && fechaValida) {
+      alert("Gracias por su compra en Alma de tortuga");
+      const offcanvas = bootstrap.Offcanvas.getInstance(document.getElementById('offcanvasPago'));
+      offcanvas.hide();
+    } else {
+      alert("Por favor, completa correctamente todos los campos.");
+    }
+  });
+
+  // Formatear número de tarjeta
+  document.getElementById('numeroTarjeta')?.addEventListener('input', function(e) {
+    let v = e.target.value.replace(/\D/g, '').slice(0, 16);
+    e.target.value = v.replace(/(.{4})/g, '$1 ').trim();
+  });
+
+  // Formatear fecha
+  document.getElementById('fechaVencimiento')?.addEventListener('input', function(e) {
+    let v = e.target.value.replace(/\D/g, '').slice(0, 4);
+    if (v.length >= 2) v = v.slice(0, 2) + '/' + v.slice(2);
+    e.target.value = v;
   });
 
 })();
