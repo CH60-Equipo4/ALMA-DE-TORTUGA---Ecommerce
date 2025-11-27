@@ -222,6 +222,107 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // Función para autenticar usuario con el backend
+async function autenticarUsuario(email, password) {
+    try {
+        // Obtener todos los usuarios del backend
+        const response = await fetch('http://localhost:8080/api/v1/users', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            const usuarios = await response.json();
+            
+            // Buscar usuario que coincida con email y password
+            const usuarioEncontrado = usuarios.find(
+                user => user.email === email && user.password === password
+            );
+
+            if (usuarioEncontrado) {
+                // --- Usuario encontrado ---
+                loginExitoso(usuarioEncontrado);
+            } else {
+                // --- Login fallido ---
+                loginFallido();
+            }
+        } else {
+            console.error('Error al obtener usuarios');
+            mostrarErrorConexion();
+        }
+
+    } catch (error) {
+        console.error('Error de conexión:', error);
+        mostrarErrorConexion();
+    }
+}
+
+// Función para login exitoso
+function loginExitoso(usuario) {
+    resetAllTurtles();
+    Object.values(turtles).forEach((turtle, index) => {
+        setTimeout(() => {
+            turtle.element.classList.add('jump');
+            turtle.eyes.forEach(eye => eye.classList.add('happy'));
+            turtle.mouth.classList.add('happy');
+        }, index * 150);
+    });
+
+    // Guardar datos del usuario en localStorage
+    localStorage.setItem('userId', usuario.idUser);
+    localStorage.setItem('userName', usuario.name + ' ' + usuario.lastname);
+    localStorage.setItem('userEmail', usuario.email);
+    localStorage.setItem('userRol', usuario.rol);
+
+    // También en sessionStorage para mantener sesión
+    sessionStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
+
+    // Mostrar bienvenida y redirigir
+    setTimeout(() => {
+        alert('¡Bienvenido a Alma de Tortuga! 🐢💚');
+        window.location.href = '../../index.html';
+    }, 600);
+}
+
+// Función para login fallido
+function loginFallido() {
+    const loginAuthError = document.getElementById('loginAuthError');
+    
+    // Mostrar error de autenticación
+    if (loginAuthError) {
+        loginAuthError.style.display = 'block';
+    }
+
+    emailInput.classList.remove('is-valid');
+    passwordInput.classList.remove('is-valid');
+
+    // Reacción de las tortugas al error
+    resetAllTurtles();
+    Object.values(turtles).forEach(turtle => {
+        turtle.head.classList.add('shake-no');
+        turtle.mouth.classList.add('sad');
+        turtle.eyes.forEach(eye => {
+            eye.style.height = '10px';
+            eye.style.borderTop = '2px solid #283429';
+            eye.style.borderRadius = '50% 50% 0 0';
+            eye.style.transform = 'scaleY(0.6)';
+        });
+    });
+}
+
+// Función para mostrar error de conexión
+function mostrarErrorConexion() {
+    alert('Error al conectar con el servidor. Verifica que el backend esté corriendo en http://localhost:8080');
+    
+    resetAllTurtles();
+    Object.values(turtles).forEach(turtle => {
+        turtle.element.classList.add('scared');
+        turtle.eyes.forEach(eye => eye.classList.add('confused'));
+    });
+}
+
     loginForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -258,62 +359,10 @@ document.addEventListener('DOMContentLoaded', function () {
             turtles.main.head.classList.add('shake-no');
             turtles.main.eyes.forEach(eye => eye.classList.add('angry'));
             turtles.main.mouth.classList.add('angry');
-
+        
         } else {
-
-            const usuariosRegistrados = JSON.parse(localStorage.getItem('users')) || [];
-
-            // Buscamos al usuario por email Y contraseña
-            const usuarioEncontrado = usuariosRegistrados.find(
-                user => user.email === email && user.password === password
-            );
-
-            if (usuarioEncontrado) {
-                // --- Usuario encontrado ---
-                resetAllTurtles();
-                Object.values(turtles).forEach((turtle, index) => {
-                    setTimeout(() => {
-                        turtle.element.classList.add('jump');
-                        turtle.eyes.forEach(eye => eye.classList.add('happy'));
-                        turtle.mouth.classList.add('happy');
-                    }, index * 150);
-                });
-
-                // Guardar al usuario en sessionStorage para saber que está logueado
-                sessionStorage.setItem('usuarioLogueado', JSON.stringify(usuarioEncontrado));
-
-                // Mostrar bienvenida y redirigir
-                setTimeout(() => {
-                    alert('¡Bienvenido a Alma de Tortuga! 🐢💚');
-                    // Redirigir al inicio o a la página de "Mi Cuenta"
-                    /* CREAR UNA PAGINA DE USUARIO! */
-                    window.location.href = '../../index.html';
-                }, 600);
-
-            } else {
-                // --- ¡FALLO! Correo o contraseña incorrectos ---
-
-                // Mostramos el error de autenticación que añadimos en el HTML
-                if (loginAuthError) {
-                    loginAuthError.style.display = 'block';
-                }
-
-                emailInput.classList.remove('is-valid');
-                passwordInput.classList.remove('is-valid');
-
-                // Hacemos que las tortugas reaccionen al error
-                resetAllTurtles();
-                Object.values(turtles).forEach(turtle => {
-                    turtle.head.classList.add('shake-no');
-                    turtle.mouth.classList.add('sad');
-                    turtle.eyes.forEach(eye => {
-                        eye.style.height = '10px';
-                        eye.style.borderTop = '2px solid #283429';
-                        eye.style.borderRadius = '50% 50% 0 0';
-                        eye.style.transform = 'scaleY(0.6)';
-                    });
-                });
-            }
+            // **NUEVO: Autenticar con el backend**
+            autenticarUsuario(email, password);
         }
     });
 });
