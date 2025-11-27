@@ -118,9 +118,9 @@ form.addEventListener("submit",  async (e) => {
 
         // Redirigir según categoría
         setTimeout(() => {
-            if (categoria === "clasicas") {
+            if (categoria === "CLASSIC") {
                 window.location.href = "../Clasicas/clasicas.html";
-            } else if (categoria === "coleccion") {
+            } else if (categoria === "COLLECTION") {
                 window.location.href = "../Coleccion/coleccion.html";
             } else {
                 window.location.href = "../Clasicas/clasicas.html";

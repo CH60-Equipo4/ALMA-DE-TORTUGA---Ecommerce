@@ -125,7 +125,7 @@ function addItemCard(item, containerElement) {
         `<div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="product-card">
                 <div class="product-image">
-                    <img src="${item.imageURL}" alt="${item.name}" />
+                    <img src="${imageUrl}" alt="${item.name}" />
                 </div>
                 <div class="product-content">
                     <h3 class="product-title">${item.name}</h3>

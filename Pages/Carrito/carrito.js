@@ -13,17 +13,19 @@
     const itemPrice = parseFloat(item.price);
     const priceDisplay = itemPrice ? `$${itemPrice.toFixed(2)} MXN` : 'Precio no disponible';
 
-    let detailsHTML = `<p class="text-muted mb-1">${item.description.split('\n')[0]}</p>`; // Descripción normal por defecto
+    // **CORRECCIÓN DE ID:** Usa el ID universal (idProduct del Backend o id de LocalStorage)
+    const itemId = item.idProduct || item.id;
 
-    // Usamos la URL de la TOTE BASE por defecto
-    let itemImageURL = item.imageURL;
+    // **CORRECCIÓN DE IMAGEN:** Prioriza la URL de Cloudinary (urlProductImage)
+    let itemImageURL = item.urlProductImage || item.imageURL;
+
+    let detailsHTML = `<p class="text-muted mb-1">${item.description.split('\n')[0]}</p>`; // Descripción normal por defecto
 
     // **MEJORA PARA ÍTEMS PERSONALIZADOS**
     if (item.category === 'personalizada' && item.customDetails) {
       const details = item.customDetails;
 
       // 1. Mostrar la IMAGEN del DISEÑO SUBIDO si existe (item.customDetails.archivoURL)
-      // Esto sobrescribe la imagen base de la tote con el diseño
       if (details.archivoURL) {
         itemImageURL = details.archivoURL;
       }
@@ -37,9 +39,9 @@
         const fontName = details.nombreTipografia || (details.tipografiaClase || details.tipografia) || 'Default';
 
         customDetailsText += `
-                    <p class="text-muted mb-1 small m-0">Frase: <span ${colorStyle}>"${details.texto}"</span></p>
-                    <p class="text-muted mb-1 small m-0">Tipografía: ${fontName}</p>
-                `;
+                        <p class="text-muted mb-1 small m-0">Frase: <span ${colorStyle}>"${details.texto}"</span></p>
+                        <p class="text-muted mb-1 small m-0">Tipografía: ${fontName}</p>
+                    `;
       } else if (details.archivoAdjunto) {
         customDetailsText += `<p class="text-muted mb-1 small m-0">Diseño: ${details.archivoAdjunto}</p>`;
       }
@@ -47,21 +49,21 @@
       detailsHTML = customDetailsText;
     }
 
-    // Usamos el ID del producto para las acciones de eliminar y cambiar cantidad
+    // Usamos el ID del producto (itemId) para las acciones de eliminar y cambiar cantidad
     return `
-            <div class="d-flex align-items-center border rounded p-3 cart-item-container" data-product-id="${item.id}">
-                <img src="${itemImageURL}" alt="${item.name}" class="img-thumbnail me-3" style="width: 100px; height: 100px; object-fit: cover;">
-                <div class="flex-grow-1">
-                    <h6 class="mb-1">${item.name}</h6>
-                    ${detailsHTML} 
-                    <span class="fw-bold item-price-display">${priceDisplay}</span>
+                <div class="d-flex align-items-center border rounded p-3 cart-item-container" data-product-id="${itemId}">
+                    <img src="${itemImageURL}" alt="${item.name}" class="img-thumbnail me-3" style="width: 100px; height: 100px; object-fit: cover;">
+                    <div class="flex-grow-1">
+                        <h6 class="mb-1">${item.name}</h6>
+                        ${detailsHTML} 
+                        <span class="fw-bold item-price-display">${priceDisplay}</span>
+                    </div>
+                    <div class="text-end">
+                        <input type="number" value="${item.quantity}" min="1" class="form-control mb-2 item-quantity" style="width: 70px;" data-product-id="${itemId}">
+                        <button class="btn btn-outline-danger btn-sm remove-item-btn" data-product-id="${itemId}">Eliminar</button>
+                    </div>
                 </div>
-                <div class="text-end">
-                    <input type="number" value="${item.quantity}" min="1" class="form-control mb-2 item-quantity" style="width: 70px;" data-product-id="${item.id}">
-                    <button class="btn btn-outline-danger btn-sm remove-item-btn" data-product-id="${item.id}">Eliminar</button>
-                </div>
-            </div>
-        `;
+            `;
   }
 
   /**
@@ -120,11 +122,13 @@
    */
   function removeItemFromCart(productId) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const newCart = cart.filter(item => item.id !== productId);
+
+    // Filtramos usando la propiedad que contenga el ID (idProduct o id)
+    const newCart = cart.filter(item => (item.idProduct || item.id) !== productId);
 
     localStorage.setItem('cart', JSON.stringify(newCart));
     console.log(`Producto ID ${productId} eliminado del carrito.`);
-    renderCart(); // Vuelve a renderizar la lista y el resumen
+    renderCart();
   }
 
   /**
@@ -132,7 +136,7 @@
    */
   function updateItemQuantity(productId, newQuantity) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const itemIndex = cart.findIndex(item => item.id === productId);
+    const itemIndex = cart.findIndex(item => (item.idProduct || item.id) === productId)
 
     if (itemIndex > -1) {
       const quantity = Math.max(1, parseInt(newQuantity));
