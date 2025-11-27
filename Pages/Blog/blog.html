@@ -4,13 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog</title>
+  <title>Blog - Alma de Tortuga</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../../main.css" />
   <link rel="stylesheet" href="./style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 
@@ -36,7 +35,6 @@
           <!-- ENLACES -->
           <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
             <ul class="navbar-nav ms-3" style="width: 60%">
-              <!-- Dropdown ToteBags -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle fw-bold" href="#" id="navbarDropdown" role="button"
                   data-bs-toggle="dropdown" aria-expanded="false">
@@ -60,7 +58,7 @@
                 <a class="nav-link" href="../About/about.html">Nosotros</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../Blog/blog.html">Blog</a>
+                <a class="nav-link active" href="../Blog/blog.html">Blog</a>
               </li>
             </ul>
           </div>
@@ -90,82 +88,16 @@
         </div>
       </nav>
     </header>
-    <!-- Seccion carousel de posts -->
-    <!-- Sección de Posts - Diseño Mejorado -->
+
     <!-- Sección de Posts - Diseño Mejorado -->
     <section class="blog-posts py-5">
       <div class="container">
         <h2 class="text-center mb-5 fw-bold">Blog - Alma de Tortuga</h2>
 
-        <!-- === BLOQUE DE RESEÑAS (ESTILO AMAZON) === -->
-        <div class="row justify-content-center mb-5">
-          <div class="col-12 col-md-10 col-lg-8">
-            <div class="bg-white rounded-4 shadow-sm p-4 p-md-5">
-              <div class="d-flex align-items-center mb-4">
-                <div class="me-3">
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                  <i class="fas fa-star text-warning"></i>
-                </div>
-                <h3 class="h5 mb-0 fw-bold">Reseñas de Nuestros Clientes</h3>
-              </div>
-
-              <!-- Reseña 1 -->
-              <div class="review-item mb-4 pb-4 border-bottom">
-                <div class="d-flex">
-                  <img src="https://via.placeholder.com/50?text=MC" class="rounded-circle me-3" alt="Cliente" width="50"
-                    height="50" />
-                  <div>
-                    <h6 class="fw-bold mb-1">María C.</h6>
-                    <div class="text-muted small mb-2">Cuernavaca, Morelos • 12 de abril, 2025</div>
-                    <p class="mb-0">¡Me encantó mi totebag personalizada! La tela es súper resistente y el diseño quedó
-                      exactamente como lo imaginé. Además, llegó antes de lo esperado.</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Reseña 2 -->
-              <div class="review-item mb-4 pb-4 border-bottom">
-                <div class="d-flex">
-                  <img src="https://via.placeholder.com/50?text=RL" class="rounded-circle me-3" alt="Cliente" width="50"
-                    height="50" />
-                  <div>
-                    <h6 class="fw-bold mb-1">Roberto L.</h6>
-                    <div class="text-muted small mb-2">CDMX • 3 de marzo, 2025</div>
-                    <p class="mb-0">Compré una de la colección navideña para mi esposa y le encantó. La calidad
-                      artesanal se nota en cada costura. 100% recomendado.</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Reseña 3 -->
-              <div class="review-item mb-4">
-                <div class="d-flex">
-                  <img src="https://via.placeholder.com/50?text=AC" class="rounded-circle me-3" alt="Cliente" width="50"
-                    height="50" />
-                  <div>
-                    <h6 class="fw-bold mb-1">Ana G.</h6>
-                    <div class="text-muted small mb-2">Guadalajara • 28 de febrero, 2025</div>
-                    <p class="mb-0">Es la segunda vez que compro y no decepciona. Además, me encanta que usen materiales
-                      eco-friendly. ¡Así se apoya al planeta y al arte local!</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="text-center mt-4">
-                <a href="../../Pages/Blog/ResenasClientes.html" class="btn btn-outline-success btn-sm px-4">Ver todas
-                  las reseñas →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- === OTRAS TARJETAS DEL BLOG === -->
-        <div class="row g-4 justify-content-center">
+        <!-- === TARJETAS DEL BLOG === -->
+        <div class="row g-4 justify-content-center mb-5">
           <!-- Tarjeta 1: Guía de compra -->
-          <div class="col-12 col-md-8 col-lg-6">
+          <div class="col-12 col-md-9 col-lg-7">
             <a href="../../Pages/Blog/GuiaDeCompra.html" class="text-decoration-none blog-card-link">
               <div class="blog-card h-100 shadow-sm rounded-4 overflow-hidden">
                 <img src="../../Pages/Blog/Pictures-blog/GuiaDeCompra.png" class="card-img-top" alt="Guía de Compra" />
@@ -184,7 +116,7 @@
           </div>
 
           <!-- Tarjeta 2: Colección navideña -->
-          <div class="col-12 col-md-8 col-lg-6">
+          <div class="col-12 col-md-9 col-lg-7">
             <a href="../../Pages/Totebags/Coleccion/coleccion.html" class="text-decoration-none blog-card-link">
               <div class="blog-card h-100 shadow-sm rounded-4 overflow-hidden">
                 <img src="../../Pages/Blog/Pictures-blog/ColeccionNavidena.jpg" class="card-img-top"
@@ -203,8 +135,8 @@
             </a>
           </div>
 
-          <!-- Tarjeta 3: Personaliza -->
-          <div class="col-12 col-md-8 col-lg-6">
+          <!-- Tarjeta 3: Personaliza tu totebag -->
+          <div class="col-12 col-md-9 col-lg-7">
             <a href="../../Pages/Totebags/Personalizada/personalizada.html" class="text-decoration-none blog-card-link">
               <div class="blog-card h-100 shadow-sm rounded-4 overflow-hidden">
                 <img src="../../Pages/Blog/Pictures-blog/PersonalizaTuTotebag.png" class="card-img-top"
@@ -221,9 +153,44 @@
               </div>
             </a>
           </div>
+
+          <!-- Tarjeta 4: Idea 1: Inspiración de Estilo de Vida -->
+          <div class="col-12 col-md-9 col-lg-7">
+            <div class="blog-card h-100 shadow-sm rounded-4 overflow-hidden">
+              <img src="../../Pages/Blog/Pictures-blog/EstiloVida.png" class="card-img-top"
+                alt="5 Outfits para combinar tu Tote Bag en la Oficina" />
+              <div class="card-body p-5 d-flex flex-column">
+                <h3 class="card-title fw-bold mb-3">Idea 1: Inspiración de Estilo de Vida</h3>
+                <p class="card-text text-muted flex-grow-1">
+                  5 Outfits para combinar tu Tote Bag en la Oficina Descripción: Muestra a tus clientes
+                  cómo tus tote bags son versátiles y pueden ser parte de un look profesional y con estilo, no solo para
+                  ir de compras. Imagen Sugerida: Una fotografía de estilo de vida en un entorno natural y elegante, que
+                  transmita calma y moda. </p>
+              </div>
+            </div>
+            </a>
+          </div>
+
+          <!-- Tarjeta 5: Guía de cuidados -->
+          <div class="col-12 col-md-9 col-lg-7">
+            <div class="blog-card h-100 shadow-sm rounded-4 overflow-hidden">
+              <img src="../../Pages/Blog/Pictures-blog/EstiloVida2.png" class="card-img-top"
+                alt="Guía de Cuidados: Cómo lavar tu Tote Bag de Algodón" />
+              <div class="card-body p-5 d-flex flex-column">
+                <h3 class="card-title fw-bold mb-3">Idea 2: Cuidado y Mantenimiento del Producto</h3>
+                <p class="card-text text-muted flex-grow-1">
+                  Guía de Cuidados: Cómo lavar tu Tote Bag de Algodón Descripción: Un post educativo que aporte valor a
+                  tus clientes enseñándoles a cuidar su tote bag para que les dure mucho tiempo. Esto refuerza el
+                  mensaje de sostenibilidad de tu marca. Imagen Sugerida: Una fotografía de primer plano, enfocada en
+                  las texturas, que muestre la tela de la bolsa junto con elementos de limpieza naturales como jabón
+                  artesanal y un cepillo. </p>
+              </div>
+            </div>
+            </a>
+          </div>
         </div>
-      </div>
     </section>
+
     <!-- FOOTER -->
     <footer class="footer">
       <div class="container">
