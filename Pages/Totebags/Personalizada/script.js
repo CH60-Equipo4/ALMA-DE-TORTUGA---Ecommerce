@@ -122,6 +122,12 @@ const preciosBases = {
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const ALLOWED_MIMES = ['image/png', 'image/jpeg', 'image/jpg'];
 
+// CAMBIO KIM
+const progressLine = document.getElementById('progress-line');
+const stepItems = document.querySelectorAll('.step-item');
+const sectionCards = document.querySelectorAll('.section-card');
+// fin cambio kim
+
 
 // 2. Obtención de Elementos del DOM
 const precioTotalStrong = document.getElementById('precio-total');
@@ -147,6 +153,79 @@ const btnSiguiente = document.getElementById('btn-siguiente');
 const offcanvasResumen = document.getElementById('offcanvasResumen');
 const contenidoResumen = document.getElementById('resumen-contenido');
 
+// cambio kim
+function actualizarProgreso() {
+    let completedSteps = 0;
+
+    // Paso 1: Base seleccionada
+    const baseSeleccionada = Array.from(radiosBolsa).some(radio => radio.checked);
+    if (baseSeleccionada) {
+        completedSteps = 1;
+        marcarSeccionCompleta(1);
+        habilitarSeccion(2);
+    }
+
+    // Paso 2: Acabado y detalle
+    const acabadoSeleccionado = Array.from(radiosAcabado).some(radio => radio.checked);
+    const detalleSeleccionado = Array.from(radiosDetalle).some(radio => radio.checked);
+    if (acabadoSeleccionado && detalleSeleccionado) {
+        completedSteps = 2;
+        marcarSeccionCompleta(2);
+        habilitarSeccion(3);
+    }
+
+    // Paso 3: Archivo subido
+    const archivoValido = inputSubirArchivo.files.length > 0 && !inputSubirArchivo.classList.contains('is-invalid');
+    if (archivoValido) {
+        completedSteps = 3;
+        marcarSeccionCompleta(3);
+        habilitarSeccion(4);
+    }
+
+    // Paso 4: Texto (si aplica)
+    const esFraseConDiseno = Array.from(radiosDetalle).some(r => r.checked && r.value === 'fraseDiseno');
+    if (!esFraseConDiseno || (esFraseConDiseno && inputEscribirFrase.value.trim())) {
+        if (completedSteps >= 3) {
+            completedSteps = 4;
+            marcarSeccionCompleta(4);
+        }
+    }
+
+    // Actualizar barra de progreso
+    const progressPercentage = (completedSteps / 5) * 100;
+    if (progressLine) {
+        progressLine.style.width = progressPercentage + '%';
+    }
+
+    // Actualizar círculos de paso
+    stepItems.forEach((item, index) => {
+        const stepNum = index + 1;
+        item.classList.remove('active', 'completed');
+
+        if (stepNum < completedSteps) {
+            item.classList.add('completed');
+        } else if (stepNum === completedSteps + 1) {
+            item.classList.add('active');
+        }
+    });
+}
+
+function marcarSeccionCompleta(seccionNum) {
+    const seccion = document.getElementById(`section-${seccionNum}`);
+    if (seccion) {
+        seccion.classList.add('completed');
+        seccion.classList.remove('active');
+    }
+}
+
+function habilitarSeccion(seccionNum) {
+    const seccion = document.getElementById(`section-${seccionNum}`);
+    if (seccion) {
+        seccion.classList.remove('disabled');
+        seccion.classList.add('active');
+    }
+}
+// fin cambio kim 
 
 // --------------------------------------------------------------------------------
 // FUNCIONES DE LÓGICA Y UI
@@ -352,6 +431,7 @@ function actualizarInterfazCompleta() {
     precioTotalStrong.textContent = `$${precios.total}`;
     precioBaseSpan.textContent = precios.base > 0 ? `$${precios.base}` : '--';
     verificarSeleccionesMinimas();
+    actualizarProgreso();
 }
 
 // --------------------------------------------------------------------------------

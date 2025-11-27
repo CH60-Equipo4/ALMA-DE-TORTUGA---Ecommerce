@@ -84,244 +84,339 @@
       </div>
     </div>
   </nav>
-  </header>
+  <!---Cambio Kim -->
+  <div class="sticky-progress">
+    <div class="container">
+      <div class="progress-container">
+        <div class="step-indicator">
+          <div class="progress-line-active" id="progress-line" style="width: 0%;"></div>
+
+          <div class="step-item active" data-step="1">
+            <div class="step-circle">1</div>
+            <span class="step-label">Elige Base</span>
+          </div>
+
+          <div class="step-item" data-step="2">
+            <div class="step-circle">2</div>
+            <span class="step-label">Acabado</span>
+          </div>
+
+          <div class="step-item" data-step="3">
+            <div class="step-circle">3</div>
+            <span class="step-label">Diseño</span>
+          </div>
+
+          <div class="step-item" data-step="4">
+            <div class="step-circle">4</div>
+            <span class="step-label">Texto</span>
+          </div>
+
+          <div class="step-item" data-step="5">
+            <div class="step-circle">5</div>
+            <span class="step-label">Confirmar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---fin cambio kim-->
 
   <main>
     <div>
       <h1 class="title text-center my-4">Personaliza tu ToteBag</h1>
     </div>
 
+    <!---Cambio kim-->
     <div class="container my-4">
-      <h2 class="text-center mb-3">Selecciona la base</h2>
-      <div class="row justify-content-center">
-
-        <div class="col-12 col-sm-6 col-md-4 mb-3">
-          <label class="selection-card-label">
-            <input type="radio" name="bolsaBase" value="clasica" class="d-none">
-            <div class="card h-100 selection-card p-0">
-              <div class="image-container text-center py-4 px-3">
-                <img src="../../../Pictures/Products/Personalizada/ToteClasica.png" class="img-fluid bag-image w-100"
-                  alt="Tote Clásica Sencilla con bordado de rama" style="max-height: 200px; object-fit: contain;" />
-              </div>
-              <div class="card-body text-center p-2">
-                <h5 class="card-title mb-1">Tote Clásica</h5>
-                <p class="card-text description-text mb-1">Ligera y práctica. Su diseño más delgado la hace económica y
-                  perfecta para el día a día.</p>
-                <p class="mb-1 text-muted small">Medidas: 35 x 30 x 10 cm</p>
-                <p class="card-text price-text mt-2"><strong>$450</strong></p>
-              </div>
-            </div>
-          </label>
+      <div class="section-card active" id="section-1">
+        <div class="section-header">
+          <div class="section-badge">1</div>
+          <div>
+            <h2 class="section-title">Selecciona la Base</h2>
+            <p class="section-subtitle">Elige el tipo de bolsa que más te guste</p>
+          </div>
         </div>
+        <!---fin cambio kim-->
 
-        <div class="col-12 col-sm-6 col-md-4 mb-3">
-          <label class="selection-card-label">
-            <input type="radio" name="bolsaBase" value="caparazon" class="d-none">
-            <div class="card h-100 selection-card p-0">
-              <div class="image-container text-center py-4 px-3">
-                <img src="../../../Pictures/Products/Personalizada/ToteCaparazon.png" class="img-fluid bag-image w-100"
-                  alt="Tote Caparazón Resistente con bolsillo canguro y diseño de tortuga"
-                  style="max-height: 200px; object-fit: contain;" />
+        <div class="row justify-content-center">
+
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <label class="selection-card-label">
+              <input type="radio" name="bolsaBase" value="clasica" class="d-none">
+              <div class="card h-100 selection-card p-0">
+                <div class="image-container text-center py-4 px-3">
+                  <img src="../../../Pictures/Products/Personalizada/ToteClasica.png" class="img-fluid bag-image w-100"
+                    alt="Tote Clásica Sencilla con bordado de rama" style="max-height: 200px; object-fit: contain;" />
+                </div>
+                <div class="card-body text-center p-2">
+                  <h5 class="card-title mb-1">Tote Clásica</h5>
+                  <p class="card-text description-text mb-1">Ligera y práctica. Su diseño más delgado la hace económica
+                    y
+                    perfecta para el día a día.</p>
+                  <p class="mb-1 text-muted small">Medidas: 35 x 30 x 10 cm</p>
+                  <p class="card-text price-text mt-2"><strong>$450</strong></p>
+                </div>
               </div>
-              <div class="card-body text-center p-2">
-                <h5 class="card-title mb-1">Tote Caparazón</h5>
-                <p class="card-text description-text mb-1">Estructura firme y resistente. Ideal si buscas durabilidad y
-                  una forma que mantenga su cuerpo.</p>
-                <p class="mb-1 text-muted small">Medidas: 40 x 38 x 15 cm</p>
-                <p class="card-text price-text mt-2"><strong>$550</strong></p>
+            </label>
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <label class="selection-card-label">
+              <input type="radio" name="bolsaBase" value="caparazon" class="d-none">
+              <div class="card h-100 selection-card p-0">
+                <div class="image-container text-center py-4 px-3">
+                  <img src="../../../Pictures/Products/Personalizada/ToteCaparazon.png"
+                    class="img-fluid bag-image w-100"
+                    alt="Tote Caparazón Resistente con bolsillo canguro y diseño de tortuga"
+                    style="max-height: 200px; object-fit: contain;" />
+                </div>
+                <div class="card-body text-center p-2">
+                  <h5 class="card-title mb-1">Tote Caparazón</h5>
+                  <p class="card-text description-text mb-1">Estructura firme y resistente. Ideal si buscas durabilidad
+                    y
+                    una forma que mantenga su cuerpo.</p>
+                  <p class="mb-1 text-muted small">Medidas: 40 x 38 x 15 cm</p>
+                  <p class="card-text price-text mt-2"><strong>$550</strong></p>
+                </div>
               </div>
-            </div>
-          </label>
+            </label>
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <label class="selection-card-label">
+              <input type="radio" name="bolsaBase" value="mini" class="d-none">
+              <div class="card h-100 selection-card p-0">
+                <div class="image-container text-center py-4 px-3">
+                  <img src="../../../Pictures/Products/Personalizada/ToteMini.png" class="img-fluid bag-image w-100"
+                    alt="Mini Tote Pequeña con diseño de tortuga centrado"
+                    style="max-height: 200px; object-fit: contain;" />
+                </div>
+                <div class="card-body text-center p-2">
+                  <h5 class="card-title mb-1">Mini Tote</h5>
+                  <p class="card-text description-text mb-1">Compacta pero resistente. El tamaño perfecto para llevar lo
+                    esencial con estilo.</p>
+                  <p class="mb-1 text-muted small">Medidas: 25 x 20 x 8 cm</p>
+                  <p class="card-text price-text mt-2"><strong>$350</strong></p>
+                </div>
+              </div>
+            </label>
+          </div>
+
         </div>
-
-        <div class="col-12 col-sm-6 col-md-4 mb-3">
-          <label class="selection-card-label">
-            <input type="radio" name="bolsaBase" value="mini" class="d-none">
-            <div class="card h-100 selection-card p-0">
-              <div class="image-container text-center py-4 px-3">
-                <img src="../../../Pictures/Products/Personalizada/ToteMini.png" class="img-fluid bag-image w-100"
-                  alt="Mini Tote Pequeña con diseño de tortuga centrado"
-                  style="max-height: 200px; object-fit: contain;" />
-              </div>
-              <div class="card-body text-center p-2">
-                <h5 class="card-title mb-1">Mini Tote</h5>
-                <p class="card-text description-text mb-1">Compacta pero resistente. El tamaño perfecto para llevar lo
-                  esencial con estilo.</p>
-                <p class="mb-1 text-muted small">Medidas: 25 x 20 x 8 cm</p>
-                <p class="card-text price-text mt-2"><strong>$350</strong></p>
-              </div>
-            </div>
-          </label>
-        </div>
-
       </div>
     </div>
 
     <hr>
 
+    <!---cambio kim-->
     <div id="seccion-siguiente" class="container my-5" style="display: block;">
 
-      <h2 class="text-center mb-4">Define la Personalización</h2>
-      <div class="row mb-5">
-
-        <div class="col-12 col-md-6 custom-separator-right">
-          <h4 class="mb-3">Tipo de Acabado</h4>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="tipoAcabado" id="pintura" value="pintura"
-              data-precio="150">
-            <label class="form-check-label" for="pintura">Pintura a mano (+$150)</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="tipoAcabado" id="bordado" value="bordado"
-              data-precio="300">
-            <label class="form-check-label" for="bordado">Bordado a mano (+$300)</label>
+      <div class="section-card disabled" id="section-2">
+        <div class="section-header">
+          <div class="section-badge">2</div>
+          <div>
+            <h2 class="section-title">Define el Acabado</h2>
+            <p class="section-subtitle">Selecciona cómo quieres tu diseño</p>
           </div>
         </div>
+        <!---fin cambio kim-->
 
-        <div class="col-12 col-md-6">
-          <h4 class="mb-3">Detalles del Diseño</h4>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="tipoDetalle" id="soloDiseno" value="soloDiseno"
-              data-precio="0">
-            <label class="form-check-label" for="soloDiseno">Solo diseño</label>
+        <div class="row mb-5">
+
+          <div class="col-12 col-md-6 custom-separator-right">
+            <h4 class="mb-3">Tipo de Acabado</h4>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="tipoAcabado" id="pintura" value="pintura"
+                data-precio="150">
+              <label class="form-check-label" for="pintura">Pintura a mano (+$150)</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="tipoAcabado" id="bordado" value="bordado"
+                data-precio="300">
+              <label class="form-check-label" for="bordado">Bordado a mano (+$300)</label>
+            </div>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="tipoDetalle" id="fraseDiseno" value="fraseDiseno"
-              data-precio="50">
-            <label class="form-check-label" for="fraseDiseno">Frase con diseño (+$50)</label>
+
+          <div class="col-12 col-md-6">
+            <h4 class="mb-3">Detalles del Diseño</h4>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="tipoDetalle" id="soloDiseno" value="soloDiseno"
+                data-precio="0">
+              <label class="form-check-label" for="soloDiseno">Solo diseño</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="tipoDetalle" id="fraseDiseno" value="fraseDiseno"
+                data-precio="50">
+              <label class="form-check-label" for="fraseDiseno">Frase con diseño (+$50)</label>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <hr>
-
-      <h3 class="text-center mb-3">Diseño</h3>
-      <div class="row mb-4">
-        <div class="col-12 col-md-6 mb-3">
-          <label for="subirArchivo" class="form-label">Subir diseño</label>
-          <input type="file" class="form-control" id="subirArchivo">
-          <small class="form-text text-muted">Max. 5MB. Formatos: PNG, JPG.</small>
-
-          <div id="preview-contenedor" class="mt-3 p-2 text-center"
-            style="border: 1px dashed var(--color-accent-light); display: none;">
-            <img id="imagen-previa" src="" alt="Vista previa del diseño"
-              style="max-width: 100%; max-height: 150px; display: none;">
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6 mb-3">
-          <label for="posicionDiseno" class="form-label">Selecciona posición del diseño</label>
-          <select class="form-select" id="posicionDiseno">
-            <option value="centro" selected>Centro (Por defecto)</option>
-            <option value="esquinaSup">Esquina superior derecha</option>
-            <option value="esquinaInf">Esquina inferior izquierda</option>
-          </select>
+          <!---cambio kim-->
         </div>
       </div>
 
       <hr>
 
-      <div id="seccion-frase" class="input-group-container">
-        <h3 class="text-center mb-3">Texto y Frase</h3>
+      <div class="section-card disabled" id="section-3">
+        <div class="section-header">
+          <div class="section-badge">3</div>
+          <div>
+            <h2 class="section-title">Sube tu Diseño</h2>
+            <p class="section-subtitle">Carga la imagen que quieres en tu ToteBag</p>
+          </div>
+        </div>
+
+        <h3 class="text-center mb-3">Diseño</h3>
+        <!---fin cambio kim-->
+
         <div class="row mb-4">
-
           <div class="col-12 col-md-6 mb-3">
-            <label for="tipografia" class="form-label">1. Selecciona tu Tipo de Letra (+$20)</label>
-            <select class="form-select" id="tipografia" data-precio="20" disabled>
-              <option value="default" class="tote-texto" selected>Por defecto (Sin costo)</option>
+            <label for="subirArchivo" class="form-label">Subir diseño</label>
+            <input type="file" class="form-control" id="subirArchivo">
+            <small class="form-text text-muted">Max. 5MB. Formatos: PNG, JPG.</small>
 
-              <option value="font-1" class="tote-texto font-1">1. Clásica </option>
-              <option value="font-2" class="tote-texto font-2">2. Script fina </option>
-              <option value="font-3" class="tote-texto font-3">3. Script media </option>
-              <option value="font-4" class="tote-texto font-4">4. Semi-negrita cursiva </option>
-              <option value="font-5" class="tote-texto font-5">5. Clásica cursiva </option>
-              <option value="font-6" class="tote-texto font-6">6. Negrita pesada </option>
-              <option value="font-7" class="tote-texto font-7">7. Negrita moderna </option>
-              <option value="font-8" class="tote-texto font-8">8. Serif fina </option>
-              <option value="font-9" class="tote-texto font-9">9. Script elegante </option>
-              <option value="font-10" class="tote-texto font-10">10. Fina cursiva </option>
-              <option value="font-11" class="tote-texto font-11">11. Script bold </option>
-              <option value="font-12" class="tote-texto font-12">12. Serif negrita </option>
-            </select>
-          </div>
-
-          <div class="col-12 col-md-6 mb-3">
-            <label class="form-label">2. Elige el Color de tu Letra</label>
-            <div id="color-selector-container" class="d-flex flex-wrap gap-2" disabled>
-              <input type="radio" name="colorTexto" id="color-1" value="#000000" data-color-hex="#000000"
-                class="color-radio-input d-none" disabled>
-              <label for="color-1" class="color-radio-option" style="background-color: #000000;"></label>
-
-              <input type="radio" name="colorTexto" id="color-2" value="#01004C" data-color-hex="#01004C"
-                class="color-radio-input d-none" disabled>
-              <label for="color-2" class="color-radio-option" style="background-color: #01004C;"></label>
-
-              <input type="radio" name="colorTexto" id="color-3" value="#321D96" data-color-hex="#321D96"
-                class="color-radio-input d-none" disabled>
-              <label for="color-3" class="color-radio-option" style="background-color: #321D96;"></label>
-
-              <input type="radio" name="colorTexto" id="color-4" value="#6A49F3" data-color-hex="#6A49F3"
-                class="color-radio-input d-none" disabled>
-              <label for="color-4" class="color-radio-option" style="background-color: #6A49F3;"></label>
-
-              <input type="radio" name="colorTexto" id="color-5" value="#E753AB" data-color-hex="#E753AB"
-                class="color-radio-input d-none" disabled>
-              <label for="color-5" class="color-radio-option" style="background-color: #E753AB;"></label>
-
-              <input type="radio" name="colorTexto" id="color-6" value="#9A3837" data-color-hex="#9A3837"
-                class="color-radio-input d-none" disabled>
-              <label for="color-6" class="color-radio-option" style="background-color: #9A3837;"></label>
-
-              <input type="radio" name="colorTexto" id="color-7" value="#A570BF" data-color-hex="#A570BF"
-                class="color-radio-input d-none" disabled>
-              <label for="color-7" class="color-radio-option" style="background-color: #A570BF;"></label>
-
-              <input type="radio" name="colorTexto" id="color-8" value="#6B5994" data-color-hex="#6B5994"
-                class="color-radio-input d-none" disabled>
-              <label for="color-8" class="color-radio-option" style="background-color: #6B5994;"></label>
-
-              <input type="radio" name="colorTexto" id="color-9" value="#435B47" data-color-hex="#435B47"
-                class="color-radio-input d-none" disabled>
-              <label for="color-9" class="color-radio-option" style="background-color: #435B47;"></label>
-
-              <input type="radio" name="colorTexto" id="color-10" value="#119965" data-color-hex="#119965"
-                class="color-radio-input d-none" disabled>
-              <label for="color-10" class="color-radio-option" style="background-color: #119965;"></label>
-
-              <input type="radio" name="colorTexto" id="color-11" value="#008080" data-color-hex="#008080"
-                class="color-radio-input d-none" disabled>
-              <label for="color-11" class="color-radio-option" style="background-color: #008080;"></label>
+            <div id="preview-contenedor" class="mt-3 p-2 text-center"
+              style="border: 1px dashed var(--color-accent-light); display: none;">
+              <img id="imagen-previa" src="" alt="Vista previa del diseño"
+                style="max-width: 100%; max-height: 150px; display: none;">
             </div>
           </div>
 
           <div class="col-12 col-md-6 mb-3">
-            <label for="escribirFrase" class="form-label">Escribe la frase o nombre</label>
-            <textarea class="form-control" id="escribirFrase" rows="3" disabled></textarea>
-          </div>
-          <div class="col-12 col-md-6 mb-3">
-            <label for="posicionTexto" class="form-label">Selecciona posición del texto</label>
-            <select class="form-select" id="posicionTexto" disabled>
-              <option value="arriba" selected>Arriba del diseño</option>
-              <option value="abajo">Abajo del diseño</option>
+            <label for="posicionDiseno" class="form-label">Selecciona posición del diseño</label>
+            <select class="form-select" id="posicionDiseno">
+              <option value="centro" selected>Centro (Por defecto)</option>
+              <option value="esquinaSup">Esquina superior derecha</option>
+              <option value="esquinaInf">Esquina inferior izquierda</option>
             </select>
           </div>
+          <!---cambio kim-->
         </div>
       </div>
 
+      <hr>
+
+      <div class="section-card disabled" id="section-4">
+        <div class="section-header">
+          <div class="section-badge">4</div>
+          <div>
+            <h2 class="section-title">Personaliza el Texto</h2>
+            <p class="section-subtitle">Agrega una frase especial (opcional)</p>
+          </div>
+        </div>
+
+        <div id="seccion-frase" class="input-group-container">
+          <!---fin cambio kim-->
+          <h3 class="text-center mb-3">Texto y Frase</h3>
+          <div class="row mb-4">
+
+            <div class="col-12 col-md-6 mb-3">
+              <label for="tipografia" class="form-label">1. Selecciona tu Tipo de Letra (+$20)</label>
+              <select class="form-select" id="tipografia" data-precio="20" disabled>
+                <option value="default" class="tote-texto" selected>Por defecto (Sin costo)</option>
+
+                <option value="font-1" class="tote-texto font-1">1. Clásica </option>
+                <option value="font-2" class="tote-texto font-2">2. Script fina </option>
+                <option value="font-3" class="tote-texto font-3">3. Script media </option>
+                <option value="font-4" class="tote-texto font-4">4. Semi-negrita cursiva </option>
+                <option value="font-5" class="tote-texto font-5">5. Clásica cursiva </option>
+                <option value="font-6" class="tote-texto font-6">6. Negrita pesada </option>
+                <option value="font-7" class="tote-texto font-7">7. Negrita moderna </option>
+                <option value="font-8" class="tote-texto font-8">8. Serif fina </option>
+                <option value="font-9" class="tote-texto font-9">9. Script elegante </option>
+                <option value="font-10" class="tote-texto font-10">10. Fina cursiva </option>
+                <option value="font-11" class="tote-texto font-11">11. Script bold </option>
+                <option value="font-12" class="tote-texto font-12">12. Serif negrita </option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-6 mb-3">
+              <label class="form-label">2. Elige el Color de tu Letra</label>
+              <div id="color-selector-container" class="d-flex flex-wrap gap-2" disabled>
+                <input type="radio" name="colorTexto" id="color-1" value="#000000" data-color-hex="#000000"
+                  class="color-radio-input d-none" disabled>
+                <label for="color-1" class="color-radio-option" style="background-color: #000000;"></label>
+
+                <input type="radio" name="colorTexto" id="color-2" value="#01004C" data-color-hex="#01004C"
+                  class="color-radio-input d-none" disabled>
+                <label for="color-2" class="color-radio-option" style="background-color: #01004C;"></label>
+
+                <input type="radio" name="colorTexto" id="color-3" value="#321D96" data-color-hex="#321D96"
+                  class="color-radio-input d-none" disabled>
+                <label for="color-3" class="color-radio-option" style="background-color: #321D96;"></label>
+
+                <input type="radio" name="colorTexto" id="color-4" value="#6A49F3" data-color-hex="#6A49F3"
+                  class="color-radio-input d-none" disabled>
+                <label for="color-4" class="color-radio-option" style="background-color: #6A49F3;"></label>
+
+                <input type="radio" name="colorTexto" id="color-5" value="#E753AB" data-color-hex="#E753AB"
+                  class="color-radio-input d-none" disabled>
+                <label for="color-5" class="color-radio-option" style="background-color: #E753AB;"></label>
+
+                <input type="radio" name="colorTexto" id="color-6" value="#9A3837" data-color-hex="#9A3837"
+                  class="color-radio-input d-none" disabled>
+                <label for="color-6" class="color-radio-option" style="background-color: #9A3837;"></label>
+
+                <input type="radio" name="colorTexto" id="color-7" value="#A570BF" data-color-hex="#A570BF"
+                  class="color-radio-input d-none" disabled>
+                <label for="color-7" class="color-radio-option" style="background-color: #A570BF;"></label>
+
+                <input type="radio" name="colorTexto" id="color-8" value="#6B5994" data-color-hex="#6B5994"
+                  class="color-radio-input d-none" disabled>
+                <label for="color-8" class="color-radio-option" style="background-color: #6B5994;"></label>
+
+                <input type="radio" name="colorTexto" id="color-9" value="#435B47" data-color-hex="#435B47"
+                  class="color-radio-input d-none" disabled>
+                <label for="color-9" class="color-radio-option" style="background-color: #435B47;"></label>
+
+                <input type="radio" name="colorTexto" id="color-10" value="#119965" data-color-hex="#119965"
+                  class="color-radio-input d-none" disabled>
+                <label for="color-10" class="color-radio-option" style="background-color: #119965;"></label>
+
+                <input type="radio" name="colorTexto" id="color-11" value="#008080" data-color-hex="#008080"
+                  class="color-radio-input d-none" disabled>
+                <label for="color-11" class="color-radio-option" style="background-color: #008080;"></label>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-3">
+              <label for="escribirFrase" class="form-label">Escribe la frase o nombre</label>
+              <textarea class="form-control" id="escribirFrase" rows="3" disabled></textarea>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+              <label for="posicionTexto" class="form-label">Selecciona posición del texto</label>
+              <select class="form-select" id="posicionTexto" disabled>
+                <option value="arriba" selected>Arriba del diseño</option>
+                <option value="abajo">Abajo del diseño</option>
+              </select>
+            </div>
+            <!--cambio kim-->
+          </div>
+        </div>
+
+      </div>
     </div>
 
     <hr>
 
-    <div class="container my-4 text-center">
-      <h3>Resumen del Pedido</h3>
-      <p class="h4">Precio Base Seleccionado: <span id="precio-base-seleccionado">--</span></p>
-      <p class="h2 mt-3">Precio Total Estimado: <strong id="precio-total">$0</strong></p>
+    <div class="container my-4">
+      <div class="section-card" id="section-5">
+        <div class="price-summary">
+          <h3>Resumen del Pedido</h3>
+          <!--fin cambio kim-->
 
-      <button id="btn-siguiente" class="btn btn-lg mt-3"
-        style="background-color: var(--color-boton); color: var(--color-white);" data-bs-toggle="offcanvas"
+          <p class="h4">Precio Base Seleccionado: <span id="precio-base-seleccionado">--</span></p>
+
+          <!--cambio kim-->
+          <p class="price-amount" id="precio-total">$0</p>
+      
+      <button id="btn-siguiente" class="btn btn-lg mt-4 btn-resumen-final"
+        data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasResumen" aria-controls="offcanvasResumen">
         Ver Resumen y Añadir al Carrito
       </button>
+
+        </div>
+      </div>
     </div>
   </main>
 
