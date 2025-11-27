@@ -17,75 +17,77 @@
 
 <body>
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-light custom-navbar fixed-top">
-    <div class="container-fluid d-flex align-items-center justify-content-between">
-      <!-- LOGO -->
-      <a class="navbar-brand d-flex align-items-center" href="../../index.html">
-        <div class="logo-circle">
-          <img src="../../Pictures/Logo/Logo1.png" alt="Alma Tortuga Logo" class="logo-img" />
+  <header>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light custom-navbar fixed-top">
+      <div class="container-fluid d-flex align-items-center justify-content-between">
+        <!-- LOGO -->
+        <a class="navbar-brand d-flex align-items-center" href="../../../index.html">
+          <div class="logo-circle">
+            <img src="../../../Pictures/Logo/Logo1.png" alt="Alma Tortuga Logo" class="logo-img" />
+          </div>
+        </a>
+
+        <!-- BOTÓN RESPONSIVO -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- ENLACES -->
+        <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
+          <ul class="navbar-nav ms-3" style="width: 60%">
+            <!-- Dropdown ToteBags -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle fw-bold" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                ToteBags
+              </a>
+              <ul class="dropdown-menu shadow" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="../Coleccion/coleccion.html">Colección de Temporada</a></li>
+                <li><a class="dropdown-item" href="../Clasicas/clasicas.html">ToteBag Clásica</a></li>
+                <li>
+                  <a class="dropdown-item" href="../Personalizada/personalizada.html">ToteBag Personalizada</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="../../Contact/contact.html">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../About/about.html">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../Blog/blog.html">Blog</a>
+            </li>
+          </ul>
         </div>
-      </a>
-
-      <!-- BOTÓN RESPONSIVO -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      
-       <!-- ENLACES -->
-       <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
-        <ul class="navbar-nav ms-3" style="width: 60%">
-          <!-- Dropdown ToteBags -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+        <div class="nav-item dropdown ms-auto me-5 custom-navbar">
+          <a class="titulo nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
-            ToteBags
-            </a>
-            <ul class="dropdown-menu shadow" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="../Totebags/Coleccion/coleccion.html">Colección de Temporada</a></li>
-              <li><a class="dropdown-item" href="../Totebags/Clasicas/clasicas.html">ToteBag Clásica</a></li>
-              <li>
-                <a class="dropdown-item" href="../Totebags/Personalizada/personalizada.html">ToteBag Personalizada</a>
-              </li>
-            </ul>
-          </li>
+            Usuario
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Cuenta</a></li>
+            <li><a class="dropdown-item" href="../../Users/logIn.html">Iniciar Sesión</a></li>
+            <li><a class="dropdown-item" href="../Fomulario/formulario.html">Agregar producto</a></li>
+          </ul>
+        </div>
 
-          <li class="nav-item">
-            <a class="nav-link" href="../Contact/contact.html">Contacto</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../About/about.html">Nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../Blog/blog.html">Blog</a>
-          </li>
-        </ul>
+        <!-- ICONO CARRITO -->
+        <div class="cart-icon-container position-relative">
+          <a href="../../../Pages/Carrito/carrito.html" class="nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+              class="bi bi-cart-check-fill" viewBox="0 0 16 16">
+              <path
+                d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708" />
+            </svg>
+            <span id="cart-count" class="cart-count">0</span>
+          </a>
+        </div>
       </div>
-      <div class="nav-item dropdown ms-auto me-5 custom-navbar">
-        <a class="titulo nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          Usuario
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Cuenta</a></li>
-          <li><a class="dropdown-item" href="../Users/logIn.html">Iniciar Sesión</a></li>
-        </ul>
-      </div>
-
-      <!-- ICONO CARRITO -->
-      <div class="cart-icon-container position-relative">
-        <a href="#carrito" class="nav-link">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-            class="bi bi-cart-check-fill" viewBox="0 0 16 16">
-            <path
-              d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708" />
-          </svg>
-          <span id="cart-count" class="cart-count">0</span>
-        </a>
-      </div>
-    </div>
-  </nav>
+    </nav>
   </header>
 
 
@@ -96,7 +98,7 @@
     </div>
 
     <div class="grid-container">
-      
+
       <div class="product-card">
         <div class="product-image">
           <img src="../../Pictures/About-pics/man-avatar_5556468.png" alt="ToteBag Premium Suave" />
@@ -104,26 +106,14 @@
         <div class="product-content">
           <h3 class="product-title">Premium suave</h3>
           <p class="product-price">$1,200.00MXN</p>
-          <p class="product-description">ToteBag artesanal de alta calidad, confeccionada con materiales suaves y resistentes.</p>
+          <p class="product-description">ToteBag artesanal de alta calidad, confeccionada con materiales suaves y
+            resistentes.</p>
         </div>
         <button class="product-button">Agregar al carrito</button>
       </div>
 
 
 
-      
-      <div class="product-card">
-        <div class="product-image">
-          <img src="../../Pictures/About-pics/man-avatar_5556468.png" alt="ToteBag Premium Suave" />
-        </div>
-        <div class="product-content">
-          <h3 class="product-title">Premium suave</h3>
-          <p class="product-price">$1,200.00MXN</p>
-          <p class="product-description">ToteBag artesanal de alta calidad, confeccionada con materiales suaves y resistentes.</p>
-        </div>
-        <button class="product-button">Agregar al carrito</button>
-      </div>
-
 
       <div class="product-card">
         <div class="product-image">
@@ -132,7 +122,8 @@
         <div class="product-content">
           <h3 class="product-title">Premium suave</h3>
           <p class="product-price">$1,200.00MXN</p>
-          <p class="product-description">ToteBag artesanal de alta calidad, confeccionada con materiales suaves y resistentes.</p>
+          <p class="product-description">ToteBag artesanal de alta calidad, confeccionada con materiales suaves y
+            resistentes.</p>
         </div>
         <button class="product-button">Agregar al carrito</button>
       </div>
@@ -145,7 +136,8 @@
         <div class="product-content">
           <h3 class="product-title">Premium suave</h3>
           <p class="product-price">$1,200.00MXN</p>
-          <p class="product-description">ToteBag artesanal de alta calidad, confeccionada con materiales suaves y resistentes.</p>
+          <p class="product-description">ToteBag artesanal de alta calidad, confeccionada con materiales suaves y
+            resistentes.</p>
         </div>
         <button class="product-button">Agregar al carrito</button>
       </div>
@@ -158,7 +150,8 @@
         <div class="product-content">
           <h3 class="product-title">Premium suave</h3>
           <p class="product-price">$1,200.00MXN</p>
-          <p class="product-description">ToteBag artesanal de alta calidad, confeccionada con materiales suaves y resistentes.</p>
+          <p class="product-description">ToteBag artesanal de alta calidad, confeccionada con materiales suaves y
+            resistentes.</p>
         </div>
         <button class="product-button">Agregar al carrito</button>
       </div>
@@ -171,7 +164,22 @@
         <div class="product-content">
           <h3 class="product-title">Premium suave</h3>
           <p class="product-price">$1,200.00MXN</p>
-          <p class="product-description">ToteBag artesanal de alta calidad, confeccionada con materiales suaves y resistentes.</p>
+          <p class="product-description">ToteBag artesanal de alta calidad, confeccionada con materiales suaves y
+            resistentes.</p>
+        </div>
+        <button class="product-button">Agregar al carrito</button>
+      </div>
+
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="../../Pictures/About-pics/man-avatar_5556468.png" alt="ToteBag Premium Suave" />
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">Premium suave</h3>
+          <p class="product-price">$1,200.00MXN</p>
+          <p class="product-description">ToteBag artesanal de alta calidad, confeccionada con materiales suaves y
+            resistentes.</p>
         </div>
         <button class="product-button">Agregar al carrito</button>
       </div>
