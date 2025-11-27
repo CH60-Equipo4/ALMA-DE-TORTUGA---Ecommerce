@@ -16,26 +16,21 @@
 
 <body>
   <header>
-    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light custom-navbar fixed-top">
       <div class="container-fluid d-flex align-items-center justify-content-between">
-        <!-- LOGO -->
         <a class="navbar-brand d-flex align-items-center" href="./index.html">
           <div class="logo-circle">
-            <img src="./Pictures/Logo/Logo1.png" alt="Alma Tortuga Logo" class="logo-img" />
+            <img src="https://example.com/images/logo_tortuga_verde.png" alt="Alma Tortuga Logo" class="logo-img" />
           </div>
         </a>
 
-        <!-- BOTÓN RESPONSIVO -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- ENLACES -->
         <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
           <ul class="navbar-nav ms-3" style="width: 60%">
-            <!-- Dropdown ToteBags -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle fw-bold" href="#" id="navbarDropdown" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -75,7 +70,6 @@
           </ul>
         </div>
 
-        <!-- ICONO CARRITO -->
         <div class="cart-icon-container position-relative">
           <a href="./Pages/Carrito/carrito.html" class="nav-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -91,20 +85,20 @@
   </header>
 
   <main>
-    <div id="sliderHome"></div>
+    <div id="sliderHome">
+    </div>
 
-    <div>
+    <div class="container my-5">
       <h2 class="title-comprado">Lo más comprado</h2>
       <p class="line"></p>
       <div class="cards-comprado row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
           <div class="card producto-card custom-shadow">
-            <img src="./Pictures/Products/Alebrije.jpg" class="card-img-top img-fluid"
+            <img src="https://picsum.photos/id/600/300/300" class="card-img-top img-fluid"
               alt="Premium suave Totebag con diseño de tortuga">
 
             <div class="card-body">
               <h5 class="card-title product-name">Totebag Alebrije</h5>
-
               <p class="card-text product-price">$550 MXN</p>
             </div>
 
@@ -116,12 +110,11 @@
 
         <div class="col">
           <div class="card producto-card custom-shadow">
-            <img src="./Pictures/Products/Corazon.jpg" class="card-img-top img-fluid"
+            <img src="https://picsum.photos/id/599/300/300" class="card-img-top img-fluid"
               alt="Premium suave Totebag con diseño de tortuga">
 
             <div class="card-body">
               <h5 class="card-title product-name">Totebag Corazón Anatómico</h5>
-
               <p class="card-text product-price">$595 MXN</p>
             </div>
 
@@ -133,12 +126,11 @@
 
         <div class="col">
           <div class="card producto-card custom-shadow">
-            <img src="./Pictures/Products/CasasBordado.jpg" class="card-img-top img-fluid"
+            <img src="https://picsum.photos/id/601/300/300" class="card-img-top img-fluid"
               alt="Premium suave Totebag con diseño de tortuga">
 
             <div class="card-body">
               <h5 class="card-title product-name">Totebag Casas Bordado</h5>
-
               <p class="card-text product-price">$580 MXN</p>
             </div>
 
@@ -149,8 +141,6 @@
         </div>
 
       </div>
-
-    </div>
     </div>
 
     <div class="banner-info">
@@ -161,7 +151,7 @@
         </div>
 
         <div class="banner-item-center">
-          <i class="fas fa-hands-helping"></i>
+          <i class="fa-solid fa-hands-holding-child"></i>
         </div>
         <div class="banner-item">
           <i class="fa-solid fa-lock"></i>
@@ -174,40 +164,37 @@
       </div>
     </div>
 
-    <div class="blog-section">
+    <div class="blog-section container">
       <h2 class="title-blog">Visita nuestro Blog</h2>
       <p class="line"></p>
       <div class="container mt-4">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="row g-4 justify-content-center align-items-stretch">
-              <!-- Tarjeta 1: Guía de compra -->
               <div class="col-lg-4 col-md-6 col-12 mb-4">
                 <a href="./Pages/Blog/GuiaDeCompra.html" class="text-decoration-none">
                   <div class="card p-4 h-100 d-flex flex-column text-center shadow-sm">
-                    <img src="./Pages/Blog/Pictures-blog/Guia de Compra.png" class="card-img-top mx-auto mb-3"
+                    <img src="https://picsum.photos/id/196/300/300" class="card-img-top mx-auto mb-3"
                       alt="Guía de Compra" style="max-width: 300px; object-fit: cover" />
-                    <h5 class="mt-2">¿Cómo hacer una compra en Alma de Tortuga?</h5>
+                    <h5 class="mt-2 product-name">¿Cómo hacer una compra en Alma de Tortuga?</h5>
                   </div>
                 </a>
               </div>
-              <!-- Tarjeta 2: Colección navideña -->
               <div class="col-lg-4 col-md-6 col-12 mb-4">
                 <a href="./Pages/Totebags/Coleccion/coleccion.html" class="text-decoration-none">
                   <div class="card p-4 h-100 d-flex flex-column text-center shadow-sm">
-                    <img src="./Pages/Blog/Pictures-blog/ColeccionTemporada.jpeg" class="card-img-top mx-auto mb-3"
-                      alt="Guía de Compra" style="max-width: 300px; object-fit: cover" />
-                    <h5 class="mt-2">Colección Navideña</h5>
+                    <img src="https://picsum.photos/id/354/300/300" class="card-img-top mx-auto mb-3"
+                      alt="Colección Navideña" style="max-width: 300px; object-fit: cover" />
+                    <h5 class="mt-2 product-name">Colección Navideña</h5>
                   </div>
                 </a>
               </div>
-              <!-- Tarjeta 3: Personaliza -->
               <div class="col-lg-4 col-md-6 col-12 mb-4">
                 <a href="../../Pages/Totebags/Personalizada/personalizada.html" class="text-decoration-none">
                   <div class="card p-4 h-100 d-flex flex-column text-center shadow-sm">
-                    <img src="./Pages/Blog/Pictures-blog/PersonalizaTuTotebag.png" class="card-img-top mx-auto mb-3"
-                      alt="Guía de Compra" style="max-width: 300px; object-fit: cover" />
-                    <h5 class="mt-2">Personaliza tu totebag</h5>
+                    <img src="https://picsum.photos/id/35/300/300" class="card-img-top mx-auto mb-3"
+                      alt="Personaliza tu totebag" style="max-width: 300px; object-fit: cover" />
+                    <h5 class="mt-2 product-name">Personaliza tu totebag</h5>
                   </div>
                 </a>
               </div>
@@ -215,11 +202,9 @@
           </div>
         </div>
       </div>
-
     </div>
   </main>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="row align-items-start">
@@ -235,7 +220,7 @@
 
         <div class="col-12 col-md-4 footer-logo text-center my-3 my-md-0">
           <a href="./index.html">
-            <img src="./Pictures/Logo/Logo2.png" alt="Logo de Alma de Tortuga" />
+            <img src="https://example.com/images/logo2.png" alt="Logo de Alma de Tortuga" />
           </a>
         </div>
         <div class="col-12 col-md-4 footer-col-right social-column text-center text-md-end">

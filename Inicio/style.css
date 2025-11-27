@@ -1,8 +1,31 @@
+:root {
+  /* Color palette for Alma de Tortuga */
+  --color-primary: #818E59;
+  --color-secondary: #283429;
+  --color-accent-light: #FFEDCC;
+  --color-accent-lighter: #FEF7EA;
+  --color-accent-gold: #D09559;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-boton: #818E59;
+  --color-acento: #818E59;
+  --color-texto: #283429;
+  --color-fondo: #FEF7EA;
+  --color-nav: #FFEDCC;
+
+  /* Font families */
+  --font-heading: 'Poltawski Nowy', serif;
+  --font-body: 'Poppins', sans-serif;
+}
+
+/* ---------------------------------------------------- */
+/* --- ESTILOS PARA EL SLIDER / SECCIÓN HERO --- */
+/* ---------------------------------------------------- */
 
 .slider-container {
   width: 100%;
   height: 500px;
-  background-color: var(--color-accent-lighter);
+  background-color: var(--color-fondo);
   padding: 2rem 0;
   overflow: hidden;
   position: relative;
@@ -20,118 +43,90 @@
   width: 100%;
   height: 100%;
   flex-shrink: 0;
-  /*box-sizing: border-box;*/
   display: flex;
   align-items: center;
   justify-content: center;
-  /*padding: 0 6rem;*/
 }
 
-.slide-hero {
-  background: var(--color-accent-lighter);
-}
-
-.slide-hero .hero-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  padding-left: 6rem;  
-  padding-right: 4rem; 
-  gap: 2rem;
-}
-
-
+.slide-hero,
+.slide-customize,
+.slide-classic,
 .slide-christmas {
-  background:  var(--color-accent-lighter);
-}
-
-.slide-christmas .badge-special,
-.slide-christmas .slide-title,
-.slide-christmas .slide-subtitle {
-text-align: left;
-}
-
-.slide-christmas .badge-special {
-margin-bottom: 0.5rem;
-}
-
-.slide-christmas .slide-title {
-margin: 0;
-}
-
-.slide-christmas .slide-subtitle {
-margin-top: 1rem;
-}
-
-.slide-christmas .center-content {
-flex-wrap: nowrap;
-}
-
-.slide-classic {
-  background: var(--color-accent-lighter);
-}
-
-.slide-customize {
-  background:  var(--color-accent-lighter);
+  /* Incluimos christmas para consistencia */
+  background: var(--color-fondo);
 }
 
 .hero-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* height: 100%; */
+  height: 100%;
   gap: 4rem;
   padding: 2rem 6rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Regla para centrar el contenido en slides de dos columnas (Descuento/Clásico) */
+.slide-christmas .center-content,
+.slide-classic .center-content {
+  display: flex;
+  justify-content: space-between;
+  /* CORRECCIÓN: Centrar verticalmente */
+  align-items: center;
+  height: 100%;
+  gap: 4rem;
+  padding: 2rem 6rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 
-
-
-
-.hero-text {
+.hero-text,
+.left-col {
   width: 50%;
   display: flex;
   flex-direction: column;
-  /* justify-content: flex-start; 
-  padding-top: 1.5rem;        
-  padding-left: 0.5rem;        
-  text-align: left; */
-  align-items: flex-start; 
+  align-items: flex-start;
   gap: 1rem;
+  text-align: left;
 }
 
-.hero-text h1 {
+.hero-text h1,
+.slide-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 800;
   color: var(--color-secondary);
   line-height: 1.1;
   margin-bottom: 1rem;
 }
 
-.hero-text .highlight {
-  color: var(--color-primary);
-  display: block;
-}
-
-.hero-text p {
+.hero-text p,
+.slide-subtitle {
+  font-family: var(--font-body);
   color: var(--color-texto);
-  line-height: 1.8;
+  line-height: 1.6;
   margin-bottom: 1.5rem;
   font-weight: 300;
 }
 
-.hero-text .highlight-text {
+.highlight {
+  color: var(--color-primary);
+}
+
+.highlight-text {
   color: var(--color-primary);
   font-weight: 600;
 }
 
-.hero-text .btn-explore {
-  background-color: var(--color-primary);
+.btn-explore {
+  background-color: var(--color-boton);
   color: var(--color-white);
   border: none;
-  padding: 1rem;
+  padding: 1rem 2rem;
   border-radius: 0.5rem;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1rem;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -139,367 +134,41 @@ flex-wrap: nowrap;
   display: inline-block;
 }
 
-.hero-text .btn-explore:hover {
+.btn-explore:hover {
   background-color: var(--color-secondary);
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(129, 142, 89, 0.3);
-  color: var(--color-white);
-}
-
-.hero-text .slide-title {
-  margin: 0;
-  align-self: flex-start;
 }
 
 .hero-image {
   width: 50%;
   display: flex;
-  justify-content: flex-end; 
-  /*align-items: center;
-  padding-left: 10rem;*/
+  justify-content: flex-end;
 }
-    
+
 .image-container {
   position: relative;
   animation: float 3s ease-in-out infinite;
 }
 
-
-.hero-image .image-container {
-  width: clamp(250px, 40vw, 380px);
-  height: clamp(250px, 40vw, 300px);
-  border-radius: 20px;
-}
-
-.image-container::before {
-  content: '';
-  position: absolute;
-  inset: -20px;
-  background: radial-gradient(circle, rgba(129, 142, 89, 0.15) 0%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(30px);
-  animation: pulse 3s ease-in-out infinite;
-}
-
-
 .placeholder-bag {
-  width: clamp(200px, 30vw, 300px);
-  height: clamp(200px, 30vw, 300px);
-  background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-accent-lighter) 100%);
-  border-radius: 24px;
+  width: clamp(250px, 40vw, 380px);
+  height: clamp(250px, 40vw, 380px);
+  background-color: var(--color-accent-light);
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
   z-index: 1;
-  object-fit: cover;
-}
-
-.placeholder-bag img{
-  width: 80%;
-  height: auto;
-  border-radius: 12px;
-}
-
-
-.badge-new {
-  position: absolute;
-  top: -30px;
-  right: 20px;
-  background-color: var(--color-accent-gold);
-  color: var(--color-white);
-  padding: 0.5rem 1.5rem;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 0.9rem;
-  box-shadow: 0 5px 15px rgba(208, 149, 89, 0.4);
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-30px);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.3;
-  }
-}
-
-.center-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  gap: 2rem;
-  text-align: left;
-}
-
-.center-content > .slide-title,
-.center-content > p {
-width: 50%;
-}
-
-
-.slide-title {
-  font-size: clamp(1.5rem, 6rem, 2.5rem);
-  font-weight: 800;
-  color: var(--color-secondary);
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.slide-title .highlight {
-  color: var(--color-primary);
-}
-
-.slide-subtitle {
-  font-size: clamp(1rem, 2vw, 1rem);
-  color: var(--color-texto);
-  margin-bottom: 1.5rem; 
-  font-weight: 300;
-  line-height: 1.6;
-}
-
-.card-collection{
-  width: 100%;
-  height: auto;
-  max-width: 320px;
-  background: var(--color-white);
-  border-radius: 22px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 2rem;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.08);
-  transition: all 0.4s ease;
-}
-
-.card-collection img{
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  margin-bottom: 12px;
-}
-
-
-.card-collection:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-}
-  
-
-.card-image {
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-    
-
-.btn-collection {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  border: none;
-  padding: 1rem;
-  font-size: 1rem;
-  border-radius: 0.5rem;;
-  font-weight: 500;
-  width: 60px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.btn-collection:hover {
-  background-color: var(--color-secondary);
-  transform: scale(1.02);
-}
-
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  width: 100%;
-  max-width: 1400px;
-  margin-top: 1.5rem;
-}
-
-.step-card {
-  background: var(--color-white);
-  border-radius: 20px;
-  padding: 0.5rem;
-  text-align: left;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s ease;
-  border-top: 4px solid var(--color-primary);
-  position: relative;
   overflow: hidden;
-  width: 200px;
-  height: 200px;
 }
 
-.step-card:nth-child(2) {
-  border-top-color: var(--color-accent-gold);
-}
-
-.step-card:nth-child(3) {
-  border-top-color: var(--color-secondary);
-}
-
-.step-card:nth-child(4) {
-  border-top-color: var(--color-accent-light);
-  border-top-color: #A67C52;
-}
-
-.step-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-}
-
-.step-icon {
-  width: 45px;
-  height: 45px;
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0.5rem;
-  font-size: 2rem;
-  color: var(--color-white);
-  background: linear-gradient(135deg, var(--color-primary) 0%, rgba(129, 142, 89, 0.8) 100%);
-}
-
-.step-card:nth-child(2) .step-icon {
-  background: linear-gradient(135deg, var(--color-accent-gold) 0%, rgba(208, 149, 89, 0.8) 100%);
-}
-
-.step-card:nth-child(3) .step-icon {
-  background: linear-gradient(135deg, var(--color-secondary) 0%, rgba(40, 52, 41, 0.8) 100%);
-}
-
-.step-card:nth-child(4) .step-icon {
-  background: linear-gradient(135deg, #A67C52 0%, rgba(166, 124, 82, 0.8) 100%);
-}
-
-.step-number {
-  display: inline-block;
-  background-color: var(--color-accent-light);
-  color: var(--color-texto);
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 0.4rem 1rem;
-  border-radius: 50px;
-  margin-bottom: 1rem;
-}
-
-.step-card h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--color-secondary);
-  margin-bottom: 0.8rem;
-  line-height: 1;
-}
-
-.step-description {
-  font-size: 0.95rem;
-  color: var(--color-texto);
-  line-height: 1.6;
-  opacity: 0.8;
-}
-
-.btn-customize {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  border: none;
-  padding: 1rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 0.5rem;;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  margin-top: 2rem;
-  text-decoration: none;
-}
-
-.btn-customize:hover {
-  background-color: var(--color-secondary);
-  transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(129, 142, 89, 0.3);
-}
-
-.nav-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.9);
-  border: none;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  color: var(--color-texto);
-  z-index: 10;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.nav-button:hover {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 8px 25px rgba(129, 142, 89, 0.3);
-}
-
-.nav-button.prev {
-  left: 30px;
-}
-
-.nav-button.next {
-  right: 30px;
-}
-
-.dots-container {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 12px;
-  z-index: 10;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 2px solid var(--color-texto);
-  border-color: rgba(40, 52, 41, 0.3);
-}
-
-.dot.active {
-  width: 40px;
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
+.placeholder-bag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
 .badge-special {
@@ -515,434 +184,231 @@ width: 50%;
   margin-bottom: 1.5rem;
 }
 
-
-
-/* ------------------------------
-Responsive: mantener layout desktop
-pero todo más pequeño en pantallas pequeñas
------------------------------- */
-@media (max-width: 768px) {
-.slides{
-  align-items: center; 
-}
-
-/* Contenedor general: menos altura/padding para que todo se vea compacto */
-.slider-container {
-  height: 250px;
-  padding: 1rem 0;
-}
-.slide-hero .hero-content {
-  padding-left: 2rem;  
-  padding-right: 2rem; 
-  gap: 1rem;
-}
-
-/* Mantener dos columnas como en desktop, pero permitir que se encojan */
-.hero-content {
-  display: flex;
-  flex-direction: row;     /* mantiene layout desktop */
-  flex-wrap: wrap;         /* permite que los elementos quepan sin desbordarse */
-  align-items: center;
-  gap: 0.5rem !important;   
-}
-
-/* Texto: ocupa ~48% y se reduce tipografía y márgenes */
-.hero-text {
-  width: 48%;
-  align-items: flex-start;
-  text-align: left;
-  gap: 0.6rem !important;
-}
-
-.hero-text h1 {
-  font-size: clamp(1.5rem, 3.4vw, 1.8rem); /* más pequeño pero responsivo */
-  line-height: 1.05;
-  margin-bottom: 0.4rem;
-}
-
-.hero-text p {
-  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
-  line-height: 1.45;
-  margin-bottom: 0.6rem;
-  font-weight: 300;
-}
-
-.hero-text .btn-explore {
-  padding: 0.6rem 0.9rem;
-  font-size: 0.9rem;
-}
-
-/* Imagen: ocupa ~48%, centrada y más pequeña */
-.hero-image {
-  width: 18%;
-  display: flex;
-  justify-content: end;
-  order: 0 !important; /* fuerza que no se mueva arriba/abajo */
-}
-
-.hero-image .image-container {
-  width: clamp(80px, 20vw, 200px);
-  height: clamp(80px, 20vw, 200px);
-  border-radius: 14px;
-  animation: float 3s ease-in-out infinite;
-}
-
-.image-container::before {
-  inset: -12px; /* sombra más contenida */
-  filter: blur(18px);
+.badge-special i {
+  color: var(--color-accent-gold);
 }
 
 
-.placeholder-bag {
-  width: clamp(150px, 22vw, 140px) !important;
-  height: clamp(150px, 22vw, 140px) !important;
-  padding: 0;         
-  border-radius: 12px;
-}
-.placeholder-bag img{
-  width: 80%;
-  height: auto;
-  border-radius: 12px;
-}
-
-.slide-hero .hero-content {
-  font-size:  0.9rem;
-}
-
-
+/* --- ANIMACIONES --- */
 @keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); } 
-}
 
-.center-content{
-height: 250px;
-padding: 1rem 0;
-align-items: center;
-}
-
-.card-collection {
-  max-width: 220px;
-  padding: 1rem;
-  border-radius: 16px;
-  gap: 1rem;
-}
-
-.card-image {
-  width: 180px;
-  height: 180px;
-}
-
-.card-collection img {
-  border-radius: 10px;
-}
-
-/* Nav buttons y dots más compactos */
-.nav-button {
-  width: 30px;
-  height: 30px;
-  font-size: 1.1rem;
-}
-
-/* overflow vertical por paddings grandes */
-.slide {
-  padding: 0.5rem 0.75rem;
-  min-height: auto;
-}
-
-/* Si algún componente usa padding-left excesivo en desktop, lo reducimos */
-.slide-christmas .left-col,
-.slide-classic .left-col {
-  padding-left: 1.5rem;
-}
-
-.slide-christmas .center-content {
-  padding-left: 2rem !important;
-  padding-right: 2rem !important;
-  gap: 2rem !important;
-}
-
-.slide-christmas .left-col {
-  gap: 0rem !important;
-  justify-content: center !important;
-  padding-left: 3rem !important;
-}
-
-
-.slide-christmas .center-content h1 {
-  font-size: clamp(1.5rem, 3.4vw, 1.8rem);
-  margin: 0;
-}
-
-.slide-christmas .center-content p {
-  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
-}
-
-.badge-special {
-  font-size: clamp(0.5rem, 2vw, 0.90rem);
-  gap: 0;
-  width: auto;
-  height: 30px;
-
-}
-
-.card-collection{
-  width: clamp(150px, 22vw, 140px) !important;
-  height: clamp(130px, 22vw, 140px) !important;
-}
-
-.card-collection .card-image img{
-  width: 100px !important;
-  height: 100px;
-}
-
-.card-content .btn-collection {
-  padding: 0.6rem 0.9rem;
-  font-size: 0.7rem;
-  width: 20px;
-
-}
-
-/* slide classic */
-.slide-classic .center-content {
-  padding-left: 2rem !important;
-  padding-right: 2rem !important;
-  gap: 2rem !important;
-}
-
-.slide-classic .left-col {
-  gap: 0rem !important;
-  justify-content: center !important;
-  padding-left: 3rem !important;
-}
-
-
-.slide-classic .center-content h1 {
-  font-size: clamp(1.5rem, 3.4vw, 1.8rem);
-  margin: 0;
-}
-
-.slide-classic .center-content p {
-  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
-}
-
-.card-collection{
-  width: clamp(150px, 22vw, 140px) !important;
-  height: clamp(130px, 22vw, 140px) !important;
-}
-
-/* slide customize*/
-.slide-customize .center-content {
-  gap: 5px 5px !important;
-}
-
-
-.slide-customize .step-icon{
-  display: none;
-}
-
-/* Steps grid: columnas más pequeñas y menos gap */
-.steps-grid {
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-}
-
-.step-card {
-  width: 120px;
-  height: 90px;
-  padding: 0.3rem;
-}
-
-.step-card h3 {
-  font-size: 0.7rem;
-}
-
-.step-description {
-  font-size: 0.8rem;
-}
-
-/* Banner / footer spacing reducido */
-.banner-info {
-  padding: 0.6rem 0.8rem;
-}
-
-.slide-customize .center-content {
-  grid-template-columns: 1fr;   /* una sola columna */
-  grid-template-rows: auto auto auto auto; /* título, botón, steps 1-2, steps 3-4 */
-  padding-top: 1rem !important;
-  padding-left: 1rem !important;
-  padding-right: 1rem !important;
-}
-
-.slide-customize .slide-title {
-  grid-row: 1 !important;
-  padding: 6px 6px !important;
-  margin: 0;
-  font-size: 1.3rem !important;
-}
-
-.slide-customize .btn-customize {
-  grid-row: 2 !important;
-  margin: 10rem 0 1rem;
-  width: 7rem !important;
-  height: 20px;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center !important;
-}
-
-.slide-customize .slide-subtitle {
-  display: none !important;
-}
-
-.title-comprado{
-  font-size: 1.8rem !important;
-  margin-top: 1.5rem;
-}
-
-.title-blog{
-  font-size: 1.8rem !important;
-}
-}
-
-
-@media (max-width: 992px) {
-  #sliderHome .slider-container {
-    max-height: none;
-    min-height: auto;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+  0%,
+  100% {
+    transform: translateY(0);
   }
 
-  .slide {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+  50% {
+    transform: translateY(-15px);
   }
 }
 
-
-.placeholder-bag {
-  width: clamp(180px, 45vw, 320px);
-  height: clamp(220px, 50vw, 380px);
-}
-
-
-/* --- LAYOUT DEL SLIDE  EN 2 COLUMNAS --- */
-.slide-christmas .center-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  gap: 12rem;
-  box-sizing: border-box;
-}
-
-.slide-classic .center-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  gap: 12rem;
-  box-sizing: border-box;
-}
-
-
-.center-content .card-collection{
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Columna izquierda con 3 filas (badge, título, subtítulo) */
-.slide-christmas .left-col {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: start; /* las 3 filas centradas verticalmente */
-  align-items: flex-start;  /* alineadas a la izquierda */
-  gap: 1rem;
-  text-align: left;
-  padding-left: 6rem;
-}
-
-.slide-classic .left-col{
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: start; /* las 3 filas centradas verticalmente */
-  align-items: flex-start;  /* alineadas a la izquierda */
-  gap: 1rem;
-  text-align: left;
-  padding-left: 6rem;
-}
+/* ---------------------------------------------------- */
+/* --- SLIDE CUSTOMIZE (Diseño en Grid) --- */
+/* ---------------------------------------------------- */
 
 .slide-customize .center-content {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   grid-template-rows: auto auto 1fr;
+  /* 1fr para estirar la última fila (donde va el botón) */
   gap: 20px 30px;
-  align-items: start; 
+  align-items: start;
   justify-items: start;
+  height: 100%;
+  padding: 4rem 6rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  /* CORRECCIÓN: Distribuir el espacio verticalmente dentro del contenedor */
+  align-content: space-between;
 }
 
-/* Título: Columna 1, Fila 1 */
 .slide-customize .slide-title {
   grid-column: 1;
   grid-row: 1;
-  padding-top: 5rem;
-  padding-left: 3rem;
 }
 
-/* Subtítulo: Columna 1, Fila 2 */
 .slide-customize .slide-subtitle {
   grid-column: 1;
   grid-row: 2;
-  padding-left: 3rem;
 }
 
-/* Botón: Columna 1, Fila 3 */
 .slide-customize .btn-customize {
   grid-column: 1;
   grid-row: 3;
-  width: 100%; 
-  max-width: 300px; 
-  margin-top: 1rem;
-  padding-left: 6rem;
+  width: 100%;
+  max-width: 300px;
+  /* CORRECCIÓN: Forzar el botón al final de la fila estirada */
+  align-self: end;
+  /* Se elimina el margin-top para que align-self funcione mejor */
+  margin-top: 0;
+
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-/* Grid de Pasos: Columna 2, abarcando de la Fila 1 a la 3 */
+.slide-customize .btn-customize:hover {
+  background-color: var(--color-secondary);
+}
+
 .slide-customize .steps-grid {
   grid-column: 2;
-  
-  /* empieza en la fila 1 y ocupe 3 filas */
   grid-row: 1 / span 3;
-  height: 100%; 
-}
-
-
-/*
- * 3. Crear el grid 2x2 para los 'steps'
- */
-.slide-customize .steps-grid {
-  /* * A este mismo elemento .steps-grid (que ya está posicionado)
-   * le damos su propio display: grid interno.
-   */
   display: grid;
-  
-  /* Dos columnas de igual tamaño */
   grid-template-columns: 1fr 1fr;
-  
-  /* Dos filas de igual tamaño */
   grid-template-rows: 1fr 1fr;
-  
-  /* Espacio entre los 4 cuadros de pasos */
-  gap: 15px;
+  gap: 20px;
   width: 100%;
   height: 100%;
-  justify-content: end;
 }
 
-.title-comprado{
+.step-card {
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 1.5rem;
+  text-align: left;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-left: 4px solid var(--color-primary);
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.step-card:nth-child(2) {
+  border-left-color: var(--color-accent-gold);
+}
+
+.step-card:nth-child(3) {
+  border-left-color: var(--color-secondary);
+}
+
+.step-card:nth-child(4) {
+  border-left-color: var(--color-accent-light);
+}
+
+.step-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.8rem;
+  font-size: 1.8rem;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+
+.step-card:nth-child(2) .step-icon {
+  background-color: var(--color-accent-gold);
+}
+
+.step-card:nth-child(3) .step-icon {
+  background-color: var(--color-secondary);
+}
+
+.step-card:nth-child(4) .step-icon {
+  background-color: var(--color-accent-light);
+}
+
+
+.step-number {
+  display: inline-block;
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.step-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.step-description {
+  font-size: 0.95rem;
+  color: var(--color-texto);
+  opacity: 0.8;
+}
+
+/* ---------------------------------------------------- */
+/* --- CONTROLES Y DOTS DEL SLIDER --- */
+/* ---------------------------------------------------- */
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--color-secondary);
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.nav-button.prev {
+  left: 20px;
+}
+
+.nav-button.next {
+  right: 20px;
+}
+
+.dots-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(40, 52, 41, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background-color: var(--color-primary);
+  transform: scale(1.2);
+}
+
+
+/* ------------------------------------------------ */
+/* --- SECCIONES DE CONTENIDO GENERAL (AJUSTES) --- */
+/* ------------------------------------------------ */
+
+.title-comprado,
+.title-blog {
+  font-family: var(--font-heading);
   text-align: center;
   font-size: 2.5rem;
   font-weight: 800;
@@ -950,124 +416,223 @@ align-items: center;
   margin-top: 3rem;
 }
 
-.line{
+.line {
   width: 150px;
   height: 4px;
   background-color: var(--color-primary);
-  margin: 0 auto;
+  margin: 0.5rem auto 2rem;
   border-radius: 2px;
 }
 
-.cards-comprado{
-  margin: 2rem;
-}
-
-.col{
-  display: flex;
-  justify-content: center;
-}
-
-
 .producto-card {
-  border: none; 
-  background-color: var(--color-accent-light); 
-  overflow: hidden; 
-  max-width: 300px; 
-  text-align: center; 
+  border: none;
+  background-color: var(--color-white);
+  overflow: hidden;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
 }
 
-.producto-card .card-body {
-  padding-top: 0.5rem; 
-  padding-bottom: 0.5rem; 
-  padding-left: 0;
-  padding-right: 0;
+.producto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.producto-card .card-img-top {
+  height: 250px;
+  object-fit: cover;
 }
 
 .product-name {
-  font-size: 1.35rem;
-  font-weight: 500;
-  margin-bottom: 0.2rem;
-  color: #333; 
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-secondary);
 }
-
 
 .product-price {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 700;
+  color: var(--color-accent-gold);
   margin-bottom: 1rem;
-  color: #333; 
 }
 
-
 .add-to-cart-btn {
-  background-color: #818e59; 
-  border-color: #818e59;
-  color: white; 
-  padding: 0.8rem 1rem; 
-  border-radius: 0.5rem; 
-  width: 100%; 
-  font-size: 1rem;
+  background-color: var(--color-boton);
+  border-color: var(--color-boton);
+  color: var(--color-white);
   font-weight: 600;
-  transition: background-color 0.3s ease;
 }
 
 .add-to-cart-btn:hover {
-  background-color: #6d774a;
-  border-color: #6d774a;
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
 }
 
-.banner-info{
-  display: grid;
-  grid-template-rows: auto auto;
-  grid-template-columns: 1fr;
-  padding: 1rem 0;
-  width: 100%; 
-  gap: 15px;
-  background-color: var(--color-white);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-}
-
-.banner-top{
+/* --- BANNER INFO / CAUSA --- */
+.banner-info {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 100%;
+  padding: 2rem 1rem;
+  background-color: var(--color-accent-light);
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  flex-wrap: wrap;
 }
 
-.banner-item{
+.banner-top {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed rgba(40, 52, 41, 0.2);
+}
+
+.banner-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-texto);
+  max-width: 150px;
+}
+
+.banner-item i,
+.banner-item-center i {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+}
+
+.banner-item-center {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.banner-item i, 
-.banner-item-center i {
-  font-size: 2.2rem; 
-  color: var(--color-secondary);
+  justify-content: center;
 }
 
 .banner-bottom {
-  text-align: center;
+  width: 100%;
+  margin-top: 1.5rem;
 }
 
 .banner-bottom p {
-  margin: 0; 
-  font-size: 1rem;
-  font-weight: 500;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--color-secondary);
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
-.blog-section{
-  margin-bottom: 3rem;
-}
-.title-blog{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* --- SECCIÓN BLOG (Tarjetas de contenido) --- */
+.blog-section .card {
+  border: 1px solid rgba(40, 52, 41, 0.1);
+  transition: all 0.3s ease;
 }
 
+.blog-section .card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 20px rgba(129, 142, 89, 0.15) !important;
+}
+
+/* ----------------------------- */
+/* --- Responsive Adjustments --- */
+/* ----------------------------- */
+
+@media (max-width: 992px) {
+
+  .hero-content,
+  .slide-customize .center-content,
+  /* Asegurar que las correcciones se apliquen en tablet */
+  .slide-christmas .center-content,
+  .slide-classic .center-content {
+    padding: 2rem 4rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    /* Centrado en columna */
+    align-items: center;
+  }
+
+  /* Ajuste específico para el slide de Personalizar en tablet */
+  .slide-customize .center-content {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto 1fr;
+    padding: 2rem;
+  }
+
+  .hero-text,
+  .left-col,
+  .hero-image {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-image {
+    justify-content: center;
+  }
+
+  .slide-customize .slide-title,
+  .slide-customize .slide-subtitle,
+  .slide-customize .btn-customize {
+    grid-column: 1;
+    text-align: center;
+    align-items: center;
+    padding-left: 0;
+  }
+
+  /* Restaurar el margen inferior en móvil/tablet para separación */
+  .slide-customize .btn-customize {
+    max-width: 100%;
+    margin-top: 1rem;
+    align-self: unset;
+  }
+
+  .slide-customize .steps-grid {
+    grid-column: 1;
+    grid-row: 4;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 15px;
+  }
+
+  .nav-button {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .slider-container {
+    height: 450px;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+
+  .banner-top {
+    flex-direction: column;
+    gap: 1rem;
+    border-bottom: none;
+  }
+
+  .banner-bottom p {
+    font-size: 1.1rem;
+  }
+
+  .slide-customize .steps-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+}
