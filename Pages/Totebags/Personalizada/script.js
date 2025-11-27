@@ -11,13 +11,9 @@
 // Referencia al botón de añadir al carrito en el offcanvas
 const btnAnadirCarrito = document.getElementById('btn-anadir-carrito');
 
-
-function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartCountElement = document.getElementById('cart-count');
-    if (cartCountElement) {
-        cartCountElement.textContent = cart.length;
-    }
+// actualizar carrito global
+if (window.updateCartCount) { 
+    window.updateCartCount(); 
 }
 
 /**

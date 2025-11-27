@@ -2,14 +2,8 @@ import { ItemsController } from "./itemsController.js"; // Asegúrate que la rut
 
  // Actualiza el contador del carrito en la burbuja del icono (#cart-count).
 
-function updateCartCount() {
-    // Obtiene el carrito del localStorage o un array vacío si no existe
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartCountElement = document.getElementById('cart-count');
-    if (cartCountElement) {
-        // Muestra la cantidad de productos únicos en el carrito
-        cartCountElement.textContent = cart.length;
-    }
+if (window.updateCartCount) { 
+    window.updateCartCount(); 
 }
 
 
