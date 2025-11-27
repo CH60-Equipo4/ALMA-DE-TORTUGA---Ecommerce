@@ -184,8 +184,8 @@ document.addEventListener('DOMContentLoaded', function () {
           if (result.success) {
             // También guardamos en localStorage como respaldo
             saveToLocalStorage(newUserData);
-            
-            appendAlert('¡Registro Exitoso! Revisa tu bandeja de entrada!', 'success');
+
+            appendAlert('Registro Exitoso! Revisa tu bandeja de entrada!', 'success');
 
             form.reset();
             form.classList.remove('was-validated');
@@ -223,26 +223,26 @@ const feedbackConfirm = document.getElementById("feedbackConfirmPassword");
 const regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
 
 passwordInput.addEventListener("input", () => {
-  const password = passwordInput.value;
+    const password = passwordInput.value;
 
-  if (!regex.test(password)) {
-    passwordInput.classList.add("is-invalid");
-    feedbackPassword.textContent =
-      "Debe tener mínimo 8 caracteres, 1 mayúscula y 1 número.";
-  } else {
-    passwordInput.classList.remove("is-invalid");
-    passwordInput.classList.add("is-valid");
-  }
+    if (!regex.test(password)) {
+        passwordInput.classList.add("is-invalid");
+        feedbackPassword.textContent =
+            "Debe tener mínimo 8 caracteres, 1 mayúscula y 1 número.";
+    } else {
+        passwordInput.classList.remove("is-invalid");
+        passwordInput.classList.add("is-valid");
+    }
 });
 
 confirmPasswordInput.addEventListener("input", () => {
-  const password = passwordInput.value;
-  const confirm = confirmPasswordInput.value;
+    const password = passwordInput.value;
+    const confirm = confirmPasswordInput.value;
 
-  if (password !== confirm) {
-    confirmPasswordInput.classList.add("is-invalid");
-  } else {
-    confirmPasswordInput.classList.remove("is-invalid");
-    confirmPasswordInput.classList.add("is-valid");
-  }
+    if (password !== confirm) {
+        confirmPasswordInput.classList.add("is-invalid");
+    } else {
+        confirmPasswordInput.classList.remove("is-invalid");
+        confirmPasswordInput.classList.add("is-valid");
+    }
 });
