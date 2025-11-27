@@ -92,6 +92,38 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("Usuario guardado en Local Storage:", userData);
     }
 
+    async function saveToBackend(userData) {
+        try {
+            const response = await fetch('http://localhost:8080/api/v1/users/new-user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: userData.nombre,          
+                    lastname: userData.apellido,     
+                    email: userData.email,
+                    password: userData.password,
+                    rol: 'CLIENT'                     // Rol por defecto
+                })
+            });
+    
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Usuario registrado en backend:', data);
+                return { success: true, data: data };
+            } else {
+                const error = await response.json();
+                console.error('Error del servidor:', error);
+                return { success: false, message: error.message || 'Error al registrar' };
+            }
+    
+        } catch (error) {
+            console.error('Error de conexión:', error);
+            return { success: false, message: 'No se pudo conectar con el servidor. Verifica que esté corriendo en http://localhost:8080' };
+        }
+    }
+
 
     const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
     const appendAlert = (message, type) => {
@@ -109,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    form.addEventListener('submit', function (event) {
+    form.addEventListener('submit', async function (event) {
 
         event.preventDefault();
         event.stopPropagation();
@@ -141,12 +173,16 @@ document.addEventListener('DOMContentLoaded', function () {
             const newUserData = {
                 nombre: document.getElementById('nombre').value.trim(),
                 apellido: document.getElementById('apellido').value.trim(),
-                telefono: telefono.value.trim(),
+                telefono: telefono.value.trim(),  // Se guarda en localStorage
                 email: email.value.trim().toLowerCase(),
                 password: password.value
             };
 
-            // Guardar los datos en Local Storage
+             // **Guardar en Backend primero**
+            const result = await saveToBackend(newUserData);
+
+          if (result.success) {
+            // También guardamos en localStorage como respaldo
             saveToLocalStorage(newUserData);
 
             appendAlert('Registro Exitoso! Revisa tu bandeja de entrada!', 'success');
@@ -158,13 +194,16 @@ document.addEventListener('DOMContentLoaded', function () {
             telefono.classList.remove('is-valid', 'is-invalid');
             email.classList.remove('is-valid', 'is-invalid');
 
-            // SOLO dejamos el delay para la redirección si es necesario
+            // Redirigir al login
             setTimeout(() => {
                 window.location.href = '../Users/logIn.html';
-            }, 5000);
-
+            }, 2000);
+        } else {
+            // Mostrar error del servidor
+            appendAlert('Error: ' + result.message, 'danger');
         }
-    }, false);
+    }
+}, false);
 
     password.addEventListener('input', validatePasswordMatch);
     confirmPassword.addEventListener('input', validatePasswordMatch);
