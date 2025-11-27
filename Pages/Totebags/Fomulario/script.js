@@ -29,9 +29,38 @@ function mostrarAlerta(mensaje, tipo = "danger") {
     }, 3000); // 3000 milisegundos = 3 segundos
 }
 
+// **FUNCIÓN: Crear producto en el backend**
+async function crearProductoEnBackend(productoData) {
+    try {
+        const response = await fetch('http://localhost:8080/api/v1/products/new-product', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(productoData)
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log('Producto creado en backend:', data);
+            return { success: true, data: data };
+        } else {
+            const error = await response.json();
+            console.error('Error del servidor:', error);
+            return { success: false, message: error.message || 'Error al crear producto' };
+        }
+
+    } catch (error) {
+        console.error('Error de conexión:', error);
+        return { 
+            success: false, 
+            message: 'No se pudo conectar con el servidor. Verifica que esté corriendo en http://localhost:8080' 
+        };
+    }
+}
 
 // Evento de envío
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit",  async (e) => {
     e.preventDefault();
     alertContainer.innerHTML = "";
 
@@ -40,38 +69,73 @@ form.addEventListener("submit", (e) => {
     const precio = document.getElementById("precio").value;
     const categoria = document.getElementById("categoria").value;
     const imagenURL = document.getElementById("imagenURL").value.trim();
+    const stock = document.getElementById("stock").value;
 
     if (!nombre || !descripcion || !precio || !categoria || !imagenURL) {
         mostrarAlerta("Por favor, completa todos los campos obligatorios.");
         return;
     }
 
-    const itemsController = new ItemsController();
-    itemsController.loadItemsFromLocalStorage();
-    itemsController.addItem(nombre, descripcion, precio, imagenURL, categoria);
 
-    mostrarAlerta("¡Producto creado correctamente!", "success");
+    // **Preparar datos según entidad Product**
+    const productoData = {
+        name: nombre,                      // name_product en DB
+        description: descripcion,          // description_product en DB
+        price: parseFloat(precio),         // price (BigDecimal en Java)
+        stock: parseInt(stock),             
+        urlProductImage: imagenURL,        // url_image_product en DB
+        category: categoria  // Category enum (COLECCION, CLASICAS)
+    };
 
-    // 🔹 Redirigir según categoría (opcional)
-    setTimeout(() => {
-        if (categoria === "clasicas") {
-            window.location.href = "../Clasicas/clasicas.html";
-        } else if (categoria === "coleccion") {
-            window.location.href = "../Coleccion/coleccion.html";
-        } else {
-            window.location.href = "../Clasicas/clasicas.html"; // valor por defecto
+     // Mostrar JSON generado
+     if (jsonCardContainer && resultadoJSON) {
+        resultadoJSON.textContent = JSON.stringify(productoData, null, 2);
+        jsonCardContainer.style.display = 'block';
+    }
+
+    // Guardar en backend primero
+    const resultBackend = await crearProductoEnBackend(productoData);
+    if (resultBackend.success) {
+        // Si se guardó en el backend, también guardamos en localStorage
+        const itemsController = new ItemsController();
+        itemsController.loadItemsFromLocalStorage();
+        itemsController.addItem(nombre, descripcion, precio, imagenURL, categoria);
+
+        mostrarAlerta("¡Producto creado correctamente en el servidor! 🎉", "success");
+
+        // Limpiar formulario
+        form.reset();
+        if (typeof mensajeContainer !== "undefined" && mensajeContainer) {
+            mensajeContainer.style.display = "none";
         }
-    }, 2000);
 
+        // Ocultar JSON después de 2 segundos
+        if (jsonCardContainer) {
+            setTimeout(() => {
+                jsonCardContainer.style.display = 'none';
+            }, 2000);
+        }
 
-    // Limpiar formulario
-    form.reset();
-    if (typeof mensajeContainer !== "undefined") {
-        mensajeContainer.style.display = "none";
+        // Redirigir según categoría
+        setTimeout(() => {
+            if (categoria === "CLASSIC") {
+                window.location.href = "../Clasicas/clasicas.html";
+            } else if (categoria === "COLLECTION") {
+                window.location.href = "../Coleccion/coleccion.html";
+            } else {
+                window.location.href = "../Clasicas/clasicas.html";
+            }
+        }, 2500);
+
+    } else {
+        // Si falló el backend, mostramos el error
+        mostrarAlerta('Error al crear producto: ' + resultBackend.message, 'danger');
     }
 });
 
 // Ocultar tarjeta JSON
-btnOcultar.addEventListener("click", () => {
-    jsonCardContainer.style.display = "none";
-});
+if (btnOcultar) {
+    btnOcultar.addEventListener("click", () => {
+        jsonCardContainer.style.display = "none";
+    });
+}
