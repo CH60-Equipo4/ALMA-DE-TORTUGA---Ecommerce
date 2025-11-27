@@ -92,7 +92,7 @@
 
 .product-title {
     font-family: var(--font-heading);
-    font-size: 20px;
+    font-size: 22px;
     color: var(--color-primary);
     font-weight: 600;
     margin-bottom: 8px;
@@ -106,17 +106,21 @@
 
   .product-price {
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 600;
     color: #333;
     margin-bottom: 8px;
   }
 
 .product-description {
     color: var(--text-color);
-    font-size: 20px;
+    font-size: 14px;
     line-height: 1.4;
     margin-bottom: 15px;
   }
+
+.product-stock{
+  font-size: 16px;
+}
 
 .product-button {
   width: 100%;
