@@ -148,7 +148,6 @@
     }
   }
 
-
   /* ----------------------------------------------------- */
   /* CÓDIGO DE ANIMACIÓN ORIGINAL */
   /* ----------------------------------------------------- */
@@ -158,8 +157,6 @@
   const paqueteEl = document.querySelector('.paquete');
   const cartIconAnchor = document.querySelector('.cart-icon-container a.nav-link');
   const checkoutButton = document.querySelector('.btn-primary.btn-add-to-cart'); // Referencia al botón de checkout
-
-  /* Referencia al contenedor del mar */
   const seccionMar = document.getElementById('seccion-mar');
 
   if (!tortugaCont || !paqueteEl || !cartIconAnchor || !seccionMar) {
@@ -189,8 +186,6 @@
 
     /* Subir tortuga */
     tortugaCont.classList.add('rise');
-
-
     await esperar(4000);
 
     /* Esperar un ciclo de renderizado completo. */
@@ -209,13 +204,8 @@
 
     /* Lanzar paquete */
     console.log("Lanzando paquete...");
-
-    /* Calcular el vector desde la posición ESTABLE del paquete */
     const { dx, dy } = calcPackageTranslateToCart();
-
     paqueteEl.classList.add('package-throw');
-
-    /* Aplicamos la transformación (ya que el cálculo del vector es correcto) */
     paqueteEl.style.transform = `translate3d(calc(-50% + ${dx}px), ${-8 + dy}px, 0) rotate(-18deg) scale(.95)`;
     paqueteEl.style.opacity = '1';
 
@@ -244,7 +234,6 @@
     console.log("Tortuga bajando...");
     tortugaCont.classList.remove('rise');
     tortugaCont.classList.remove('idle');
-
     tortugaCont.classList.add('descend');
 
     /* Esperamos a que termine la bajada (2.9s en tu CSS) */
@@ -268,7 +257,7 @@
     /* Mostrar el mar */
     console.log("Mostrando el mar...");
     seccionMar.classList.add('mar-visible');
-    await esperar(600); // Esperar la transición de 0.6s del CSS
+    await esperar(600);
 
     /* Ejecutar la animación de tortuga */
     console.log("Lanzando tortuga...");
@@ -277,14 +266,15 @@
     /* Ocultar el mar */
     console.log("Ocultando el mar...");
     seccionMar.classList.remove('mar-visible');
-    await esperar(600); // Esperar a que se oculte
+    await esperar(600);
 
-    /* Reactivar el botón (solo si no se redirigió) */
+    /* Reactivar el botón */
     buttonElement.disabled = false;
 
-    // **AQUÍ IRÍA LA REDIRECCIÓN A LA PÁGINA DE PAGO SI ES NECESARIO**
+    /* ✅ Abrir offcanvas de pago después de la animación */
+    const offcanvasPago = new bootstrap.Offcanvas(document.getElementById('offcanvasPago'));
+    offcanvasPago.show();
   }
-
 
   /* ----------------------------------------------------- */
   /* EVENT LISTENERS DE CARRITO Y ANIMACIÓN */
@@ -301,7 +291,6 @@
       // Delegación de eventos para el botón 'Eliminar'
       cartContainer.addEventListener('click', (event) => {
         if (event.target.classList.contains('remove-item-btn')) {
-          // Convertir el data-product-id a número para asegurar la comparación
           const productId = parseInt(event.target.dataset.productId);
           removeItemFromCart(productId);
         }
@@ -331,6 +320,142 @@
         }
       });
     }
+  });
+
+  /* ----------------------------------------------------- */
+  /* VALIDACIÓN DEL FORMULARIO DE PAGO (offcanvas) — MEJORADA */
+  /* ----------------------------------------------------- */
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const paymentForm = document.getElementById('paymentForm');
+    if (!paymentForm) return;
+
+    // Campos
+    const nombreTarjeta = document.getElementById('nombreTarjeta');
+    const numeroTarjeta = document.getElementById('numeroTarjeta');
+    const fechaVencimiento = document.getElementById('fechaVencimiento');
+    const cvv = document.getElementById('cvv');
+    const telefono = document.getElementById('telefono');
+    const cp = document.getElementById('cp');
+
+    // Expresiones regulares
+    const regex = {
+      nombreTitular: /^[a-zA-Z\s]{2,50}$/,
+      numeroTarjeta: /^\d{16}$/,
+      fechaVencimiento: /^\d{2}\/\d{2}$/,
+      cvv: /^\d{3,4}$/,
+      telefono: /^[1-9]\d{9}$/,
+      cp: /^\d{5}$/
+    };
+
+    // === FUNCIONES DE VALIDACIÓN ===
+    function validateNombreTarjeta() {
+      const value = nombreTarjeta.value.trim();
+      const isValid = value !== '' && regex.nombreTitular.test(value);
+      toggleValidation(nombreTarjeta, isValid, 'El nombre debe contener solo letras y espacios (2–50 caracteres).');
+      return isValid;
+    }
+
+    function validateNumeroTarjeta() {
+      const raw = numeroTarjeta.value.replace(/\D/g, '');
+      const isValid = raw.length === 16 && regex.numeroTarjeta.test(raw);
+      toggleValidation(numeroTarjeta, isValid, 'El número de tarjeta debe tener 16 dígitos.');
+      return isValid;
+    }
+
+    function validateFechaVencimiento() {
+      const value = fechaVencimiento.value;
+      const isValid = regex.fechaVencimiento.test(value);
+      toggleValidation(fechaVencimiento, isValid, 'Formato inválido. Usa MM/AA (ej. 12/28).');
+      return isValid;
+    }
+
+    function validateCvv() {
+      const isValid = cvv.value !== '' && regex.cvv.test(cvv.value);
+      toggleValidation(cvv, isValid, 'El CVV debe tener 3 o 4 dígitos.');
+      return isValid;
+    }
+
+    function validateTelefono() {
+      const clean = telefono.value.replace(/\D/g, '');
+      const isValid = clean !== '' && regex.telefono.test(clean);
+      toggleValidation(telefono, isValid, 'Ingresa un número de teléfono válido de 10 dígitos.');
+      return isValid;
+    }
+
+    function validateCp() {
+      const isValid = cp.value !== '' && regex.cp.test(cp.value);
+      toggleValidation(cp, isValid, 'El código postal debe tener 5 dígitos.');
+      return isValid;
+    }
+
+    // === FUNCION AUXILIAR PARA ERRORES ===
+    function toggleValidation(input, isValid, message) {
+      const feedback = input.parentNode.querySelector('.invalid-feedback');
+      input.classList.remove('is-valid', 'is-invalid');
+
+      if (isValid) {
+        input.classList.add('is-valid');
+        if (feedback) feedback.remove();
+      } else {
+        input.classList.add('is-invalid');
+        if (!feedback) {
+          const div = document.createElement('div');
+          div.className = 'invalid-feedback';
+          div.textContent = message;
+          input.parentNode.appendChild(div);
+        }
+      }
+    }
+
+    // === FORMATEO AUTOMÁTICO ===
+    numeroTarjeta.addEventListener('input', function (e) {
+      let v = e.target.value.replace(/\D/g, '').slice(0, 16);
+      e.target.value = v.replace(/(.{4})/g, '$1 ').trim();
+      validateNumeroTarjeta(); // validar mientras escribe
+    });
+
+    fechaVencimiento.addEventListener('input', function (e) {
+      let v = e.target.value.replace(/\D/g, '').slice(0, 4);
+      if (v.length >= 2) v = v.slice(0, 2) + '/' + v.slice(2);
+      e.target.value = v;
+      validateFechaVencimiento();
+    });
+
+    // === VALIDACIÓN EN TIEMPO REAL ===
+    nombreTarjeta.addEventListener('input', validateNombreTarjeta);
+    cvv.addEventListener('input', validateCvv);
+    telefono.addEventListener('input', validateTelefono);
+    cp.addEventListener('input', validateCp);
+
+    // === ENVÍO DEL FORMULARIO ===
+    paymentForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const validaciones = [
+        validateNombreTarjeta(),
+        validateNumeroTarjeta(),
+        validateFechaVencimiento(),
+        validateCvv(),
+        validateTelefono(),
+        validateCp()
+      ];
+
+      // Validar campos de dirección obligatorios
+      const camposDir = ['calle', 'numero', 'colonia', 'ciudad', 'estado'];
+      const validDir = camposDir.map(id => {
+        const campo = document.getElementById(id);
+        const valido = campo.value.trim() !== '';
+        campo.classList.toggle('is-invalid', !valido);
+        return valido;
+      });
+
+      if (validaciones.every(v => v) && validDir.every(v => v)) {
+        alert('¡Gracias por tu compra en Alma de Tortuga! 🐢');
+        const offcanvas = bootstrap.Offcanvas.getInstance(document.getElementById('offcanvasPago'));
+        offcanvas?.hide();
+      }
+    });
   });
 
 })();

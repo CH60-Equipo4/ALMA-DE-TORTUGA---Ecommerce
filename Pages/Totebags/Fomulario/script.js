@@ -52,15 +52,15 @@ async function crearProductoEnBackend(productoData) {
 
     } catch (error) {
         console.error('Error de conexión:', error);
-        return { 
-            success: false, 
-            message: 'No se pudo conectar con el servidor. Verifica que esté corriendo en http://localhost:8080' 
+        return {
+            success: false,
+            message: 'No se pudo conectar con el servidor. Verifica que esté corriendo en http://localhost:8080'
         };
     }
 }
 
 // Evento de envío
-form.addEventListener("submit",  async (e) => {
+form.addEventListener("submit", async (e) => {
     e.preventDefault();
     alertContainer.innerHTML = "";
 
@@ -82,13 +82,13 @@ form.addEventListener("submit",  async (e) => {
         name: nombre,                      // name_product en DB
         description: descripcion,          // description_product en DB
         price: parseFloat(precio),         // price (BigDecimal en Java)
-        stock: parseInt(stock),             
+        stock: parseInt(stock),
         urlProductImage: imagenURL,        // url_image_product en DB
         category: categoria  // Category enum (COLECCION, CLASICAS)
     };
 
-     // Mostrar JSON generado
-     if (jsonCardContainer && resultadoJSON) {
+    // Mostrar JSON generado
+    if (jsonCardContainer && resultadoJSON) {
         resultadoJSON.textContent = JSON.stringify(productoData, null, 2);
         jsonCardContainer.style.display = 'block';
     }
