@@ -388,17 +388,46 @@
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: rgba(40, 52, 41, 0.3);
+  height: 8px;
+  /* Mantén una altura pequeña */
+  width: 25px;
+  /* ¡Aumenta el ancho para hacerlo rectangular! */
+  background-color: #bbb;
+  /* Color inactivo, puedes usar un --var si lo tienes */
+  border-radius: 4px;
+  /* Un radio pequeño para esquinas ligeramente redondeadas, o 0 para esquinas vivas */
+  display: inline-block;
+  margin: 0 4px;
+  /* Ajusta el margen para la nueva forma */
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, width 0.3s ease;
+  /* Agrega transición para el ancho si quieres animación */
+  border: none;
+  /* Asegúrate de que no tenga borde predeterminado de botón */
+  padding: 0;
+  /* Elimina padding predeterminado de botón */
 }
 
 .dot.active {
-  background-color: var(--color-primary);
-  transform: scale(1.2);
+  background-color: var(--color-principal);
+  /* Utiliza tu color principal para el activo, o un color oscuro */
+  width: 35px;
+  /* Opcional: haz que el rectángulo activo sea un poco más largo */
+}
+
+/* Si usas variables CSS, ajusta los colores según tu paleta */
+:root {
+  --color-principal: #818e59;
+  /* Ejemplo, usa tu color principal */
+  --color-inactivo: #bbb;
+}
+
+.dot {
+  background-color: var(--color-inactivo);
+}
+
+.dot.active {
+  background-color: var(--color-principal);
 }
 
 

@@ -386,7 +386,7 @@ function generarResumenHTML() {
 
     // 1. OBTENCIÓN DE DATOS PARA EL LIENZO
     const nombreBase = baseSeleccionada.value.charAt(0).toUpperCase() + baseSeleccionada.value.slice(1);
-    const imagenBaseURL = `../../../Pictures/Products/Personalizada/Main.png`;
+    const imagenBaseURL = `https://res.cloudinary.com/dwqnozpcz/image/upload/v1764297884/Main_ipr4wl.png`;
     const urlArchivoSubido = imagenPrevia.src.startsWith('data:image') ? imagenPrevia.src : '';
 
     const esFraseConDiseno = detalleSeleccionado.value === 'fraseDiseno';
