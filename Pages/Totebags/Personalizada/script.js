@@ -1,7 +1,8 @@
 /**
  * Script final para manejar la personalización dinámica de la ToteBag:
+ * - Implementa la lógica de guardado en carrito.
  * - Soluciona QuotaExceededError (eliminando DataURL de save).
- * - IMPLEMENTACIÓN: Guarda el NOMBRE legible de la tipografía (ej: "1. Clásica").
+ * - Implementa la limpieza total del formulario después de añadir al carrito.
  */
 
 // --------------------------------------------------------------------------------
@@ -12,8 +13,8 @@
 const btnAnadirCarrito = document.getElementById('btn-anadir-carrito');
 
 // actualizar carrito global
-if (window.updateCartCount) { 
-    window.updateCartCount(); 
+if (window.updateCartCount) {
+    window.updateCartCount();
 }
 
 /**
@@ -35,7 +36,9 @@ function collectPersonalizationData() {
     // --- CAPTURA DEL NOMBRE DE LA TIPOGRAFÍA (TEXTO LEGIBLE) ---
     let selectedTipografiaName = '';
     if (esFraseConDiseno) {
+        // Capturamos el texto legible para la descripción y el objeto final
         selectedTipografiaName = selectTipografia.options[selectTipografia.selectedIndex].text.trim();
+
         descriptionDetail += `\nFrase: "${inputEscribirFrase.value.trim() || 'Sin texto'}"`;
         descriptionDetail += ` | Tipografía: ${selectedTipografiaName}`;
     }
@@ -65,6 +68,7 @@ function collectPersonalizationData() {
             posicionDiseno: selectPosicionDiseno.value,
             texto: esFraseConDiseno ? inputEscribirFrase.value.trim() : null,
 
+            // 💡 Guardamos el nombre legible
             nombreTipografia: esFraseConDiseno ? selectedTipografiaName : null,
             colorTexto: esFraseConDiseno ? (selectedColorHex || '#000000') : null,
             tipografiaClase: esFraseConDiseno ? selectTipografia.value : null,
@@ -96,6 +100,12 @@ function savePersonalizedItemToCart() {
     updateCartCount();
 
     alert(`Tote Personalizada añadida al carrito por $${personalizedItem.price} MXN.`);
+
+    // ----------------------------------------------------
+    // LÓGICA DE LIMPIEZA AÑADIDA
+    // ----------------------------------------------------
+    reiniciarFormulario();
+    // ----------------------------------------------------
 
     // Cerrar el offcanvas (Lógica que funciona)
     const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasResumen);
@@ -180,14 +190,26 @@ function actualizarProgreso() {
 
     // Paso 4: Texto (si aplica)
     const esFraseConDiseno = Array.from(radiosDetalle).some(r => r.checked && r.value === 'fraseDiseno');
-    if (!esFraseConDiseno || (esFraseConDiseno && inputEscribirFrase.value.trim())) {
-        if (completedSteps >= 3) {
+
+    if (completedSteps >= 3) {
+        if (!esFraseConDiseno) {
+            // Si NO requiere frase, el paso 4 se marca como completo automáticamente
             completedSteps = 4;
             marcarSeccionCompleta(4);
+        } else {
+            // Si requiere frase, verificar que tenga texto, tipografía y color
+            const tieneTexto = inputEscribirFrase.value.trim() !== '';
+            const tieneTipografia = selectTipografia.value !== 'default';
+            const tieneColor = Array.from(radiosColorTexto).some(radio => radio.checked);
+
+            if (tieneTexto && tieneTipografia && tieneColor) {
+                completedSteps = 4;
+                marcarSeccionCompleta(4);
+            }
         }
     }
 
-    // Actualizar barra de progreso
+    // Actualizar barra de progreso (5 pasos en total)
     const progressPercentage = (completedSteps / 5) * 100;
     if (progressLine) {
         progressLine.style.width = progressPercentage + '%';
@@ -198,7 +220,7 @@ function actualizarProgreso() {
         const stepNum = index + 1;
         item.classList.remove('active', 'completed');
 
-        if (stepNum < completedSteps) {
+        if (stepNum <= completedSteps) {
             item.classList.add('completed');
         } else if (stepNum === completedSteps + 1) {
             item.classList.add('active');
@@ -428,6 +450,84 @@ function actualizarInterfazCompleta() {
     precioBaseSpan.textContent = precios.base > 0 ? `$${precios.base}` : '--';
     verificarSeleccionesMinimas();
     actualizarProgreso();
+}
+
+function reiniciarFormulario() {
+    // Limpiar selección de base
+    radiosBolsa.forEach(radio => radio.checked = false);
+
+    // Limpiar selección de acabado
+    radiosAcabado.forEach(radio => radio.checked = false);
+
+    // Limpiar selección de detalle
+    radiosDetalle.forEach(radio => radio.checked = false);
+
+    // Limpiar tipografía
+    selectTipografia.value = 'default';
+
+    // Limpiar colores
+    radiosColorTexto.forEach(radio => radio.checked = false);
+
+    // Limpiar campo de texto
+    inputEscribirFrase.value = '';
+
+    // Limpiar archivo subido
+    inputSubirArchivo.value = '';
+    inputSubirArchivo.classList.remove('is-valid', 'is-invalid');
+
+    // Ocultar preview
+    previewContenedor.style.display = 'none';
+    imagenPrevia.style.display = 'none';
+    imagenPrevia.src = '';
+
+    // Resetear texto del archivo
+    const smallText = inputSubirArchivo.nextElementSibling;
+    if (smallText) {
+        smallText.textContent = 'Max. 5MB. Formatos: PNG, JPG.';
+        smallText.style.color = 'gray';
+    }
+
+    // Resetear posiciones
+    selectPosicionDiseno.value = selectPosicionDiseno.options[0].value;
+    selectPosicionTexto.value = selectPosicionTexto.options[0].value;
+
+    // Resetear el formulario completo
+    const personalizationForm = document.querySelector('main form');
+    if (personalizationForm) {
+        personalizationForm.reset();
+    }
+
+    // Resetear estilos de validación y previsualización
+    document.querySelectorAll('.is-valid, .is-invalid').forEach(el => {
+        el.classList.remove('is-valid', 'is-invalid');
+    });
+
+    // Resetear secciones
+    sectionCards.forEach((section, index) => {
+        section.classList.remove('completed', 'active');
+        if (index === 0) {
+            section.classList.add('active'); // Habilitar solo el primer paso
+        } else {
+            section.classList.add('disabled');
+        }
+    });
+
+    // Resetear círculos de paso
+    stepItems.forEach((item, index) => {
+        item.classList.remove('completed', 'active');
+        if (index === 0) item.classList.add('active');
+    });
+
+    // Resetear la barra de progreso
+    if (progressLine) progressLine.style.width = '0%';
+
+    // Resetear la visibilidad del botón de resumen final
+    if (btnAnadirCarrito) btnAnadirCarrito.disabled = true;
+
+    // ✅ LÍNEA CLAVE: Llama a actualizarInterfazCompleta para resetear precios y estados
+    actualizarInterfazCompleta();
+
+    console.log('✅ Formulario reiniciado correctamente');
 }
 
 // --------------------------------------------------------------------------------

@@ -70,8 +70,8 @@
    * Calcula y actualiza el resumen del carrito y el contador del navbar.
    */
   function updateCartSummary(cart) {
-    const shippingCost = 50.00;
     let subtotal = 0;
+    let finalShippingCost = 0; // El costo de envío ahora es fijo: 0.00
 
     for (const item of cart) {
       const itemPrice = parseFloat(item.price);
@@ -80,12 +80,31 @@
       }
     }
 
-    const total = subtotal + (subtotal > 0 ? shippingCost : 0); // Añadir envío solo si hay productos
+    // Si hay algún producto, el envío es GRATIS.
+    if (subtotal > 0) {
+      finalShippingCost = 0;
+    }
+
+    const total = subtotal + finalShippingCost;
+
+    // --- Determinar el texto a mostrar ---
+    const subtotalDisplay = `$${subtotal.toFixed(2)} MXN`;
+    let shippingDisplay;
+
+    if (subtotal === 0) {
+      shippingDisplay = 'N/A'; // No hay subtotal, no aplica envío
+    } else {
+      // Muestra ¡GRATIS! ya que finalShippingCost es 0.
+      shippingDisplay = '¡GRATIS!';
+    }
+
+    const totalDisplay = `$${total.toFixed(2)} MXN`;
+    // ------------------------------------
 
     // Actualizar los elementos del DOM en el Resumen
-    document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)} MXN`;
-    document.getElementById('envio').textContent = subtotal > 0 ? `$${shippingCost.toFixed(2)} MXN` : 'N/A';
-    document.getElementById('total').textContent = `$${total.toFixed(2)} MXN`;
+    document.getElementById('subtotal').textContent = subtotalDisplay;
+    document.getElementById('envio').textContent = shippingDisplay;
+    document.getElementById('total').textContent = totalDisplay;
 
     // Actualizar el contador del carrito en el navbar (cart-count)
     const cartCountElement = document.getElementById('cart-count');
