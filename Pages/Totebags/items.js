@@ -1,53 +1,21 @@
-import { ItemsController } from "./itemsController.js"; // Asegúrate que la ruta sea correcta
+import { ItemsController } from "./itemsController.js";
 
- // Actualiza el contador del carrito en la burbuja del icono (#cart-count).
+// -----------------------------------------------------------------------------
+// 🛒 LÓGICA DEL CARRITO (usa la función global updateCartCount)
+// -----------------------------------------------------------------------------
 
-if (window.updateCartCount) { 
-    window.updateCartCount(); 
+// Llama a la función global para inicializar el contador del carrito en el navbar.
+if (window.updateCartCount) {
+    window.updateCartCount();
 }
-
 
 /**
  * Función para manejar la adición de un producto al carrito en localStorage.
- */
-/*
-function handleAddToCart(productId, itemsController) {
-    const parsedProductId = parseInt(productId);
-    // Busca el producto en el array cargado por el ItemsController
-    const productToAdd = itemsController.items.find(item => item.id === parsedProductId);
-
-    if (productToAdd) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        // Buscar si el producto ya existe en el carrito
-        const existingItem = cart.find(item => item.id === parsedProductId);
-
-        if (existingItem) {
-            // Si existe, incrementa la cantidad
-            existingItem.quantity += 1;
-        } else {
-            // Si no existe, lo añade con cantidad 1
-            // Se usa una copia del producto y se le añade la propiedad 'quantity'
-            cart.push({ ...productToAdd, quantity: 1 });
-        }
-
-        // Guarda el carrito actualizado en localStorage
-        localStorage.setItem('cart', JSON.stringify(cart));
-        console.log(`Producto ID ${parsedProductId} añadido al carrito.`);
-
-        updateCartCount(); // Actualiza el contador del navbar
-        alert(`"${productToAdd.name}" se ha añadido al carrito.`);
-    } else {
-        console.error(`Producto con ID ${parsedProductId} no encontrado.`);
-    }
-}
-*/
-
-/**
- * Función para manejar la adición de un producto al carrito en localStorage. (Versión modificada para soportar idProduct o id)
+ * Soporta productos que usan 'idProduct' (del backend) o 'id' (del fallback).
  */
 function handleAddToCart(productId, products) {
     const parsedProductId = parseInt(productId);
+    // Busca el producto en el array con el que se renderizó la vista (productos o productsList)
     const productToAdd = products.find(item => (item.idProduct || item.id) === parsedProductId);
 
     if (productToAdd) {
@@ -57,18 +25,24 @@ function handleAddToCart(productId, products) {
         if (existingItem) {
             existingItem.quantity += 1;
         } else {
+            // Asegura que el producto añadido tenga una cantidad inicial de 1
             cart.push({ ...productToAdd, quantity: 1 });
         }
 
         localStorage.setItem('cart', JSON.stringify(cart));
         console.log(`Producto ID ${parsedProductId} añadido al carrito.`);
 
-        updateCartCount();
+        // window.updateCartCount debe estar definida en cart_manager.js
+        window.updateCartCount();
         alert(`"${productToAdd.name}" se ha añadido al carrito.`);
     } else {
         console.error(`Producto con ID ${parsedProductId} no encontrado.`);
     }
 }
+
+// -----------------------------------------------------------------------------
+//  LÓGICA DE CARGA Y RENDERIZADO
+// -----------------------------------------------------------------------------
 
 /**
  * Función para cargar productos desde el backend por categoría
@@ -93,10 +67,9 @@ async function cargarProductosDesdeBackend(categoria) {
 
         if (response.ok) {
             const productos = await response.json();
-            console.log('Productos desde backend:', productos);
             return productos;
         } else {
-            console.error('Error al cargar productos del backend');
+            console.error('Error al cargar productos del backend:', response.statusText);
             return [];
         }
 
@@ -105,7 +78,6 @@ async function cargarProductosDesdeBackend(categoria) {
         return [];
     }
 }
-
 
 /**
  * Función que crea el HTML de la card y la añade a un contenedor.
@@ -124,10 +96,10 @@ function addItemCard(item, containerElement) {
                 <div class="product-content">
                     <h3 class="product-title">${item.name}</h3>
                     <p class="product-price">${priceDisplay}</p>
-                    <p class="product-description">${item.description}</p>
+                    <p class="product-description">${item.description || ''}</p>
                     <p class="product-stock">Stock: ${item.stock || 'N/A'}</p>
                 </div>
-                 <button class="product-button add-to-cart-btn" data-product-id="${productId}">
+                <button class="product-button add-to-cart-btn" data-product-id="${productId}">
                     Agregar al carrito
                 </button>
             </div>
@@ -137,110 +109,133 @@ function addItemCard(item, containerElement) {
 }
 
 /**
- * Esta función se ejecutará cuando el DOM de la página (clasicas.html o coleccion.html) esté listo.
+ * Función central para limpiar y renderizar los productos.
  */
+function renderProducts(products, container) {
+    container.innerHTML = '';
+    if (products.length === 0) {
+        container.innerHTML = '<p class="col-12 text-center">No hay productos en esta categoría.</p>';
+        return;
+    }
+    for (const item of products) {
+        addItemCard(item, container);
+    }
+}
+
+// -----------------------------------------------------------------------------
+// LÓGICA DE ORDENAMIENTO
+// -----------------------------------------------------------------------------
+
+/**
+ * Lógica para ordenar el array de productos.
+ */
+function sortProducts(products, sortBy) {
+    if (sortBy === 'default') {
+        // Devuelve el array sin ordenar si se selecciona 'default'
+        return products;
+    }
+
+    // Usamos el operador spread para crear una copia y no mutar el array original (allProducts)
+    const sortedProducts = [...products];
+
+    sortedProducts.sort((a, b) => {
+        // Usamos .name o price, asumiendo que el backend proporciona estos campos.
+        const nameA = (a.name || '').toUpperCase();
+        const nameB = (b.name || '').toUpperCase();
+        const priceA = a.price || 0;
+        const priceB = b.price || 0;
+
+        switch (sortBy) {
+            case 'name_asc':
+                return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
+            case 'name_desc':
+                return (nameA > nameB) ? -1 : (nameA < nameB) ? 1 : 0;
+            case 'price_asc':
+                return priceA - priceB;
+            case 'price_desc':
+                return priceB - priceA;
+            default:
+                return 0;
+        }
+    });
+    return sortedProducts; // Devuelve la copia ordenada
+}
+
+// -----------------------------------------------------------------------------
+// INICIALIZACIÓN Y EVENTOS
+// -----------------------------------------------------------------------------
+
+// Almacena la referencia a los productos originales cargados (sin ordenar).
+let allProducts = [];
+let targetContainer = null;
+
 document.addEventListener('DOMContentLoaded', async () => {
 
     const coleccionContainer = document.getElementById("list-items");
     const clasicasContainer = document.getElementById("productosContainer");
+    const sortSelector = document.getElementById("sortSelector");
 
     let pageCategory = null;
-    let targetContainer = null;
 
+    // 1. Determinar la categoría y el contenedor
     if (coleccionContainer) {
-        // coleccion.html
         pageCategory = "coleccion";
         targetContainer = coleccionContainer;
     } else if (clasicasContainer) {
-        // clasicas.html
         pageCategory = "clasicas";
         targetContainer = clasicasContainer;
     } else {
-        // MODIFICACIÓN: Actualizar contador si no estamos en una página de productos
-        updateCartCount();
+        window.updateCartCount();
         return;
     }
-    //limpiamos container 
+
+    // Mostrar mensaje de carga
     targetContainer.innerHTML = '<p class="col-12 text-center">Cargando productos...</p>';
-    targetContainer.classList.add('row');
 
-    // **PRIORIDAD 1: Cargar desde el backend**
-    let productos = await cargarProductosDesdeBackend(pageCategory);
+    // 2. Cargar productos
+    allProducts = await cargarProductosDesdeBackend(pageCategory);
 
-
-    // **FALLBACK: Si el backend falla, cargar desde localStorage**
-    if (productos.length === 0) {
-        console.log('⚠️ Backend no disponible. Cargando desde localStorage...');
+    // 3. Fallback (usando la clase ItemsController importada)
+    if (allProducts.length === 0) {
+        console.log('Backend no disponible. Cargando desde localStorage...');
         const itemsController = new ItemsController();
         itemsController.loadItemsFromLocalStorage();
-        
-        // Mapear categorías para localStorage (pueden estar en minúsculas)
-        const categoriaLocalStorage = pageCategory; // "clasicas" o "coleccion"
-        productos = itemsController.items.filter(item => 
-            item.category === categoriaLocalStorage || 
+
+        const categoriaLocalStorage = pageCategory;
+        allProducts = itemsController.items.filter(item =>
+            item.category === categoriaLocalStorage ||
             item.category === categoriaLocalStorage.toUpperCase()
         );
     }
 
-    // Limpiar mensaje de carga
-    targetContainer.innerHTML = '';
+    // 4. Renderizar productos inicialmente
+    renderProducts(allProducts, targetContainer);
 
-    if (productos.length === 0) {
-        targetContainer.innerHTML = '<p class="col-12 text-center">No hay productos en esta categoría.</p>';
-        updateCartCount();
-        return;
-    }
-
-    // Renderizar productos
-    for (const item of productos) {
-        addItemCard(item, targetContainer);
-    }
-
-    // Añadir event listener para botones de "Agregar al carrito"
+    // 5. Asignar Event Listener para el botón de Agregar al Carrito (delegación)
     targetContainer.addEventListener('click', (event) => {
         if (event.target.classList.contains('add-to-cart-btn')) {
             const productId = event.target.dataset.productId;
-            handleAddToCart(productId, productos);
+            // Pasamos el array 'allProducts' para que handleAddToCart pueda encontrar el objeto completo
+            handleAddToCart(productId, allProducts);
         }
     });
 
-    // Actualizar contador del carrito
-    updateCartCount();
+    // 6. Asignar Event Listener para el Selector de Orden
+    if (sortSelector) {
+        sortSelector.addEventListener('change', (event) => {
+            const sortBy = event.target.value;
 
+            // a) Clonar y ordenar la lista de productos basada en el array original (allProducts)
+            const sortedProducts = sortProducts(allProducts, sortBy);
 
-    /*
+            // b) Re-renderizar la vista con la nueva lista ordenada
+            renderProducts(sortedProducts, targetContainer);
 
-    // Cargar desde localStorage
-    const itemsController = new ItemsController();
-    itemsController.loadItemsFromLocalStorage();
-    const allProducts = itemsController.items;
-
-    const filteredProducts = allProducts.filter(item => item.category === pageCategory);
-
-    if (filteredProducts.length === 0) {
-        targetContainer.innerHTML = '<p class="col-12 text-center">No hay productos en esta categoría.</p>';
-        // MODIFICACIÓN: Actualizar contador si no hay productos
-        updateCartCount();
-        return;
+            // NOTA: No es necesario re-adjuntar el listener del carrito, 
+            // ya que está delegado al 'targetContainer' (el div principal).
+        });
     }
 
-    for (const item of filteredProducts) {
-        addItemCard(item, targetContainer);
-    }
-
-    // --- INICIO DE MODIFICACIONES AÑADIDAS (EVENT LISTENER) ---
-
-    // Añadir el listener al contenedor principal (Delegación de Eventos)
-    targetContainer.addEventListener('click', (event) => {
-        // Solo si el elemento clicado tiene la clase 'add-to-cart-btn'
-        if (event.target.classList.contains('add-to-cart-btn')) {
-            const productId = event.target.dataset.productId;
-            handleAddToCart(productId, itemsController);
-        }
-    });
-
-    // Cargar el contador inicial del carrito al cargar la página
-    updateCartCount();
-    */
-
+    // 7. Actualizar contador del carrito
+    window.updateCartCount();
 });
