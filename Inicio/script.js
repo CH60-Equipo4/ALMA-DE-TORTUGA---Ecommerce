@@ -1,6 +1,6 @@
 /**
  * ==============================================================================
- * 🐢 LÓGICA DEL CARRITO ESTÁTICO (SECCIÓN 'LO MÁS COMPRADO')
+ * 🐢 LÓGICA DEL CARRITO ESTÁTICO (SECCIÓN 'LO MÁS COMPRADO') - SE MANTIENE
  * ==============================================================================
  */
 
@@ -91,7 +91,7 @@ function attachStaticCartListeners() {
 
 /**
  * ==============================================================================
- * 🖼️ LÓGICA DEL SLIDER
+ * 🖼️ LÓGICA DEL SLIDER (SIN INYECCIÓN DE ESTRUCTURA PRINCIPAL)
  * ==============================================================================
  */
 
@@ -101,15 +101,19 @@ const slider = {
   autoPlayInterval: null,
   autoPlayDuration: 5000,
   rootElement: null,
+  slidesContainer: null,
 
   init() {
     this.rootElement = document.getElementById("sliderHome");
     if (!this.rootElement) return;
 
-    this.render();
+    this.slidesContainer = this.rootElement.querySelector("#slides");
+    if (!this.slidesContainer) return;
 
-    this.totalSlides = this.rootElement.querySelectorAll(".slide").length;
+    // Calcula el total de slides leyendo el DOM, ya que están en el HTML
+    this.totalSlides = this.slidesContainer.querySelectorAll(".slide").length;
 
+    // Renderiza los puntos (dots), que es una estructura dinámica de estado
     this.renderDots();
 
     this.attachEventListeners();
@@ -117,25 +121,7 @@ const slider = {
     this.startAutoPlay();
   },
 
-  render() {
-    this.rootElement.innerHTML = `
-      <div class="slider-container" role="region" aria-label="Hero slider" tabindex="0">
-        <div class="slides" id="slides" aria-live="polite" aria-atomic="true">
-          ${this.getSlides()}
-        </div>
-        
-        <button class="nav-button prev" id="prevBtn" aria-label="Slide anterior">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="nav-button next" id="nextBtn" aria-label="Siguiente slide">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-        
-        <div class="dots-container" id="dotsContainer"></div> 
-      </div>
-    `;
-  },
-
+  // Función para renderizar los dots, ya que es estado dinámico
   renderDots() {
     const dotsContainer = document.getElementById("dotsContainer");
     if (!dotsContainer) return;
@@ -143,158 +129,22 @@ const slider = {
     let dotsHTML = "";
     for (let i = 0; i < this.totalSlides; i++) {
       dotsHTML += `<button 
-                          class="dot" 
-                          data-slide="${i}" 
-                          aria-label="Ir al slide ${i + 1}" 
-                          aria-selected="${i === this.currentSlide ? "true" : "false"}"
-                          tabindex="${i === this.currentSlide ? "0" : "-1"}">
-                      </button>`;
+                            class="dot" 
+                            data-slide="${i}" 
+                            aria-label="Ir al slide ${i + 1}" 
+                            aria-selected="${i === this.currentSlide ? "true" : "false"}"
+                            tabindex="${i === this.currentSlide ? "0" : "-1"}">
+                        </button>`;
     }
     dotsContainer.innerHTML = dotsHTML;
   },
 
-  getSlides() {
-    const slides = [
-      this.getHeroSlide(),
-      this.getChristmasSlide(),
-      this.getClassicSlide(),
-      this.getCustomizeSlide(),
-    ];
-    return slides.join("");
-  },
-
-  // 1. SLIDE HERO: CAUSA
-  getHeroSlide() {
-    return `
-      <div class="slide slide-hero">
-          <div class="hero-content">
-              <div class="hero-text">
-                  <h1 class="slide-title">
-                      Lleva el Océano Contigo: <span class="highlight">El Arte que Salva Tortugas.</span>
-                  </h1>
-                  <p class="slide-subtitle">
-                      Cada totebag es tejida con amor y propósito. Con tu compra, financias directamente proyectos de conservación marina en México. 
-                      <span class="highlight-text">Únete a la causa.</span>
-                  </p>
-                  <a class="btn-explore" href="./Pages/About/about.html">Conoce Nuestra Causa</a>
-              </div>
-              <div class="hero-image">
-                  <div class="image-container">
-                      <div class="placeholder-bag">
-                          <img src="https://picsum.photos/id/152/380/380" alt="Totebag Alebrije">
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-    `;
-  },
-
-  // 2. SLIDE PROMOCIÓN / OFERTAS
-  getChristmasSlide() {
-    return `
-      <div class="slide slide-christmas">
-          <div class="center-content">
-              <div class="left-col">
-                  <div class="badge-special">
-                      <i class="fas fa-percent"></i>
-                      <span>Promociones del Mes</span>
-                  </div>
-                  <h1 class="slide-title">
-                      Diseños Únicos con <span class="highlight">Descuento Especial.</span>
-                  </h1>
-                  <p class="slide-subtitle">
-                      Encuentra tus totebags favoritas de colecciones pasadas con precios irrepetibles. ¡Stock limitado!
-                  </p>
-                  <a class="btn-explore" href="./Pages/Totebags/Coleccion/coleccion.html">Ver Ofertas</a>
-              </div>
-              <div class="card-collection">
-                  <div class="card-image">
-                      <img src="https://picsum.photos/id/292/380/380" alt="Totebag en Oferta">
-                  </div>
-              </div>
-          </div>
-      </div>
-    `;
-  },
-
-  // 3. SLIDE CLÁSICOS
-  getClassicSlide() {
-    return `
-      <div class="slide slide-classic">
-          <div class="center-content">
-              <div class="left-col">
-                  <div class="badge-special">
-                      <i class="fas fa-leaf"></i>
-                      <span>Tejido Premium</span>
-                  </div>
-                  <h1 class="slide-title">
-                      Durabilidad y <span class="highlight">Estilo Atemporal.</span>
-                  </h1>
-                  <p class="slide-subtitle">
-                      Nuestra línea clásica, hecha con materiales orgánicos y responsables, es la compañera ideal para tu día a día, sin perder el toque de elegancia.
-                  </p>
-                  <a class="btn-explore" href="./Pages/Totebags/Clasicas/clasicas.html">Comprar Clásicos</a>
-              </div>
-              <div class="card-collection">
-                  <div class="card-image">
-                      <img src="https://picsum.photos/id/350/380/380" alt="Totebag Clásica">
-                  </div>
-              </div>
-          </div>
-      </div>
-    `;
-  },
-
-  // 4. SLIDE PERSONALIZAR
-  getCustomizeSlide() {
-    const steps = [
-      { number: 1, icon: "fa-tshirt", title: "Escoge la Base" },
-      { number: 2, icon: "fa-pencil-ruler", title: "Sube tu Diseño" },
-      { number: 3, icon: "fa-palette", title: "Define Colores" },
-      { number: 4, icon: "fa-truck", title: "Recibe tu Pieza Única" },
-    ];
-
-    const stepsHTML = steps
-      .map(
-        (step, index) => `
-          <div class="step-card">
-              <div class="step-icon">
-                  <i class="fas ${step.icon}"></i>
-              </div>
-              <div class="step-number">Paso ${step.number}</div>
-              <h3>${step.title}</h3>
-          </div>
-        `
-      )
-      .join("");
-
-    return `
-      <div class="slide slide-customize">
-          <div class="center-content">
-              <h1 class="slide-title">
-                  Crea tu <span class="highlight">Propia Obra de Arte.</span>
-              </h1>
-              <p class="slide-subtitle">
-                Diseña una totebag 100% personalizada: desde el estilo del bolso hasta el bordado. ¡Tú eres el artista!
-              </p>
-
-              <div class="steps-grid">
-                  ${stepsHTML}
-              </div>
-
-              <a class="btn-customize" href="./Pages/Totebags/Personalizada/personalizada.html">Diseñar mi ToteBag</a>
-          </div>
-      </div>
-    `;
-  },
-
-
   attachEventListeners() {
+    // Los botones prevBtn y nextBtn ahora se seleccionan directamente desde el DOM
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
     const dotsContainer = document.getElementById("dotsContainer");
-    const sliderContainer = this.rootElement;
+    const sliderContainer = this.rootElement.querySelector(".slider-container");
 
     prevBtn?.addEventListener("click", () => {
       this.prevSlide();
@@ -323,9 +173,9 @@ const slider = {
   },
 
   updateSlider() {
-    const slides = document.getElementById("slides");
-    if (!slides) return;
-    slides.style.transform = `translateX(-${this.currentSlide * 100}%)`;
+    if (!this.slidesContainer) return;
+    // Aplica la transformación CSS para mover el slide
+    this.slidesContainer.style.transform = `translateX(-${this.currentSlide * 100}%)`;
     this.updateDots();
   },
 
@@ -380,7 +230,7 @@ const slider = {
 
 /**
  * ==============================================================================
- * 🚀 INICIALIZACIÓN GLOBAL
+ * 🚀 INICIALIZACIÓN GLOBAL - SE MANTIENE
  * ==============================================================================
  */
 

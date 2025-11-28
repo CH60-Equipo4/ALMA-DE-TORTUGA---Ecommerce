@@ -688,24 +688,26 @@
 
 /* ÍCONO DEL REVIEWS (Tortuga) */
 .reviewer-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--color-accent-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-primary); 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 5px; /* Pequeño padding para que la imagen respire */
-    overflow: hidden;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--color-accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  /* Pequeño padding para que la imagen respire */
+  overflow: hidden;
 }
 
 /* Regla para la imagen SVG o PNG que cargues desde Cloudinary */
 .reviewer-icon .turtle-svg {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Asegura que la imagen se vea completa dentro del círculo */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* Asegura que la imagen se vea completa dentro del círculo */
 }
 
 .reviewer-name {
@@ -765,4 +767,60 @@
     min-height: 350px;
     /* Más alto en móvil para que el texto quepa */
   }
+}
+
+/* --- AÑADIR ESTA REGLA A TU CSS (style.css) --- */
+.slide-classic .card-collection {
+  /* Establece un ancho máximo para el contenedor de la imagen en este slide */
+  max-width: 380px;
+  height: 380px;
+  /* Tamaño cuadrado fijo */
+  display: flex;
+  /* Para centrar la imagen dentro si es necesario */
+  justify-content: center;
+  align-items: center;
+  /* Estilo adicional si quieres que el contenedor tenga un fondo visible */
+  background-color: var(--color-accent-light);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  animation: float 3s ease-in-out infinite;
+  /* Reutilizamos tu animación */
+}
+
+.slide-classic .card-collection .card-image,
+.slide-classic .card-collection .card-image img {
+  /* Asegura que la imagen ocupe el 100% del contenedor fijo sin desbordarse */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Recorta la imagen si es necesario para llenar el espacio */
+  border-radius: 20px;
+}
+
+.slide-christmas .card-collection {
+  max-width: 380px;
+  /* Tamaño máximo del contenedor de la imagen */
+  height: 380px;
+  /* Altura fija para hacerlo cuadrado */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-accent-light);
+  /* Puedes ajustar el color de fondo */
+  border-radius: 20px;
+  overflow: hidden;
+  /* Muy importante para recortar la imagen si desborda */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  animation: float 3s ease-in-out infinite;
+  /* Si usas la animación 'float' */
+}
+
+.slide-christmas .card-collection .card-image,
+.slide-christmas .card-collection .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Esto es clave: la imagen cubrirá el área sin distorsionarse */
+  border-radius: 20px;
 }
