@@ -1,3 +1,9 @@
+body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0; /* Aseguramos que no haya márgenes por defecto */
+}
+
 /* ESCENA DEL MAR */
 #seccion-mar {
   position: relative;
