@@ -1,3 +1,83 @@
+/* Estilos para la página de Blog - Alma de Tortuga */
+
+/* Asegurar que las tarjetas antiguas compactas no interfieran */
 .compact-card .card-body {
   padding: 0.75rem;
+}
+
+/* --- NUEVO DISEÑO DE BLOG --- */
+
+.blog-posts {
+  background: #fafafa;
+}
+
+.blog-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+  border: none;
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Imagen en tarjetas con imagen */
+.blog-card .card-img-top {
+  height: 220px;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Títulos con tipografía de marca */
+.blog-card .card-title {
+  font-family: 'Bebas Neue', 'Arial', sans-serif;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  letter-spacing: 1px;
+}
+
+/* Texto descriptivo */
+.blog-card .card-text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Enlace sin decoración */
+.blog-card-link {
+  color: inherit;
+}
+
+.blog-card-link:hover .card-title {
+  color: #e74c3c;
+  /* Ajusta este color si usas otro en tu paleta */
+}
+
+/* Responsive: ajuste en móviles */
+@media (max-width: 768px) {
+  .blog-card .card-body {
+    padding: 1.5rem !important;
+  }
+
+  .blog-card .card-title {
+    font-size: 1.5rem;
+  }
+
+  /* Asegurar que las estrellas en reseñas se vean bien en móvil */
+  .blog-card .fa-2x {
+    font-size: 1.5rem !important;
+  }
+
+  /* Contenedor más estrecho para las reseñas: 80% del ancho máximo */
+  .reviews-container {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  /* En móviles, que ocupe casi todo el ancho para no verse muy angosto */
+  @media (max-width: 768px) {
+    .reviews-container {
+      max-width: 95%;
+    }
+  }
 }

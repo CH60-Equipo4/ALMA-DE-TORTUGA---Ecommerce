@@ -4,16 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog</title>
+  <title>Blog - Alma de Tortuga</title>
   <link rel="icon" type="image/png"
     href="https://res.cloudinary.com/dwqnozpcz/image/upload/v1764300436/Gemini_Generated_Image_rhik9grhik9grhik_twkk9k.png">
-    
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../../main.css" />
   <link rel="stylesheet" href="./style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -39,7 +39,6 @@
           <!-- ENLACES -->
           <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
             <ul class="navbar-nav ms-3" style="width: 60%">
-              <!-- Dropdown ToteBags -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle fw-bold" href="#" id="navbarDropdown" role="button"
                   data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,7 +62,7 @@
                 <a class="nav-link" href="../About/about.html">Nosotros</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../Blog/blog.html">Blog</a>
+                <a class="nav-link active" href="../Blog/blog.html">Blog</a>
               </li>
             </ul>
           </div>
@@ -94,50 +93,155 @@
       </nav>
     </header>
 
-    <!-- Seccion carousel de posts -->
-    <section id="profile" class="py-5">
+    <!-- Sección de Posts - Diseño Mejorado -->
+    <section class="blog-posts py-5">
       <div class="container">
-        <h2 class="text-center mb-5">Posts - Alma de Tortuga</h2>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row g-4 justify-content-center align-items-stretch">
-              <!-- Tarjeta 1: Guía de compra -->
-              <div class="col-lg-4 col-md-6 col-12 mb-4">
-                <a href="../../Pages/Blog/GuiaDeCompra.html" class="text-decoration-none">
-                  <div class="card p-4 h-100 d-flex flex-column text-center shadow-sm">
-                    <img src="../../Pages/Blog/Pictures-blog/GuiaDeCompra.png" class="card-img-top mx-auto mb-3"
-                      alt="Guía de Compra" style="max-width: 300px; object-fit: cover" />
-                    <h5 class="mt-2">¿Cómo hacer una compra en Alma de Tortuga?</h5>
-                    <small class="mt-auto text-primary">Clic para ver la guía</small>
+        <h2 class="text-center mb-5 fw-bold">Blog - Alma de Tortuga</h2>
+
+        <!-- === TARJETAS DEL BLOG === -->
+        <div class="row g-4 justify-content-center mb-5">
+          <!-- Tarjeta 1: Guía de compra -->
+          <div class="col-12 col-md-9 col-lg-7">
+            <a href="../../Pages/Blog/GuiaDeCompra.html" class="text-decoration-none blog-card-link">
+              <div class="blog-card h-100 shadow-sm rounded-4 overflow-hidden">
+                <img src="../../Pages/Blog/Pictures-blog/GuiaDeCompra.png" class="card-img-top" alt="Guía de Compra" />
+                <div class="card-body p-5 d-flex flex-column">
+                  <h3 class="card-title fw-bold mb-3">¿Cómo hacer una compra en Alma de Tortuga?</h3>
+                  <p class="card-text text-muted flex-grow-1">
+                    Aprende paso a paso cómo navegar por nuestra tienda, personalizar tu totebag y finalizar tu pedido
+                    con seguridad.
+                  </p>
+                  <div class="mt-auto">
+                    <small class="text-primary fw-semibold">Leer más →</small>
                   </div>
-                </a>
+                </div>
               </div>
-              <!-- Tarjeta 2: Colección navideña -->
-              <div class="col-lg-4 col-md-6 col-12 mb-4">
-                <a href="../../Pages/Totebags/Coleccion/coleccion.html" class="text-decoration-none">
-                  <div class="card p-4 h-100 d-flex flex-column text-center shadow-sm">
-                    <img src="../../Pages/Blog/Pictures-blog/ColeccionNavidad.png" class="card-img-top mx-auto mb-3"
-                      alt="Guía de Compra" style="max-width: 300px; object-fit: cover" />
-                    <h5 class="mt-2">Colección Navideña</h5>
-                    <small class="mt-auto text-primary">Clic para ir a la colección</small>
+            </a>
+          </div>
+
+          <!-- Tarjeta 2: Colección navideña -->
+          <div class="col-12 col-md-9 col-lg-7">
+            <a href="../../Pages/Totebags/Coleccion/coleccion.html" class="text-decoration-none blog-card-link">
+              <div class="blog-card h-100 shadow-sm rounded-4 overflow-hidden">
+                <img src="../../Pages/Blog/Pictures-blog/ColeccionNavidena.jpg" class="card-img-top"
+                  alt="Colección Navideña" />
+                <div class="card-body p-5 d-flex flex-column">
+                  <h3 class="card-title fw-bold mb-3">Colección Navideña</h3>
+                  <p class="card-text text-muted flex-grow-1">
+                    Descubre nuestra edición limitada inspirada en la magia de las fiestas. Perfecta para regalar o
+                    consentirte.
+                  </p>
+                  <div class="mt-auto">
+                    <small class="text-primary fw-semibold">Ver colección →</small>
                   </div>
-                </a>
+                </div>
               </div>
-              <!-- Tarjeta 3: Personaliza -->
-              <div class="col-lg-4 col-md-6 col-12 mb-4">
-                <a href="../../Pages/Totebags/Personalizada/personalizada.html" class="text-decoration-none">
-                  <div class="card p-4 h-100 d-flex flex-column text-center shadow-sm">
-                    <img src="../../Pages/Blog/Pictures-blog/PersonalizaTuTotebag.png" class="card-img-top mx-auto mb-3"
-                      alt="Guía de Compra" style="max-width: 300px; object-fit: cover" />
-                    <h5 class="mt-2">Personaliza tu totebag</h5>
-                    <small class="mt-auto text-primary">Clic para ir personalizar tu propia totebag</small>
+            </a>
+          </div>
+
+          <!-- Tarjeta 3: Personaliza tu totebag -->
+          <div class="col-12 col-md-9 col-lg-7">
+            <a href="../../Pages/Totebags/Personalizada/personalizada.html" class="text-decoration-none blog-card-link">
+              <div class="blog-card h-100 shadow-sm rounded-4 overflow-hidden">
+                <img src="../../Pages/Blog/Pictures-blog/PersonalizaTuTotebag.png" class="card-img-top"
+                  alt="Personaliza tu totebag" />
+                <div class="card-body p-5 d-flex flex-column">
+                  <h3 class="card-title fw-bold mb-3">Personaliza tu totebag</h3>
+                  <p class="card-text text-muted flex-grow-1">
+                    Diseña tu propia totebag con tus colores, frases y estilos favoritos. Hecha a mano, 100% única.
+                  </p>
+                  <div class="mt-auto">
+                    <small class="text-primary fw-semibold">Diseñar ahora →</small>
                   </div>
-                </a>
+                </div>
               </div>
-            </div>
+            </a>
+          </div>
+
+          <!-- Tarjeta 4: Inspiración de Estilo de Vida -->
+          <div class="col-12 col-md-9 col-lg-7">
+            <a href="../../Pages/Blog/OutfitsOficina.html" class="text-decoration-none blog-card-link">
+              <div class="blog-card h-100 shadow-sm rounded-4 overflow-hidden">
+                <img src="../../Pages/Blog/Pictures-blog/EstiloVida.png" class="card-img-top"
+                  alt="5 Outfits para combinar tu Tote Bag en la Oficina" />
+                <div class="card-body p-5 d-flex flex-column">
+                  <h3 class="card-title fw-bold mb-3">5 Outfits para combinar tu Tote Bag en la Oficina</h3>
+                  <p class="card-text text-muted flex-grow-1">
+                    Muestra a tus clientes cómo tus tote bags son versátiles y pueden ser parte de un look profesional y
+                    con estilo, no solo para ir de compras.
+                  </p>
+                  <div class="mt-auto">
+                    <small class="text-primary fw-semibold">Descubre las combinaciones →</small>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Tarjeta 5: Cuidado y Mantenimiento -->
+          <div class="col-12 col-md-9 col-lg-7">
+            <a href="../../Pages/Blog/GuiaCuidadosToteBag.html" class="text-decoration-none blog-card-link">
+              <div class="blog-card h-100 shadow-sm rounded-4 overflow-hidden">
+                <img src="../../Pages/Blog/Pictures-blog/EstiloVida2.png" class="card-img-top"
+                  alt="Guía de Cuidados: Cómo lavar tu Tote Bag de Algodón" />
+                <div class="card-body p-5 d-flex flex-column">
+                  <h3 class="card-title fw-bold mb-3">Guía de Cuidados: Cómo lavar tu Tote Bag de Algodón</h3>
+                  <p class="card-text text-muted flex-grow-1">
+                    Un post educativo que aporte valor a tus clientes enseñándoles a cuidar su tote bag para que les
+                    dure mucho tiempo. Esto refuerza el mensaje de sostenibilidad de tu marca.
+                  </p>
+                  <div class="mt-auto">
+                    <small class="text-primary fw-semibold">Leer la guía completa →</small>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Tarjeta 6: ¿Qué puedes llevar en tu totebag? -->
+          <div class="col-12 col-md-9 col-lg-7">
+            <a href="#" class="text-decoration-none blog-card-link">
+              <div class="blog-card h-100 shadow-sm rounded-4 overflow-hidden">
+                <img src="../../Pages/Blog/Pictures-blog/Post3Blog.jpeg" class="card-img-top"
+                  alt="¿Qué puedes llevar en tu totebag?" />
+                <div class="card-body p-5 d-flex flex-column">
+                  <h3 class="card-title fw-bold mb-3">¿Qué puedes llevar en tu totebag?</h3>
+                  <p class="card-text text-muted">
+                    Descubre los esenciales que puedes llevar en tu totebag y cómo aprovecharla al máximo.
+                  </p>
+                  <a class="mt-3 fw-semibold" data-bs-toggle="collapse" href="#contenidoToteBag" role="button"
+                    aria-expanded="false" aria-controls="contenidoToteBag"
+                    style="text-decoration: underline; cursor: pointer;">
+                    Leer más
+                  </a>
+                  <div class="collapse mt-4" id="contenidoToteBag">
+                    <div class="text-muted">
+                      <h4 class="fw-bold mb-3">¿Qué puedes llevar en tu totebag? La guía completa</h4>
+                      <p>Las totebags se han convertido en un accesorio imprescindible: ligeras, prácticas, ecológicas y
+                        combinables con cualquier estilo. Pero… ¿qué tanto puedes llevar realmente en una de ellas?
+                        Basándonos en la fotografía, aquí tienes una guía realista y útil de lo que puedes cargar.</p>
+                      <h5 class="fw-bold mt-4">1. Laptop o tablet</h5>
+                      <p>Perfecta para trabajo, estudio o lectura. Solo procura usar un sleeve para protegerla.</p>
+                      <h5 class="fw-bold mt-4">2. Libreta y pluma</h5>
+                      <p>Ideales para anotar ideas, pendientes o listas del día.</p>
+                      <h5 class="fw-bold mt-4">3. Botella reutilizable</h5>
+                      <p>Mantente hidratado y reduce el uso de plásticos.</p>
+                      <h5 class="fw-bold mt-4">4. Lentes de sol</h5>
+                      <p>Ocupen poco espacio y son indispensables al aire libre.</p>
+                      <h5 class="fw-bold mt-4">5. Cartera o monedero</h5>
+                      <p>Compacta para llevar solo lo esencial.</p>
+                      <h5 class="fw-bold mt-4">6. Suéter ligero</h5>
+                      <p>Perfecto para cambios de clima o espacios con A/C.</p>
+                      <h5 class="fw-bold mt-4">7. Tu totebag favorita</h5>
+                      <p>El complemento ideal que refleja tu estilo y filosofía sostenible.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
-      </div>
+        <!-- Cierre del row -->
     </section>
 
     <!-- FOOTER -->
