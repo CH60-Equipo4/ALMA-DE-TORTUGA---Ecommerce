@@ -263,7 +263,7 @@
 }
 
 /* ======== RESPONSIVIDAD ======== */
-@media (max-width: 991px) {
+@media (max-width: 882px) {
     .navbar-collapse {
         background-color: var(--color-accent-light);
         padding: 1rem;
@@ -280,12 +280,14 @@
 
     .nosotros-info {
         /* Altura total combinada en móvil, ej: 445px */
-        padding-top: 445px !important;
+        padding-top: 160px !important;
     }
 
     .mini-navbar {
         /* Altura de la Navbar principal COLAPSADA (solo logo y botón), estimada en 60px */
         top: 60px;
+        padding-top: 70px;
+
     }
 }
 

@@ -21,20 +21,22 @@
 body {
     background-color: var(--color-primary);
     overflow-x: hidden;
+    /* CAMBIO NECESARIO: Espacio para que el Navbar fijo no tape el contenido */
+    padding-top: 90px;
+    font-family: var(--font-body);
 }
 
 html {
-    overflow: hidden;
+    /* CAMBIO NECESARIO: Permitir scroll vertical si la pantalla es chica */
+    overflow-y: auto;
 }
 
 .register-container {
     background-color: var(--color-nav);
-
     width: 90%;
     max-width: 850px;
     padding: 40px;
     border-radius: 10px;
-
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -45,7 +47,21 @@ html {
 }
 
 .btn-login {
-    background-color: var(--color-primary, #818E59);
-    color: var(--color-accent-lighter, #FEF7EA);
-    /* ... otros estilos de botón ... */
+    background-color: var(--color-primary);
+    color: var(--color-accent-lighter);
+}
+
+/* CAMBIO NECESARIO: Ajustes para pantallas pequeñas (móviles/tablets) */
+@media (max-width: 768px) {
+    .register-container {
+        padding: 20px;
+        /* Menos relleno para ganar espacio */
+        width: 95%;
+        /* Más ancho en móviles */
+    }
+
+    body {
+        padding-top: 80px;
+        /* Ajuste fino si el navbar cambia de tamaño */
+    }
 }

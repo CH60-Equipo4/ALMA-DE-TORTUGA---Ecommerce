@@ -743,3 +743,68 @@
     transform: translateY(-2px) !important;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
 }
+
+/* =========================================
+   CORRECCIÓN RESPONSIVA BARRA DE PROGRESO
+   ========================================= */
+
+@media (max-width: 576px) {
+
+    /* 1. Ajustes del contenedor PEGAJOSO */
+    .sticky-progress {
+        /* "Reiniciamos" la posición para asegurar compatibilidad */
+        position: -webkit-sticky;
+        /* Vital para Safari / iPhone */
+        position: sticky;
+
+        /* Altura del Navbar móvil (ajusta si tu nav es más alto o bajo) */
+        top: 56px;
+
+        /* Aseguramos que tenga fondo y esté por encima del contenido pero debajo del menú desplegable */
+        background: white;
+        z-index: 900;
+        padding: 10px 0;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        /* Sombra suave para que se note que flota */
+    }
+
+    .progress-container {
+        padding: 0 15px;
+    }
+
+    /* 2. Círculos más pequeños */
+    .step-circle {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+        border-width: 2px;
+    }
+
+    /* 3. Ocultar texto de pasos inactivos para ahorrar espacio */
+    .step-label {
+        display: none;
+    }
+
+    /* (Opcional) Mostrar texto SOLO del paso activo */
+    .step-item.active .step-label {
+        display: block;
+        position: absolute;
+        top: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        font-size: 11px;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 0 4px;
+        border-radius: 4px;
+    }
+
+    /* 4. Alinear la línea conectora */
+    .step-indicator::before,
+    .progress-line-active {
+        top: 15px;
+        /* Mitad de 30px */
+        height: 2px;
+    }
+}
